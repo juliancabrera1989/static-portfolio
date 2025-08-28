@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio Comparison – Static vs Dynamic</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+  <!-- Navbar -->
+  <nav class="sticky top-0 bg-white shadow-md z-10">
+    <div class="container mx-auto flex justify-between p-4">
+      <h1 class="text-xl font-bold">My Portfolio</h1>
+      <ul class="flex gap-4">
+        <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
+        <li><a href="about.html" class="hover:text-blue-600">About</a></li>
+        <li><a href="technologies.html" class="hover:text-blue-600">Technologies</a></li>
+        <li><a href="projects.html" class="hover:text-blue-600">Projects</a></li>
+        <li><a href="blog.html" class="hover:text-blue-600">Blog</a></li>
+        <li><a href="tutorials.html" class="hover:text-blue-600">Tutorials</a></li>
+        <li><a href="stack-comparison.html" class="text-blue-600 font-semibold">Compare</a></li>
+        <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Comparison Section -->
+  <section class="py-16 px-6 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-12">Static vs Dynamic Portfolio</h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm sm:text-base">
+      
+      <!-- Static Portfolio -->
+      <div class="bg-white shadow p-6 rounded-lg border border-gray-200">
+        <h3 class="text-2xl font-bold mb-4 text-blue-700">🌐 Static Portfolio</h3>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Technologies:</strong> HTML, CSS, Tailwind CSS, JavaScript</li>
+          <li><strong>Hosting:</strong> GitHub Pages, Netlify, or Vercel</li>
+          <li><strong>Performance:</strong> Extremely fast and lightweight</li>
+          <li><strong>Content:</strong> Fixed – edited manually in code</li>
+          <li><strong>Maintenance:</strong> Easy – no server or backend</li>
+          <li><strong>Ideal For:</strong> Quick showcasing, personal branding</li>
+          <li><strong>Limitations:</strong> No user authentication, no content management</li>
+          <li><strong>SEO Friendly:</strong> Yes, out of the box</li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/yourusername/static-portfolio" target="_blank" class="text-blue-600 hover:underline">View Repo</a></li>
+        </ul>
+      </div>
+
+      <!-- Dynamic Portfolio -->
+      <div class="bg-white shadow p-6 rounded-lg border border-gray-200">
+        <h3 class="text-2xl font-bold mb-4 text-green-700">⚙️ Dynamic Portfolio</h3>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Technologies:</strong> React.js, Node.js, Express, MongoDB</li>
+          <li><strong>Hosting:</strong> Vercel (frontend), Render or Railway (backend)</li>
+          <li><strong>Performance:</strong> Depends on API/database; can be optimized</li>
+          <li><strong>Content:</strong> Editable – content managed via backend</li>
+          <li><strong>Maintenance:</strong> Requires server and DB upkeep</li>
+          <li><strong>Ideal For:</strong> Real projects, user interactions, dashboards</li>
+          <li><strong>Features:</strong> Login, dashboard, add/edit projects dynamically</li>
+          <li><strong>SEO Friendly:</strong> Less, unless using SSR (e.g., Next.js)</li>
+          <li><strong>GitHub:</strong> <a href="https://github.com/yourusername/dynamic-portfolio" target="_blank" class="text-blue-600 hover:underline">View Repo</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Final Thoughts -->
+    <div class="mt-16 text-center max-w-3xl mx-auto">
+      <h4 class="text-xl font-semibold mb-2">💡 Why I Built Both</h4>
+      <p class="text-gray-700">
+        I created both a static and dynamic version of my portfolio to explore different stacks and deployment strategies.
+        The static site is perfect for performance and SEO, while the dynamic version shows my full-stack development skills including user login, API interaction, and MongoDB integration.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center p-6 mt-10">
+    &copy; 2025 Julián Cabrera. All rights reserved.
+  </footer>
+
+</body>
+</html>

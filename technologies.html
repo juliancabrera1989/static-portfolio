@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Technologies – Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="stylesheet" href="/css/navbar.css" />
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+  <!-- Navbar -->
+  <!-- <nav class="sticky top-0 bg-white shadow-md z-10">
+    <div class="container mx-auto flex justify-between p-4">
+      <h1 class="text-xl font-bold">My Portfolio</h1>
+      <ul class="flex gap-4">
+        <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
+        <li><a href="about.html" class="hover:text-blue-600">About</a></li>
+        <li><a href="technologies.html" class="text-blue-600 font-semibold">Technologies</a></li>
+        <li><a href="projects.html" class="hover:text-blue-600">Projects</a></li>
+        <li><a href="blog.html" class="hover:text-blue-600">Blog</a></li>
+        <li><a href="tutorials.html" class="hover:text-blue-600">Tutorials</a></li>
+        <li><a href="stack-comparison.html" class="hover:text-blue-600">Compare</a></li>
+        <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
+      </ul>
+    </div>
+  </nav> -->
+
+    <!-- Navbar -->
+    <header>
+    <nav>
+      <a href="index.html" class="brand" aria-label="Home">
+        <!-- light logo for transparent nav (white text) -->
+        <img src="assets/images/LOGO-HORIZONTAL.png" class="logo logo--dark" alt="Julián Cabrera logo" loading="eager">
+      
+        <!-- dark logo for scrolled nav (dark text) -->
+        <!-- <img src="assets/img/logo-dark.svg" class="logo logo--dark" alt="" width="140" height="32" loading="eager"> -->
+      </a>
+      <ul>
+  
+        <li><a href="index.html">Home</a></li>
+        <li><a href="technologies.html">Technologies</a></li>
+        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <!-- <li><a href="technologies.html">Technologies</a></li>
+        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="projects.html">Projects</a></li> -->
+        <li><a href="contact.html">Contact</a></li>
+  
+      </ul>
+  
+        <!-- Language Toggle -->
+        <div class="language-toggle">
+          <button id="lang-en"><img src="assets/images/languages/english.png" alt="English" /></button>
+          <button id="lang-es"><img src="assets/images/languages/spanish.png" alt="Español" /></button>
+        </div>
+      
+    </nav>
+  </header>
+
+
+
+
+    <!-- <label for="criterio">Ver tecnologías por:</label>
+      <select id="criterio">
+        <option value="all">Mostrar todas</option>
+        <option value="proyectos">Proyectos</option>
+        <option value="categoria1">Categorías 1</option>
+        <option value="categoria2">Categorías 2</option>
+      </select> -->
+  
+      <!-- Selector secundario -->
+      <!-- <div id="subcriterio-container" style="display: none;">
+       <label for="subcriterio">Filtrar por:</label>
+       <select id="subcriterio"></select>
+      </div> -->
+
+    <!-- <select id="techCategory">
+      <option value="frontend">Front-end</option>
+      <option value="backend">Back-end</option>
+      <option value="database">Bases de Datos</option>
+      <option value="tools">Herramientas</option>
+    </select> -->
+    
+
+    
+    <!-- <div id="techGrid"> -->
+      <!-- Aquí se cargan tecnologías según la categoría -->
+    <!-- </div> -->
+    
+
+      <!-- Technologies Section -->
+  <section class="py-16 px-6 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-10">Technologies I Work With</h2>
+
+<!--     
+<div id="filters">
+  <label for="categorySelect">Categoría:</label>
+  <select id="categorySelect">
+    <option value="all">Todas</option>
+    <option value="proyectos">Proyectos</option>
+    <option value="categoria1">Categoría 1</option>
+    <option value="categoria2">Categoría 2</option>
+  </select>
+
+  <label for="displayTypeSelect">Modo de selección:</label>
+  <select id="displayTypeSelect">
+    <option value="select">Selector</option>
+    <option value="checkbox">Checkbox</option>
+  </select>
+
+  <div id="subCategoryWrapper">
+    
+    <select id="subCategorySelect"></select>
+    <div id="subCategoryCheckboxes" class="checkbox-group" style="display:none;"></div>
+  </div>
+</div>
+ -->
+
+<!-- 
+    
+      <h3 class="text-2xl font-semibold mb-4 text-blue-700">Full-stack (Todas las tecnologías)</h3>
+      <div id="all-tech" class=" grid md:grid-cols-4 sm:grid-cols-2 gap-6">
+        <a href="https://reactjs.org" target="_blank" class="tech-card front-end library structures"><img src="assets/images/technologies/reactjs.png" alt="React.js" /></a>
+        <a href="https://tailwindcss.com" target="_blank" class="tech-card front-end framework portfolio"><img src="assets/images/technologies/tailwind-logo.png" alt="TailwindCSS" /></a>
+        <a href="https://getbootstrap.com" target="_blank" class="tech-card front-end framework flights"><img src="assets/images/technologies/bootstrap.png" alt="Boostrap" /></a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="tech-card front-end "><img src="assets/images/technologies/html-logo.png" alt="HTML" /></a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" class="tech-card front-end"><img src="assets/images/technologies/css-logo.png" alt="CSS3" /></a>
+        <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="tech-card prog-lang portfolio"><img src="assets/images/technologies/javascript-logo.png" alt="Javascript" /></a>
+        <a href="https://www.typescriptlang.org/" target="_blank" class="tech-card prog-lang structures"><img src="assets/images/technologies/typescript-logo.png" alt="Typescript" /></a>
+        <a href="https://nodejs.org" target="_blank" class="tech-card tool back-end structures"><img src="assets/images/technologies/node.js.png" alt="node.js" /></a>
+        <a href="https://expressjs.com" target="_blank" class="tech-card back-end framework structures"><img src="assets/images/technologies/Expressjs.png" alt="Expressjs" /></a>
+        <a href="https://laravel.com" target="_blank" class="tech-card framework back-end flights"><img src="assets/images/technologies/laravel-logo.png" alt="Laravel" /></a>
+        <a href="https://php.net" target="_blank" class="tech-card prog-lang backend flights"><img src="assets/images/technologies/php-logo.png" alt="PHP" /></a>
+        <a href="https://www.mongodb.com" target="_blank" class="tech-card data-base structures"><img src="assets/images/technologies/mongodb.png" alt="MongoDB" /></a>
+        <a href="https://www.mysql.com" target="_blank" class="tech-card data-base flights"><img src="assets/images/technologies/mysql-logo.png" alt="MySQL" /></a>
+        <a href="https://www.postgresql.org" target="_blank" class="tech-card data-base tool"><img src="assets/images/technologies/posgresql-logo.png" alt="PosgreSQL" /></a>
+        <a href="https://sql-page.com/" target="_blank" class="tech-card prog-lang data-base flights"><img src="assets/images/technologies/sql.png" alt="SQL" /></a>
+        <a href="https://git-scm.com" target="_blank" class="tech-card tool"><img src="assets/images/technologies/Git_icon.svg.png" alt="Git" /></a>
+        <a href="https://github.com" target="_blank" class="tech-card tool"><img src="assets/images/technologies/github-logo.png" alt="GitHub" /></a>
+        <a href="https://wordpress.org/" target="_blank" class="tech-card tool "><img src="assets/images/technologies/wordpress.png" alt="Wordpress" /></a>
+        <a href="https://www.python.org/" target="_blank" class="tech-card prog-lang "><img src="assets/images/technologies/python-logo.png" alt="Python" /></a>
+      </div>
+ -->
+
+
+<div class="w-full max-w-5xl mx-auto p-6 bg-white rounded-2xl shadow-md">
+  <!-- Selectores -->
+  <div class="grid md:grid-cols-3 gap-6 mb-6">
+    <!-- Selector 1: Categorías -->
+    <div>
+      <label for="categorySelect" class="block text-sm font-medium text-gray-700 mb-2">Categoría</label>
+      <select id="categorySelect"
+        class="w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition">
+        <option value="all">Todas</option>
+        <option value="proyectos">Proyectos</option>
+        <option value="categoria1">Categoría 1</option>
+        <option value="categoria2">Categoría 2</option>
+      </select>
+    </div>
+
+    <!-- Selector 2: Subcategorías -->
+    <div>
+      <label for="subCategorySelect" class="block text-sm font-medium text-gray-700 mb-2">Subcategoría</label>
+      <select id="subCategorySelect"
+        class="w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition">
+        <!-- Opciones dinámicas -->
+      </select>
+    </div>
+
+    <!-- Selector 3: Tipo de visualización -->
+    <div>
+      <label for="displayTypeSelect" class="block text-sm font-medium text-gray-700 mb-2">Tipo de visualización</label>
+      <select id="displayTypeSelect"
+        class="w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition">
+        <option value="select">Select</option>
+        <option value="checkbox">Checkboxes</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Contenedor dinámico de checkboxes -->
+  <div id="subCategoryCheckboxes" class="mb-6 flex flex-wrap gap-4"></div>
+
+  <!-- Botón de aplicar filtros -->
+  <div class="text-right">
+    <button
+      class="px-6 py-2 rounded-xl bg-blue-600 text-white font-medium shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
+      Aplicar filtros
+    </button>
+  </div>
+</div>
+
+
+ <br><br><br>
+ <div id="category-container" ></div>
+
+  </section>
+
+  
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center p-6 mt-10">
+    &copy; 2025 Julián Cabrera. All rights reserved.
+  </footer>
+
+  <style>
+    /* .tech-card {
+      display: flex;
+      align-items: center;
+      aspect-ratio: 1;
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      text-align: center;
+      font-weight: 600;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.2s; 
+
+
+
+      
+    }
+
+
+
+    .tech-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      color: #2563eb;
+    }
+
+    .tech-card img {
+      object-fit: contain;
+    } */
+
+
+/* 
+    .tech-card {
+  display: flex;
+  align-items: center; */
+  /* justify-content: center; */
+  /* aspect-ratio: 1;
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+} 
+
+/* --- Animación fade-in en cascada --- */
+/* .tech-card.hidden {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.tech-card.show {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+#category-container {
+  transition: all 0.4s ease;
+}
+ */
+ /* .tech-card {
+  display: flex;
+  align-items: center;
+  aspect-ratio: 1;
+  background: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s, opacity 0.5s ease, transform 0.5s ease;
+}  */
+
+/* 
+.tech-card.hidden {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.tech-card.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tech-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+  color: #2563eb;
+}
+
+.tech-card img {
+  object-fit: contain;
+}
+
+
+.tech-card.hidden {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.tech-card.show {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+} */
+.tech-card {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.tech-card.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+  </style>
+  <script type="module" src="/js/technologies.js"></script>
+</body>
+</html>

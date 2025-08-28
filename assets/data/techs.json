@@ -1,0 +1,21 @@
+[
+  { "name": "React.js", "img": "assets/images/technologies/reactjs.png", "link": "https://reactjs.org", "classes": ["front-end","library","structures"] },
+  { "name": "TailwindCSS", "img": "assets/images/technologies/tailwind-logo.png", "link": "https://tailwindcss.com", "classes": ["front-end","framework","portfolio"] },
+  { "name": "Bootstrap", "img": "assets/images/technologies/bootstrap.png", "link": "https://getbootstrap.com", "classes": ["front-end","framework","flights"] },
+  { "name": "HTML", "img": "assets/images/technologies/html-logo.png", "link": "https://developer.mozilla.org/en-US/docs/Web/HTML", "classes": ["front-end"] },
+  { "name": "CSS3", "img": "assets/images/technologies/css-logo.png", "link": "https://developer.mozilla.org/en-US/docs/Web/CSS", "classes": ["front-end"] },
+  { "name": "Javascript", "img": "assets/images/technologies/javascript-logo.png", "link": "https://developer.mozilla.org/en-US/docs/Web/JavaScript", "classes": ["prog-lang","portfolio"] },
+  { "name": "Typescript", "img": "assets/images/technologies/typescript-logo.png", "link": "https://www.typescriptlang.org/", "classes": ["prog-lang","structures"] },
+  { "name": "Node.js", "img": "assets/images/technologies/node.js.png", "link": "https://nodejs.org", "classes": ["tool","back-end","structures"] },
+  { "name": "Expressjs", "img": "assets/images/technologies/Expressjs.png", "link": "https://expressjs.com", "classes": ["back-end","framework","structures"] },
+  { "name": "Laravel", "img": "assets/images/technologies/laravel-logo.png", "link": "https://laravel.com", "classes": ["framework","back-end","flights"] },
+  { "name": "PHP", "img": "assets/images/technologies/php-logo.png", "link": "https://php.net", "classes": ["prog-lang","backend","flights"] },
+  { "name": "MongoDB", "img": "assets/images/technologies/mongodb.png", "link": "https://www.mongodb.com", "classes": ["data-base","structures"] },
+  { "name": "MySQL", "img": "assets/images/technologies/mysql-logo.png", "link": "https://www.mysql.com", "classes": ["data-base","flights"] },
+  { "name": "PostgreSQL", "img": "assets/images/technologies/posgresql-logo.png", "link": "https://www.postgresql.org", "classes": ["data-base","tool"] },
+  { "name": "SQL", "img": "assets/images/technologies/sql.png", "link": "https://sql-page.com/", "classes": ["prog-lang","data-base","flights"] },
+  { "name": "Git", "img": "assets/images/technologies/Git_icon.svg.png", "link": "https://git-scm.com", "classes": ["tool"] },
+  { "name": "GitHub", "img": "assets/images/technologies/github-logo.png", "link": "https://github.com", "classes": ["tool"] },
+  { "name": "Wordpress", "img": "assets/images/technologies/wordpress.png", "link": "https://wordpress.org/", "classes": ["tool"] },
+  { "name": "Python", "img": "assets/images/technologies/python-logo.png", "link": "https://www.python.org/", "classes": ["prog-lang"] }
+]

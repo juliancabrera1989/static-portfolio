@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tutorials – Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/navbar.css">
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+  <!-- Navbar -->
+  <!-- <nav class="sticky top-0 bg-white shadow-md z-10">
+    <div class="container mx-auto flex justify-between p-4">
+      <h1 class="text-xl font-bold">My Portfolio</h1>
+      <ul class="flex gap-4">
+        <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
+        <li><a href="about.html" class="hover:text-blue-600">About</a></li>
+        <li><a href="technologies.html" class="hover:text-blue-600">Technologies</a></li>
+        <li><a href="projects.html" class="hover:text-blue-600">Projects</a></li>
+        <li><a href="blog.html" class="hover:text-blue-600">Blog</a></li>
+        <li><a href="tutorials.html" class="text-blue-600 font-semibold">Tutorials</a></li>
+        <li><a href="stack-comparison.html" class="hover:text-blue-600">Compare</a></li>
+        <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
+      </ul>
+    </div>
+  </nav> -->
+  <header>
+    <!-- Navbar -->
+    <nav>
+      <a href="index.html" class="brand" aria-label="Home">
+        <!-- light logo for transparent nav (white text) -->
+        <img src="assets/images/LOGO-HORIZONTAL.png" class="logo logo--dark" alt="Julián Cabrera logo" loading="eager">
+      
+        <!-- dark logo for scrolled nav (dark text) -->
+        <!-- <img src="assets/img/logo-dark.svg" class="logo logo--dark" alt="" width="140" height="32" loading="eager"> -->
+      </a>
+      <ul>
+  
+        <li><a href="index.html">Home</a></li>
+        <li><a href="technologies.html">Technologies</a></li>
+        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="projects.html">Projects</a></li> 
+        <li><a href="contact.html">Contact</a></li>
+  
+      </ul>
+  
+        <!-- Language Toggle -->
+        <div class="language-toggle">
+          <button id="lang-en"><img src="assets/images/languages/english.png" alt="English" /></button>
+          <button id="lang-es"><img src="assets/images/languages/spanish.png" alt="Español" /></button>
+        </div>
+      
+    </nav>
+  </header>
+
+  <!-- Tutorials Section -->
+  <section class="py-16 px-6 max-w-5xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-12">Tutorials & Courses Taken</h2>
+
+    <!-- Full Stack Section -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-semibold text-blue-700 mb-4">Full Stack</h3>
+      <ul class="space-y-3 list-disc list-inside">
+        <li>
+          <a href="https://www.theodinproject.com" target="_blank" class="text-blue-600 hover:underline">
+            The Odin Project – Full Stack JavaScript Path
+          </a>
+        </li>
+        <li>
+          <a href="https://www.freecodecamp.org/learn" target="_blank" class="text-blue-600 hover:underline">
+            freeCodeCamp – Responsive Web Design & JavaScript Algorithms
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Frontend Section -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-semibold text-blue-700 mb-4">Frontend</h3>
+      <ul class="space-y-3 list-disc list-inside">
+        <li>
+          <a href="https://www.udemy.com/course/modern-react-bootcamp/" target="_blank" class="text-blue-600 hover:underline">
+            Udemy – The Modern React Bootcamp (Hooks, Context, Router, Vite)
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/watch?v=w7ejDZ8SWv8" target="_blank" class="text-blue-600 hover:underline">
+            Traversy Media – React Crash Course 2023
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Backend Section -->
+    <div class="mb-12">
+      <h3 class="text-2xl font-semibold text-blue-700 mb-4">Backend</h3>
+      <ul class="space-y-3 list-disc list-inside">
+        <li>
+          <a href="https://www.udemy.com/course/nodejs-the-complete-guide/" target="_blank" class="text-blue-600 hover:underline">
+            Udemy – Node.js: The Complete Guide (MVC, REST APIs, GraphQL)
+          </a>
+        </li>
+        <li>
+          <a href="https://www.codecademy.com/learn/learn-express" target="_blank" class="text-blue-600 hover:underline">
+            Codecademy – Learn Express.js
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Other Platforms -->
+    <div>
+      <h3 class="text-2xl font-semibold text-blue-700 mb-4">Other Learning Platforms</h3>
+      <ul class="space-y-3 list-disc list-inside">
+        <li>
+          <a href="https://roadmap.sh" target="_blank" class="text-blue-600 hover:underline">
+            Roadmap.sh – Developer Career Paths
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/learning/" target="_blank" class="text-blue-600 hover:underline">
+            LinkedIn Learning – Web Development Foundations
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center p-6 mt-10">
+    &copy; 2025 Julián Cabrera. All rights reserved.
+  </footer>
+
+</body>
+</html>

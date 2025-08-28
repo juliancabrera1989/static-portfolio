@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Me – Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+  <!-- Navbar -->
+  <!-- <nav class="sticky top-0 bg-white shadow-md z-10">
+    <div class="container mx-auto flex justify-between p-4">
+      <h1 class="text-xl font-bold">My Portfolio</h1>
+      <ul class="flex gap-4">
+        <li><a href="index.html" class="hover:text-blue-600">Home</a></li>
+        <li><a href="about.html" class="text-blue-600 font-semibold">About</a></li>
+        <li><a href="technologies.html" class="hover:text-blue-600">Technologies</a></li>
+        <li><a href="projects.html" class="hover:text-blue-600">Projects</a></li>
+        <li><a href="blog.html" class="hover:text-blue-600">Blog</a></li>
+        <li><a href="tutorials.html" class="hover:text-blue-600">Tutorials</a></li>
+        <li><a href="stack-comparison.html" class="hover:text-blue-600">Compare</a></li>
+        <li><a href="contact.html" class="hover:text-blue-600">Contact</a></li>
+      </ul>
+    </div>
+  </nav> -->
+
+    <!-- Navbar -->
+    <nav>
+      <a href="index.html" class="brand" aria-label="Home">
+        <!-- light logo for transparent nav (white text) -->
+        <img src="assets/images/LOGO-HORIZONTAL.png" class="logo logo--dark" alt="Julián Cabrera logo" loading="eager">
+      
+        <!-- dark logo for scrolled nav (dark text) -->
+        <!-- <img src="assets/img/logo-dark.svg" class="logo logo--dark" alt="" width="140" height="32" loading="eager"> -->
+      </a>
+      <ul>
+  
+        <li><a href="index.html">Home</a></li>
+        <li><a href="#technologies-preview">Technologies</a></li>
+        <li><a href="#tutorials-preview">Tutorials</a></li>
+        <li><a href="#projects-preview">Projects</a></li>
+        <!-- <li><a href="technologies.html">Technologies</a></li>
+        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="projects.html">Projects</a></li> -->
+        <li><a href="contact.html">Contact</a></li>
+  
+      </ul>
+  
+        <!-- Language Toggle -->
+        <div class="language-toggle">
+          <button id="lang-en"><img src="assets/images/languages/english.png" alt="English" /></button>
+          <button id="lang-es"><img src="assets/images/languages/spanish.png" alt="Español" /></button>
+        </div>
+      
+    </nav>
+  <!-- Main Section -->
+  <section class="py-16 px-4 max-w-4xl mx-auto">
+    <h2 class="text-3xl font-bold mb-6 text-center">About Me</h2>
+    <p class="mb-6 leading-relaxed text-lg">
+      I'm <strong>Julián Cabrera</strong>, an IT Engineering student about to graduate, passionate about web development and software engineering. During my academic years, I've built a solid foundation in programming, data structures, and full-stack development.
+    </p>
+    <p class="mb-6 leading-relaxed text-lg">
+      In addition to university courses, I've pursued <strong>self-guided learning</strong> through YouTube tutorials, blogs, and hands-on projects. I’m always exploring new technologies, sharpening my skills, and building solutions.
+    </p>
+    <div class="grid md:grid-cols-2 gap-6 bg-white p-6 rounded-lg shadow-md mt-8">
+      <div>
+        <h3 class="text-xl font-semibold mb-2">🎓 Academic Background</h3>
+        <ul class="list-disc list-inside">
+          <li>Bachelor's in Information Technology Engineering</li>
+          <li>Expected Graduation: [Year]</li>
+          <li>University: [University Name]</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-xl font-semibold mb-2">🧑‍💻 Self-Learning</h3>
+        <ul class="list-disc list-inside">
+          <li>YouTube Channels: FreeCodeCamp, The Net Ninja, Traversy Media</li>
+          <li>Topics: JavaScript, React, Laravel, MongoDB, APIs</li>
+          <li>Hands-on Projects & Tutorials</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white text-center p-6 mt-10">
+    &copy; 2025 Julián Cabrera. All rights reserved.
+  </footer>
+</body>
+</html>
