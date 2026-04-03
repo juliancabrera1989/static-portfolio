@@ -75,8 +75,10 @@
 
       <li><a href="index.html">Home</a></li>
       <li><a href="#technologies-preview">Technologies</a></li>
-      <li><a href="#tutorials-preview">Tutorials</a></li>
+      <li><a href="#about-preview">About me</a></li>
       <li><a href="#projects-preview">Projects</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="stack-comparison.html">Stack Comparison</a></li>
       <li><a href="contact.html">Contact</a></li>
 
     </ul>
@@ -113,20 +115,58 @@
     </div>
   </section>
 
-  <!-- Tutorials Preview -->
-  <section class="section" id="tutorials-preview">
-    <h2 class="section-title">Tutorials</h2>
-    <div class="preview-grid">
-      <div class="preview-card">
-        <img src="assets/images/tutorial-preview.png" alt="Tutorials">
-        <div class="card-content">
-          <h3>Interactive Learning</h3>
-          <p>Access my tutorials on web development, JavaScript patterns, and backend logic.</p>
-          <a class="btn" href="tutorials.html">Read More</a>
-        </div>
+  <!-- About Me Preview -->
+   <section class="section" id="about-preview">
+  <h2 class="section-title">About Me</h2>
+  <div class="preview-grid">
+
+    <!-- About Overview -->
+    <div class="preview-card">
+      <img src="assets/images/about-overview.jpg" alt="About Me">
+      <div class="card-content">
+        <h3>Who I Am</h3>
+        <p>
+          My academic background and self-learning journey shaped the way I became a web developer. 
+          From engineering studies to countless tutorials, I’ve built a foundation that drives my passion for software development.
+        </p>
+        <a class="btn" href="about.html">Read More</a>
       </div>
     </div>
-  </section>
+
+  </div>
+</section>
+  <!-- <section class="section" id="about-preview">
+    <h2 class="section-title">About Me</h2>
+    <div class="preview-grid"> -->
+
+      <!-- Academic Background -->
+      <!-- <div class="preview-card">
+        <img src="assets/images/about-academic.jpg" alt="Academic Background">
+        <div class="card-content">
+          <h3>Academic Background</h3>
+          <p>
+            My academic studies provided me with a strong foundation in logical thinking, problem solving, and the core principles 
+            that led me into programming. This background shaped the way I approach software development today.
+          </p>
+          <a class="btn" href="about.html#academic">Read More</a>
+        </div>
+      </div> -->
+
+      <!-- Tutorials & Self-Learning -->
+      <!-- <div class="preview-card">
+        <img src="assets/images/about-learning.jpg" alt="Tutorials and Self-Learning">
+        <div class="card-content">
+          <h3>Tutorials & Self-Learning</h3>
+          <p>
+            Through online tutorials, courses, and constant practice, I transitioned into becoming a full-stack web developer. 
+            These resources allowed me to specialize in modern web technologies and real-world project building.
+          </p>
+          <a class="btn" href="about.html#learning">Read More</a>
+        </div>
+      </div>
+
+    </div>
+  </section> -->
 
   <!-- Projects Preview -->
   <section class="section" id="projects-preview">
@@ -160,12 +200,62 @@
  
 
   <!-- Footer -->
-  <footer>
+  <!-- <footer>
     <p>© 2025 Julián Cabrera | Built with ❤️</p>
     <p>Contact via <a href="https://wa.me/1234567890" target="_blank">WhatsApp</a> or <a href="https://facebook.com" target="_blank">Facebook</a></p>
-  </footer>
+  </footer> -->
 
 
+  <!-- <footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-about">
+      <h3>Julián Cabrera</h3>
+      <p>Full Stack Web Developer · Creating modern and efficient web experiences.</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-social">
+      <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://wa.me/yourwhatsappnumber" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i></a>
+    </div>
+  </div>
+</footer> -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-about">
+      <h3>Julián Cabrera</h3>
+      <p>Full Stack Web Developer · Creating modern and efficient web experiences.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Navigation</h4>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="blog.html">Blog</a>
+      <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="footer-social">
+      <h4>Connect</h4>
+      <a href="https://github.com/juliancabrera1989" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="https://wa.me/yourwhatsappnumber" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+    </div>
+  </div>
+  <p class="footer-copy">© 2025 Julián Cabrera — All rights reserved.</p>
+</footer>
+
+<!-- Font Awesome for icons -->
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script>
     // document.addEventListener("DOMContentLoaded", function () {
     //     // Check if preloader has already been shown in this session
@@ -193,33 +283,121 @@
     //         document.getElementById("preloader").style.display = "none";
     //     }
     // });
+
+
+
+
+    // window.addEventListener("load", function () {
+
+
+
+    //   const preloader = document.getElementById("preloader");
+    //   const progressBar = document.getElementById("progress-bar");
+    //   const progressText = document.getElementById("progress-text");
+
+    // // document.querySelector('video').playbackRate = 0.5;
+
+    //   let progress = 0;
+    //   const duration = 5000; // 5 seconds
+    //   const interval = 50;   // update every 50ms
+    //   const step = 100 / (duration / interval);
+
+    //   const loadingInterval = setInterval(() => {
+    //     progress += step;
+    //     if (progress >= 100) {
+    //       progress = 100;
+    //       clearInterval(loadingInterval);
+    //       setTimeout(() => {
+    //         preloader.style.opacity = "0";
+    //         preloader.style.transition = "opacity 0.5s ease";
+    //         setTimeout(() => preloader.style.display = "none", 500);
+    //       }, 500);
+    //     }
+    //     progressBar.style.width = progress + "%";
+    //     progressText.textContent = Math.floor(progress) + "%";
+    //   }, interval);
+    // });
+
+
+
+
+
+// window.addEventListener("load", function () {
+
+//    // Check if preloader has already been shown in this session
+//         if (!sessionStorage.getItem("preloaderShown")) {
+//     //         // Show preloader
+
+//               const preloader = document.getElementById("preloader");
+//               const progressBar = document.getElementById("progress-bar");
+//               const progressText = document.getElementById("progress-text");
+
+//             // document.querySelector('video').playbackRate = 0.5;
+
+//               let progress = 0;
+//               const duration = 5000; // 5 seconds
+//               const interval = 50;   // update every 50ms
+//               const step = 100 / (duration / interval);
+
+//               const loadingInterval = setInterval(() => {
+//                 progress += step;
+//                 if (progress >= 100) {
+//                   progress = 100;
+//                   clearInterval(loadingInterval);
+//                   setTimeout(() => {
+//                     preloader.style.opacity = "0";
+//                     preloader.style.transition = "opacity 0.5s ease";
+//                     setTimeout(() => preloader.style.display = "none", 500);
+//                     sessionStorage.setItem("preloaderShown", "true"); 
+//                   }, 500);
+//                 }
+//                 progressBar.style.width = progress + "%";
+//                 progressText.textContent = Math.floor(progress) + "%";
+
+//               }, interval);
+
+//           } else {
+//                       // Hide preloader immediately
+//                       document.getElementById("preloader").style.display = "none";
+//                   }
+
+
+//             });
 window.addEventListener("load", function () {
   const preloader = document.getElementById("preloader");
   const progressBar = document.getElementById("progress-bar");
   const progressText = document.getElementById("progress-text");
 
-// document.querySelector('video').playbackRate = 0.5;
+  if (!sessionStorage.getItem("preloaderShown")) {
+    // Show preloader
+    preloader.classList.add("active");
 
-  let progress = 0;
-  const duration = 5000; // 5 seconds
-  const interval = 50;   // update every 50ms
-  const step = 100 / (duration / interval);
+    let progress = 0;
+    const duration = 5000; // 5 seconds
+    const interval = 50;
+    const step = 100 / (duration / interval);
 
-  const loadingInterval = setInterval(() => {
-    progress += step;
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(loadingInterval);
-      setTimeout(() => {
-        preloader.style.opacity = "0";
-        preloader.style.transition = "opacity 0.5s ease";
-        setTimeout(() => preloader.style.display = "none", 500);
-      }, 500);
-    }
-    progressBar.style.width = progress + "%";
-    progressText.textContent = Math.floor(progress) + "%";
-  }, interval);
+    const loadingInterval = setInterval(() => {
+      progress += step;
+      if (progress >= 100) {
+        progress = 100;
+        clearInterval(loadingInterval);
+        setTimeout(() => {
+          preloader.style.opacity = "0";
+          preloader.style.transition = "opacity 0.5s ease";
+          setTimeout(() => preloader.style.display = "none", 500);
+          sessionStorage.setItem("preloaderShown", "true");
+        }, 500);
+      }
+      progressBar.style.width = progress + "%";
+      progressText.textContent = Math.floor(progress) + "%";
+    }, interval);
+  } else {
+    // Ensure it's hidden before render
+    preloader.style.display = "none";
+  }
 });
+
 
     </script>
     

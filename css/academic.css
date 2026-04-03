@@ -1,0 +1,181 @@
+/* Hero background
+.hero-section {
+  height: 100vh;
+  background: url('assets/images/academic-bg.jpg') no-repeat center center/cover;
+  position: relative;
+}
+
+/* Overlay for readability */
+/* .hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+} */
+
+/* Timeline layout */
+/* .timeline {
+  position: relative;
+  margin: 0 auto;
+  padding: 1rem 0;
+  border-left: 4px solid #0d6efd;
+}
+
+.timeline-item {
+  margin-bottom: 2rem;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -12px;
+  top: 5px;
+  width: 20px;
+  height: 20px;
+  background: #0d6efd;
+  border-radius: 50%;
+} */
+
+/* Animations */
+/* .animate-fade-up {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1.2s ease forwards;
+}
+.animate-fade-down {
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeDown 1.2s ease forwards;
+}
+.animate-slide-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideLeft 1.2s ease forwards;
+}
+.animate-slide-right {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideRight 1.2s ease forwards;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeDown {
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideLeft {
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideRight {
+  to { opacity: 1; transform: translateX(0); }
+} */
+
+/* Story section styling */
+/* .story-section {
+  background: #f8f9fa;
+  color: #212529;
+} */ 
+/* General Page Layout */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f0f4f9, #d9e4ec);
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Header */
+.page-header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: #1e3c72;
+  background: linear-gradient(135deg, #2a5298, #1e3c72);
+  color: white;
+}
+
+.page-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-header .subtitle {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+/* Timeline Section */
+.content {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+}
+
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* Images */
+.timeline-item img {
+  width: 40%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Text */
+.timeline-item .text {
+  width: 60%;
+}
+
+.timeline-item h2 {
+  margin-top: 0;
+  color: #1e3c72;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Footer */
+.page-footer {
+  text-align: center;
+  padding: 2rem;
+}
+
+.page-footer .btn {
+  background: #1e3c72;
+  color: white;
+  padding: 0.7rem 1.2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.page-footer .btn:hover {
+  background: #2a5298;
+}

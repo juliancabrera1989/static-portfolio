@@ -6,6 +6,8 @@
   <title>Blog – Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/blog.css">
 </head>
 <body class="bg-gray-100 text-gray-900 font-sans">
 
@@ -24,10 +26,11 @@
   
         <li><a href="index.html">Home</a></li>
         <li><a href="technologies.html">Technologies</a></li>
-        <li><a href="tutorials.html">Tutorials</a></li>
+        <li><a href="about.html">About me</a></li>
         <li><a href="projects.html">Projects</a></li> 
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="stack-comparison.html">Stack Comparison</a></li>
         <li><a href="contact.html">Contact</a></li>
-  
       </ul>
   
         <!-- Language Toggle -->
@@ -38,49 +41,44 @@
       
     </nav>
   </header>
+<section class="seccion">
+  <!-- <h1>Latest Programming & Web Dev News</h1>
 
-  <!-- Blog Section -->
-  <section class="py-16 px-6 max-w-4xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-12">Blog Articles</h2>
+  <div id="controls">
+    <button id="refreshBtn">🔄 Refresh All News</button>
+  </div>
 
-    <!-- Blog Post 1 -->
-    <article class="bg-white shadow-md rounded-lg p-6 mb-8">
-      <h3 class="text-2xl font-bold mb-2">Understanding JWT Authentication in Node.js</h3>
-      <p class="text-sm text-gray-600 mb-2">Published on June 18, 2025</p>
-      <p class="text-gray-700 mb-4">
-        Learn how JSON Web Tokens work and how to implement secure authentication using JWTs in a full-stack application.
-      </p>
-      <a href="posts/jwt-authentication.html" class="text-blue-600 hover:underline">Read more →</a>
-    </article>
+  <div id="categories">
+    <div class="category" id="webdev">
+      <h2>Web Development</h2>
+      <div class="news-list">Loading...</div>
+    </div>
 
-    <!-- Blog Post 2 -->
-    <article class="bg-white shadow-md rounded-lg p-6 mb-8">
-      <h3 class="text-2xl font-bold mb-2">Laravel vs Node.js: Which One to Choose?</h3>
-      <p class="text-sm text-gray-600 mb-2">Published on July 3, 2025</p>
-      <p class="text-gray-700 mb-4">
-        A developer’s comparison between Laravel and Node.js based on use cases, developer experience, performance, and ecosystem.
-      </p>
-      <a href="posts/laravel-vs-node.html" class="text-blue-600 hover:underline">Read more →</a>
-    </article>
+    <div class="category" id="startups">
+      <h2>Startups</h2>
+      <div class="news-list">Loading...</div>
+    </div>
 
-    <!-- Blog Post 3 -->
-    <article class="bg-white shadow-md rounded-lg p-6 mb-8">
-      <h3 class="text-2xl font-bold mb-2">Why I Built Both a Static and a Dynamic Portfolio</h3>
-      <p class="text-sm text-gray-600 mb-2">Published on July 24, 2025</p>
-      <p class="text-gray-700 mb-4">
-        Sharing my experience building two portfolios with different stacks to showcase technical flexibility and explore performance tradeoffs.
-      </p>
-      <a href="posts/dual-portfolio-approach.html" class="text-blue-600 hover:underline">Read more →</a>
-    </article>
+    <div class="category" id="design">
+      <h2>Design</h2>
+      <div class="news-list">Loading...</div>
+    </div>
+  </div> -->
 
-    <!-- Add more posts here as needed -->
+  <h2>Dev.to</h2>
+  <div id="devto" class="feed-container"></div>
 
-  </section>
+  <h2>Smashing Magazine</h2>
+  <div id="smashing" class="feed-container"></div>
 
+  <h2>Hacker News</h2>
+  <div id="hackernews" class="feed-container"></div>
+
+</section>
   <!-- Footer -->
   <footer class="bg-gray-800 text-white text-center p-6 mt-10">
     &copy; 2025 Julián Cabrera. All rights reserved.
   </footer>
-
+<script type="module" src="/js/blog.js"></script>
 </body>
 </html>
