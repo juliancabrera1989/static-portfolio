@@ -1,27 +1,66 @@
-/* .navbar.sticky {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #fff;
-    border-bottom: 1px solid #eee;
-  } */
+/*/~ RESETEO DE MARGENES PARA LAS PAGINAS INTERNAS ~/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
 
 
   nav {
-    display: flex;
+
+  top: 0;            /~ 2. La pega al techo de la pantalla ~/
+  left: 0;           /~ 3. La estira obligatoriamente desde el borde izquierdo ~/
+  width: 100%;
+
+
     align-items: center;
     background: url('/assets/images/hero-bg.gif') no-repeat center center/cover;
-    justify-content: space-around; /* logo left, links right */
+    justify-content: space-around; /~ logo left, links right ~/
     padding: 15px 30px;
-    background-color: transparent; /* or white on scroll */
+    background-color: transparent; /~ or white on scroll ~/
     
     top: 0;
     width: 100%;
     z-index: 1000;
     transition: all 0.3s ease;
   }
-  
-  
+  */
+    nav {
+
+    display: flex;
+
+    align-items: center;
+
+    background: url('/assets/images/hero-bg.gif') no-repeat center center/cover;
+
+    justify-content: space-around; /* logo left, links right */
+
+    padding: 15px 30px;
+
+    background-color: transparent; /* or white on scroll */
+
+   
+
+    top: 0;
+
+    width: 100%;
+
+    z-index: 1000;
+
+    transition: all 0.3s ease;
+
+  }
+
+
+
   
   /* Navbar content */
    nav ul {
@@ -77,4 +116,7 @@
   nav.scrolled a img {
    filter: invert(1) brightness(2);
   }
+  
+
+
   
