@@ -1,6 +1,6 @@
-/* === ABOUT PAGE EXTRA CSS === */
+/* === ABOUT PAGE EXTRA STYLES === */
 
-/* Fade-in effect for section title and text */
+/* Animations */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -14,11 +14,10 @@
   }
 }
 
-/* Carousel smooth entrance */
 .carousel-fade-in {
   opacity: 0;
   animation: fadeIn 1.2s ease forwards;
-  animation-delay: 0.5s;
+  animation-delay: 0.3s;
 }
 
 @keyframes fadeIn {
@@ -27,21 +26,61 @@
   }
 }
 
-/* Cards hover animation */
-.card-hover {
+/* Timeline Layout */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  background: white;
+  border-radius: 12px;
+  padding: 1.8rem;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card-hover:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+.timeline-item:nth-child(even) {
+  flex-direction: row-reverse;
 }
 
-/* CV download button animation */
+.timeline-item img {
+  width: 40%;
+  max-height: 220px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.timeline-item .text {
+  width: 60%;
+}
+
+.timeline-item h2 {
+  margin-top: 0;
+  color: #1e3c72;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.timeline-item p {
+  color: #555;
+  margin-bottom: 0;
+  line-height: 1.6;
+}
+
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* CV Button Styling */
 .cv-btn {
   display: inline-block;
-  padding: 12px 25px;
-  font-size: 16px;
+  padding: 14px 30px;
+  font-size: 17px;
   font-weight: 600;
   color: #fff;
   background: linear-gradient(135deg, #007bff, #00d4ff);
@@ -52,6 +91,36 @@
 }
 
 .cv-btn:hover {
+  color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.3);
+}
+
+/* Responsive adjust for timeline */
+@media (max-width: 768px) {
+  .timeline-item, 
+  .timeline-item:nth-child(even) {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .timeline-item img, 
+  .timeline-item .text {
+    width: 100%;
+  }
+}
+
+
+/* Altura fija y recorte uniforme para todas las fotos del slider */
+#aboutCarousel .carousel-item img {
+  height: 420px; /* Altura ideal panorámica */
+  object-fit: cover; /* Recorta los bordes sobrantes sin deformar la foto */
+  object-position: center; /* Centra el enfoque de la imagen */
+}
+
+/* Ajuste para pantallas pequeñas / celulares */
+@media (max-width: 768px) {
+  #aboutCarousel .carousel-item img {
+    height: 250px;
+  }
 }

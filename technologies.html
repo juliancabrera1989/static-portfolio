@@ -1,135 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Technologies – Portfolio</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="stylesheet" href="/css/navbar.css" />
-  <script src="js/script.js" defer></script>
+  <script src="js/head-loader.js"></script>
 </head>
 <body class="bg-gray-100 text-gray-900 font-sans">
 
-
-
-    <!-- Navbar -->
-    <header>
-  <!--  <nav>
-      <a href="index.html" class="brand" aria-label="Home">
-        <!~~ light logo for transparent nav (white text) ~~>
-        <img src="assets/images/LOGO-HORIZONTAL.png" class="logo logo--dark" alt="Julián Cabrera logo" loading="eager">
-      
-        <!~~ dark logo for scrolled nav (dark text) ~~>
-        <!~~ <img src="assets/img/logo-dark.svg" class="logo logo--dark" alt="" width="140" height="32" loading="eager"> ~~>
-      </a>
-      <ul>
-
-        <li><a href="index.html">Home</a></li>
-        <li><a href="technologies.html">Technologies</a></li>
-        <li><a href="about.html">About me</a></li>
-        <li><a href="projects.html">Projects</a></li> 
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="stack-comparison.html">Stack Comparison</a></li>
-        <li><a href="contact.html">Contact</a></li>
-
-      </ul>
-  
-        <!~~ Language Toggle ~~>
-        <div class="language-toggle">
-          <button id="lang-en"><img src="assets/images/languages/english.png" alt="English" /></button>
-          <button id="lang-es"><img src="assets/images/languages/spanish.png" alt="Español" /></button>
-        </div>
-      
-    </nav>-->
-      <nav id="navbar-container"></nav>
+  <header>
+    <nav id="navbar-container"></nav>
   </header>
 
-    
+  <section class="py-16 px-6 max-w-6xl mx-auto">
+    <h2 class="text-3xl font-bold text-center mb-10" data-i18n="tech_page_title">Technologies I Work With</h2>
 
-<!-- Technologies Section -->
-<section class="py-16 px-6 max-w-6xl mx-auto">
-  <h2 class="text-3xl font-bold text-center mb-10">Technologies I Work With</h2>
+    <div class="w-full max-w-5xl mx-auto p-6 bg-white rounded-2xl shadow-md">
+      <div class="grid gap-6 md:grid-cols-3 mb-6">
+        <div>
+          <label for="categorySelect" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="tech_label_category">Category</label>
+          <select id="categorySelect" class="w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition">
+            <option value="all" data-i18n="tech_opt_all">All</option>
+            <option value="proyectos" data-i18n="tech_opt_projects">Projects</option>
+            <option value="categoria1" data-i18n="tech_opt_cat1">Category 1</option>
+            <option value="categoria2" data-i18n="tech_opt_cat2">Category 2</option>
+          </select>
+        </div>
 
-  <div class="w-full max-w-5xl mx-auto p-6 bg-white rounded-2xl shadow-md">
-    <!-- Selectors -->
-    <div class="grid gap-6 md:grid-cols-3 mb-6">
-      <!-- Selector 1: Categorías -->
-      <div>
-        <label for="categorySelect" class="block text-sm font-medium text-gray-700 mb-2">Categoría</label>
-        <select id="categorySelect"
-          class="w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition">
-          <option value="all">Todas</option>
-          <option value="proyectos">Proyectos</option>
-          <option value="categoria1">Categoría 1</option>
-          <option value="categoria2">Categoría 2</option>
-        </select>
+        <div>
+          <label for="subCategorySelect" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="tech_label_subcategory">Subcategory</label>
+          <select id="subCategorySelect" class="w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition">
+            </select>
+        </div>
+
+        <div>
+          <label for="displayTypeSelect" class="block text-sm font-medium text-gray-700 mb-2" data-i18n="tech_label_display">Display Type</label>
+          <select id="displayTypeSelect" class="w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition">
+            <option value="select" data-i18n="tech_opt_select">Select</option>
+            <option value="checkbox" data-i18n="tech_opt_checkbox">Checkboxes</option>
+          </select>
+        </div>
       </div>
 
-      <!-- Selector 2: Subcategorías -->
-      <div>
-        <label for="subCategorySelect" class="block text-sm font-medium text-gray-700 mb-2">Subcategoría</label>
-        <select id="subCategorySelect"
-          class="w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition">
-          <!-- Opciones dinámicas -->
-        </select>
-      </div>
+      <div id="subCategoryCheckboxes" class="mb-6 flex flex-wrap gap-3"></div>
 
-      <!-- Selector 3: Tipo de visualización -->
-      <div>
-        <label for="displayTypeSelect" class="block text-sm font-medium text-gray-700 mb-2">Tipo de visualización</label>
-        <select id="displayTypeSelect"
-          class="w-full rounded-xl border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50 transition">
-          <option value="select">Select</option>
-          <option value="checkbox">Checkboxes</option>
-        </select>
-      </div>
     </div>
 
-    <!-- Contenedor dinámico de checkboxes -->
-    <div id="subCategoryCheckboxes" class="mb-6 flex flex-wrap gap-3"></div>
-
-    <!-- Botón (opcional). Se filtra automáticamente; puedes dejarlo oculto o borrarlo. -->
-    <!--
-    <div class="text-right">
-      <button id="applyFiltersBtn"
-        class="px-6 py-2 rounded-xl bg-blue-600 text-white font-medium shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
-        Aplicar filtros
-      </button>
-    </div>
-    -->
-  </div>
-
-  <div id="category-container" class="mt-10"></div>
-</section>
-
-
+    <div id="category-container" class="mt-10"></div>
   </section>
 
-  
-
-  <!-- Footer -->
-  <!-- <footer class="bg-gray-800 text-white text-center p-6 mt-10">
-    &copy; 2025 Julián Cabrera. All rights reserved.
-  </footer> -->
   <footer class="site-footer" id="footer-container"></footer>
 
   <style>
-   
-.tech-card {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.tech-card.show {
-  opacity: 1;
-  transform: scale(1);
-}
-
-
-
+    .tech-card {
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    .tech-card.show {
+      opacity: 1;
+      transform: scale(1);
+    }
   </style>
-  <script type="module" src="/js/technologies.js"></script>
+  <script src="/js/technologies.js"></script>
 </body>
 </html>

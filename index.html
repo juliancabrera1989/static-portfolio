@@ -1,275 +1,109 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Julián Cabrera | Portfolio</title>
-
-  <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
-  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
-  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-  <link rel="manifest" href="assets/site.webmanifest"> <!-- optional -->
-  <meta name="theme-color" content="#ffffff">
-
-  <link rel="stylesheet" href="css/styles.css" />
-
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-  <script src="js/script.js" defer></script>
+  <script src="js/head-loader.js"></script>
   <script src="js/scrolls.js" defer></script>
+  <script>
+    if (sessionStorage.getItem("preloaderShown")) {
+      document.write('<style>#preloader { display: none !important; } body { overflow: auto !important; }</style>');
+    }
+  </script>
 </head>
 
-
-<body class="preload-hidden">
+<body class="preload-hidden home-page">
 
 <div id="preloader">
+  <video class="loader-video" autoplay muted playsinline>
+    <source src="assets/images/VIDEO.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
-
-    <!-- Extra GIF / Video (4s duration) -->
-    <video class="loader-video" autoplay muted playsinline>
-      <source src="assets/images/VIDEO.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-
-      <div class="loader-wrapper">
-    <!-- Main static image -->
+  <div class="loader-wrapper">
     <img src="assets/images/programacion2.webp" alt="Loading..." class="loader-gif">
 
-    <!-- Progress bar + percentage -->
-    <div class="progress-section">
-      <div class="progress-container">
-        <div id="progress-bar"></div>
+    <div class="loader-text-container">
+      <div class="loader-text" data-i18n="loader_loading">Loading</div>
+      <div class="loader-dots">
+        <span class="dot"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
       </div>
-      <div id="progress-text">0%</div>
     </div>
   </div>
 </div>
 
 <div class="header-wrapper">
-<!--  <header>
-  <!~~ Navbar ~~>
-  <nav style="position: fixed;">
-    <a href="index.html" class="brand" aria-label="Home">
-      <!~~ light logo for transparent nav (white text) ~~>
-      <img src="assets/images/LOGO-HORIZONTAL.png" class="logo logo--dark" alt="Julián Cabrera logo" loading="eager">
-    
-      <!~~ dark logo for scrolled nav (dark text) ~~>
-      <!~~ <img src="assets/img/logo-dark.svg" class="logo logo--dark" alt="" width="140" height="32" loading="eager"> ~~>
-    </a>
-    <ul>
+  <header>
+    <nav style="position: fixed;" id="navbar-container"></nav>
+  </header>
 
-      <li><a href="index.html">Home</a></li>
-      <li><a href="#technologies-preview">Technologies</a></li>
-      <li><a href="#about-preview">About me</a></li>
-      <li><a href="#projects-preview">Projects</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="stack-comparison.html">Stack Comparison</a></li>
-      <li><a href="contact.html">Contact</a></li>
-
-    </ul>
-
-      <!~~ Language Toggle ~~>
-      <div class="language-toggle">
-        <button id="lang-en"><img src="assets/images/languages/english.png" alt="English" /></button>
-        <button id="lang-es"><img src="assets/images/languages/spanish.png" alt="Español" /></button>
-      </div>
-    
-  </nav>
-</header>-->`
-
-<header >
-  <nav style="position: fixed;" id="navbar-container">
-
-  </nav>
-</header>
-
-  <!-- Hero Section -->
   <section class="hero" style="background: url('assets/images/hero-bg.jpg') no-repeat center center/cover;">
-    <h1>Welcome to My Portfolio</h1>
-    <p>I’m Julián Cabrera, a full-stack developer specialized in modern web technologies.</p>
+    <h1 data-i18n="hero_title">Welcome to My Portfolio</h1>
+    <p data-i18n="hero_subtitle">I’m Julián Cabrera, a full-stack developer specialized in modern web technologies.</p>
   </section>
-
 </div>
 
-  <!-- Technologies Preview -->
-  <section class="section" id="technologies-preview">
-    <h2 class="section-title">Technologies I Use</h2>
-    <div class="preview-grid">
-      <div class="preview-card">
-        <img src="assets/images/tech-preview.png" alt="Technologies">
-        <div class="card-content">
-          <h3>Languages, Frameworks, Tools</h3>
-          <p>Explore the technologies I use daily, including HTML, CSS, JavaScript, React, and more.</p>
-          <a class="btn" href="technologies.html">Read More</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Me Preview -->
-   <section class="section" id="about-preview">
-  <h2 class="section-title">About Me</h2>
+<section class="section" id="technologies-preview">
+  <h2 class="section-title" data-i18n="tech_preview_title">Technologies I Use</h2>
   <div class="preview-grid">
-
-    <!-- About Overview -->
     <div class="preview-card">
-      <img src="assets/images/about-preview.png" alt="About Me">
+      <img src="assets/images/index-previews/tech-preview.png" alt="Technologies">
       <div class="card-content">
-        <h3>Who I Am</h3>
-        <p>
-          My academic background and self-learning journey shaped the way I became a web developer. 
-          From engineering studies to countless tutorials, I’ve built a foundation that drives my passion for software development.
-        </p>
-        <a class="btn" href="about.html">Read More</a>
+        <h3 data-i18n="tech_preview_subtitle">Languages, Frameworks, Tools</h3>
+        <p data-i18n="tech_preview_desc">Explore the technologies I use daily, including HTML, CSS, JavaScript, React, and more.</p>
+        <a class="btn" href="technologies.html" data-i18n="btn_read_more">Read More</a>
       </div>
     </div>
-
   </div>
 </section>
 
-  <!-- Projects Preview -->
-  <section class="section" id="projects-preview">
-    <h2 class="section-title">Projects</h2>
-    <div class="preview-grid">
-      <div class="preview-card">
-        <img src="assets/images/projects-overview2.png" alt="Projects">
-        <div class="card-content">
-          <h3>My Work</h3>
-          <p>See my full-stack projects and code examples. Real solutions to real problems.</p>
-          <a class="btn" href="projects.html">Read More</a>
-        </div>
+<section class="section" id="about-preview">
+  <h2 class="section-title" data-i18n="about_preview_title">About Me</h2>
+  <div class="preview-grid">
+    <div class="preview-card">
+      <img src="assets/images/index-previews/about-preview.png" alt="About Me">
+      <div class="card-content">
+        <h3 data-i18n="about_preview_subtitle">Who I Am</h3>
+        <p data-i18n="about_preview_desc">
+          My academic background and self-learning journey shaped the way I became a web developer.
+          From engineering studies to countless tutorials, I’ve built a foundation that drives my passion for software development.
+        </p>
+        <a class="btn" href="about.html" data-i18n="btn_read_more">Read More</a>
       </div>
-    </div>
-  </section>
-
-  <!-- Contact Preview -->
-  <section class="section" id="contact-preview">
-    <h2 class="section-title">Contact Me</h2>
-    <div class="preview-grid">
-      <div class="preview-card">
-        <img src="assets/images/contact-overview.png" alt="Contact">
-        <div class="card-content">
-          <h3>Let’s Connect</h3>
-          <p>Feel free to reach out for collaborations, freelance work, or tech discussions.</p>
-          <a class="btn" href="contact.html">Read More</a>
-        </div>
-      </div>
-    </div>
-  </section>
- 
-
-<footer class="site-footer" id="footer-container">
-  <!-- <div class="footer-container">
-    <div class="footer-about">
-      <h3>Julián Cabrera</h3>
-      <p>Full Stack Web Developer · Creating modern and efficient web experiences.</p>
-    </div>
-
-    <div class="footer-links">
-      <h4>Navigation</h4>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="blog.html">Blog</a>
-      <a href="contact.html">Contact</a>
-    </div>
-
-    <div class="footer-social">
-      <h4>Connect</h4>
-      <a href="https://github.com/juliancabrera1989" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-      <a href="https://linkedin.com/in/yourusername" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-      <a href="https://wa.me/yourwhatsappnumber" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      <a href="https://facebook.com/yourprofile" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
     </div>
   </div>
-  <p class="footer-copy">© 2025 Julián Cabrera — All rights reserved.</p> -->
-</footer>
+</section>
 
-<!-- Font Awesome for icons -->
+<section class="section" id="projects-preview">
+  <h2 class="section-title" data-i18n="projects_preview_title">Projects</h2>
+  <div class="preview-grid">
+    <div class="preview-card">
+      <img src="assets/images/index-previews/projects-overview.png" alt="Projects">
+      <div class="card-content">
+        <h3 data-i18n="projects_preview_subtitle">My Work</h3>
+        <p data-i18n="projects_preview_desc">See my full-stack projects and code examples. Real solutions to real problems.</p>
+        <a class="btn" href="projects.html" data-i18n="btn_read_more">Read More</a>
+      </div>
+    </div>
+  </div>
+</section>
 
+<section class="section" id="contact-preview">
+  <h2 class="section-title" data-i18n="contact_preview_title">Contact Me</h2>
+  <div class="preview-grid">
+    <div class="preview-card">
+      <img src="assets/images/index-previews/contact-overview.png" alt="Contact">
+      <div class="card-content">
+        <h3 data-i18n="contact_preview_subtitle">Let’s Connect</h3>
+        <p data-i18n="contact_preview_desc">Feel free to reach out for collaborations, freelance work, or tech discussions.</p>
+        <a class="btn" href="contact.html" data-i18n="btn_read_more">Read More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer" id="footer-container"></footer>
 
 <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-  <!-- <script>
- 
-// window.addEventListener("load", function () {
-//   const preloader = document.getElementById("preloader");
-//   const progressBar = document.getElementById("progress-bar");
-//   const progressText = document.getElementById("progress-text");
-
-//   if (!sessionStorage.getItem("preloaderShown")) {
-//     // Show preloader
-//     preloader.classList.add("active");
-
-//     let progress = 0;
-//     const duration = 5000; // 5 seconds
-//     const interval = 50;
-//     const step = 100 / (duration / interval);
-
-//     const loadingInterval = setInterval(() => {
-//       progress += step;
-//       if (progress >= 100) {
-//         progress = 100;
-//         clearInterval(loadingInterval);
-//         setTimeout(() => {
-//           preloader.style.opacity = "0";
-//           preloader.style.transition = "opacity 0.5s ease";
-//           setTimeout(() => preloader.style.display = "none", 500);
-//           sessionStorage.setItem("preloaderShown", "true");
-//         }, 500);
-//       }
-//       progressBar.style.width = progress + "%";
-//       progressText.textContent = Math.floor(progress) + "%";
-//     }, interval);
-//   } else {
-//     // Ensure it's hidden before render
-//     preloader.style.display = "none";
-//   }
-// });
-
-
-document.addEventListener("DOMContentLoaded", function () {
-  const preloader = document.getElementById("preloader");
-  const progressBar = document.getElementById("progress-bar");
-  const progressText = document.getElementById("progress-text");
-
-  if (sessionStorage.getItem("preloaderShown")) {
-    // Hide instantly BEFORE paint finishes
-    preloader.style.display = "none";
-    document.body.classList.remove("preload-hidden");
-    return;
-  }
-
-  let progress = 0;
-  const duration = 5000;
-  const interval = 50;
-  const step = 100 / (duration / interval);
-
-  const loadingInterval = setInterval(() => {
-    progress += step;
-
-    if (progress >= 100) {
-      progress = 100;
-      clearInterval(loadingInterval);
-
-      setTimeout(() => {
-        preloader.style.opacity = "0";
-
-        setTimeout(() => {
-          preloader.style.display = "none";
-          document.body.classList.remove("preload-hidden");
-        }, 500);
-
-        sessionStorage.setItem("preloaderShown", "true");
-      }, 300);
-    }
-
-    progressBar.style.width = progress + "%";
-    progressText.textContent = Math.floor(progress) + "%";
-  }, interval);
-});
-
-    </script> -->
-    
-  
 </body>
 </html>

@@ -1,124 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Me – Portfolio</title>
-  <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="stylesheet" href="/css/navbar.css" />
+<html lang="en" class="scroll-smooth">
+<head> 
+  <script src="/js/head-loader.js"></script>
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/css/about.css" />
-  <script src="js/script.js" defer></script>
-</head>
+</head> 
 <body class="bg-gray-100 text-gray-900 font-sans">
 
+  <nav id="navbar-container"></nav>
 
-
-    <!-- Navbar -->
-
-<!--    <nav>
-      <a href="index.html" class="brand" aria-label="Home">
-        <!~~ light logo for transparent nav (white text) ~~>
-        <img src="assets/images/LOGO-HORIZONTAL.png" class="logo logo--dark" alt="Julián Cabrera logo" loading="eager">
-      
-        <!~~ dark logo for scrolled nav (dark text) ~~>
-        <!~~ <img src="assets/img/logo-dark.svg" class="logo logo--dark" alt="" width="140" height="32" loading="eager"> ~~>
-      </a>
-      <ul>
-  
-        <li><a href="index.html">Home</a></li>
-        <li><a href="technologies.html">Technologies</a></li>
-        <li><a href="about.html">About me</a></li>
-        <li><a href="projects.html">Projects</a></li> 
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="stack-comparison.html">Stack Comparison</a></li>
-        <li><a href="contact.html">Contact</a></li>
-  
-      </ul>
-  
-        <!~~ Language Toggle ~~>
-        <div class="language-toggle">
-          <button id="lang-en"><img src="assets/images/languages/english.png" alt="English" /></button>
-          <button id="lang-es"><img src="assets/images/languages/spanish.png" alt="Español" /></button>
-        </div>
-      
-    </nav>-->
-  <nav id="navbar-container">
-
-  </nav>
-
-
-
-
-
-    
-  <!-- Main Section -->
-   <!-- <section class="py-16 px-4 max-w-4xl mx-auto">
-    <h2 class="text-3xl font-bold mb-6 text-center">About Me</h2>
-    <p class="mb-6 leading-relaxed text-lg">
-      I'm <strong>Julián Cabrera</strong>, an IT Engineering student about to graduate, passionate about web development and software engineering. During my academic years, I've built a solid foundation in programming, data structures, and full-stack development.
+  <section class="py-10 text-center max-w-4xl mx-auto px-4">
+    <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 mb-4 fade-in" data-i18n="about_title">About Me</h1>
+    <p class="text-base md:text-lg text-gray-600 leading-relaxed fade-in max-w-2xl mx-auto" data-i18n="about_intro">
+      I am a passionate web developer focused on building dynamic and interactive applications. 
+      I combine formal engineering principles with continuous self-directed learning to craft reliable software solutions.
     </p>
-    <p class="mb-6 leading-relaxed text-lg">
-      In addition to university courses, I've pursued <strong>self-guided learning</strong> through YouTube tutorials, blogs, and hands-on projects. I’m always exploring new technologies, sharpening my skills, and building solutions.
-    </p>
-    <div class="grid md:grid-cols-2 gap-6 bg-white p-6 rounded-lg shadow-md mt-8">
-      <div>
-        <h3 class="text-xl font-semibold mb-2">🎓 Academic Background</h3>
-        <ul class="list-disc list-inside">
-          <li>Bachelor's in Information Technology Engineering</li>
-          <li>Expected Graduation: [Year]</li>
-          <li>University: [University Name]</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-xl font-semibold mb-2">🧑‍💻 Self-Learning</h3>
-        <ul class="list-disc list-inside">
-          <li>YouTube Channels: FreeCodeCamp, The Net Ninja, Traversy Media</li>
-          <li>Topics: JavaScript, React, Laravel, MongoDB, APIs</li>
-          <li>Hands-on Projects & Tutorials</li>
-        </ul>
-      </div>
-    </div>
-  </section>  -->
- <!-- Intro Section -->
-  <!-- <section class="py-5 text-center container">
-    <div class="row py-lg-5">
-      <div class="col-lg-8 col-md-10 mx-auto">
-        <h1 class="fw-light fade-in">About Me</h1>
-        <p class="lead text-muted fade-in">
-          I am a passionate web developer focused on building dynamic and interactive applications. 
-          I enjoy working with both frontend and backend technologies, and I love sharing knowledge 
-          through tutorials and projects.
-        </p>
-      </div>
-    </div>
-  </section> -->
+  </section> 
 
-  <!-- Carousel Section -->
-  <!-- <div id="aboutCarousel" class="carousel slide carousel-fade-in container mb-5" data-bs-ride="carousel">
+  <div id="aboutCarousel" class="carousel slide carousel-fade-in container mb-5" data-bs-ride="carousel">
     <div class="carousel-inner rounded shadow">
+      
       <div class="carousel-item active">
-        <img src="https://picsum.photos/1200/400?random=1" class="d-block w-100" alt="Tutorials">
+        <img src="assets/images/about-images/university-image.jpg" class="d-block w-100" alt="University">
         <div class="carousel-caption d-none d-md-block">
-          <h5>Best Tutorials</h5>
-          <p><a href="tutorials.html" class="btn btn-primary">Check Tutorials</a></p>
+          <h5 data-i18n="carousel_uni_title">My University</h5>
+          <p><a href="https://www.frsf.utn.edu.ar" target="_blank" rel="noopener noreferrer" class="btn btn-success" data-i18n="carousel_uni_btn">Visit Website</a></p>
         </div>
       </div>
+
       <div class="carousel-item">
-        <img src="https://picsum.photos/1200/400?random=2" class="d-block w-100" alt="University">
+        <img src="assets/images/about-images/Frame9.png" class="d-block w-100" alt="Learning Journey">
         <div class="carousel-caption d-none d-md-block">
-          <h5>My University</h5>
-          <p><a href="https://www.youruniversity.edu" target="_blank" class="btn btn-success">Visit Website</a></p>
+          <h5 data-i18n="carousel_learning_title">Self-Learning & Skills</h5>
+          <p><a href="#journey" class="btn btn-primary" data-i18n="carousel_learning_btn">Explore My Journey</a></p>
         </div>
       </div>
+
       <div class="carousel-item">
-        <img src="https://picsum.photos/1200/400?random=3" class="d-block w-100" alt="CV">
+        <img src="assets/images/curriculum-vitae-cartoon-icon-illustration-people-business-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg" class="d-block w-100" alt="CV">
         <div class="carousel-caption d-none d-md-block">
-          <h5>My Resume</h5>
-          <p><a href="cv.pdf" download class="btn btn-warning">Download CV</a></p>
+          <h5 data-i18n="carousel_cv_title">My Resume</h5>
+          <p><a href="cv.pdf" download class="btn btn-warning" data-i18n="carousel_cv_btn">Download CV</a></p>
         </div>
       </div>
+
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel" data-bs-slide="prev">
       <span class="carousel-control-prev-icon"></span>
@@ -126,142 +52,56 @@
     <button class="carousel-control-next" type="button" data-bs-target="#aboutCarousel" data-bs-slide="next">
       <span class="carousel-control-next-icon"></span>
     </button>
-  </div> -->
+  </div> 
 
-  <!-- Cards Section -->
-  <!-- <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        <div class="col">
-          <div class="card shadow-sm card-hover">
-            <img src="https://picsum.photos/500/300?random=4" class="card-img-top" alt="Tech">
-            <div class="card-body">
-              <h5 class="card-title">Technologies</h5>
-              <p class="card-text">Learn more about the tools and frameworks I work with.</p>
-              <a href="technologies.html" class="btn btn-outline-primary">Explore</a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm card-hover">
-            <img src="https://picsum.photos/500/300?random=5" class="card-img-top" alt="Projects">
-            <div class="card-body">
-              <h5 class="card-title">Projects</h5>
-              <p class="card-text">See my portfolio of projects built with passion.</p>
-              <a href="projects.html" class="btn btn-outline-success">See Projects</a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm card-hover">
-            <img src="https://picsum.photos/500/300?random=6" class="card-img-top" alt="Tutorials">
-            <div class="card-body">
-              <h5 class="card-title">Tutorials</h5>
-              <p class="card-text">Browse step-by-step tutorials and guides.</p>
-              <a href="tutorials.html" class="btn btn-outline-warning">Go to Tutorials</a>
-            </div>
-          </div>
+  <main class="max-w-5xl mx-auto px-4 my-12" id="journey">
+    <h2 class="text-3xl md:text-4xl font-bold text-center text-blue-700 mb-10" data-i18n="journey_title">My Career & Learning Path</h2>
+    
+    <section class="timeline">
+      
+      <div class="timeline-item card-hover shadow-sm">
+        <img src="assets/images/about-images/pascal.jpg" alt="High School">
+        <div class="text">
+          <h2 data-i18n="timeline_hs_title">High School</h2>
+          <p data-i18n="timeline_hs_desc">
+            During high school I discovered my interest in problem-solving, mathematics, and technology, 
+            laying the logical foundation for my software engineering journey.
+          </p>
         </div>
       </div>
-    </div>
-  </div> -->
 
-  <!-- CV Download Button -->
-  <!-- <section class="text-center py-5">
-    <a href="cv.pdf" download class="cv-btn">📄 Download My CV</a>
+      <div class="timeline-item card-hover shadow-sm">
+        <img src="assets/images/about-images/Frame6.png" alt="University">
+        <div class="text">
+          <h2 data-i18n="timeline_uni_title">University Degree</h2>
+          <p data-i18n="timeline_uni_desc">
+            Enrolled in Information Systems Engineering at UTN FRSF. Here I learned core computer science foundations, 
+            algorithms, data structures, database design, and software engineering methodologies.
+          </p>
+        </div>
+      </div>
+
+      <div class="timeline-item card-hover shadow-sm">
+        <img src="assets/images/about-images/hit-breakpoint.png" alt="Self-Learning">
+        <div class="text">
+          <h2 data-i18n="timeline_self_title">Full-Stack Self-Learning</h2>
+          <p data-i18n="timeline_self_desc">
+            To complement my academic background, I built a hands-on learning roadmap in modern full-stack web development.
+            Through platforms like FreeCodeCamp, The Odin Project, and Udemy, I mastered HTML5, CSS3, JavaScript (ES6+), React, and Node.js.
+          </p>
+        </div>
+      </div>
+
+    </section>
+  </main> 
+
+  <section class="text-center py-12 bg-white shadow-sm mt-12">
+    <h3 class="text-2xl font-semibold text-gray-800 mb-4" data-i18n="cv_section_title">Want to learn more about my experience?</h3>
+    <a href="cv.pdf" download class="cv-btn inline-block" data-i18n="cv_section_btn">📄 Download My CV</a>
   </section>
- -->
-<!-- Intro Section -->
-<section class="py-5 text-center container">
-  <div class="row py-lg-5">
-    <div class="col-lg-8 col-md-10 mx-auto">
-      <h1 class="fw-light fade-in">About Me</h1>
-      <p class="lead text-muted fade-in">
-        I am a passionate web developer focused on building dynamic and interactive applications. 
-        I enjoy working with both frontend and backend technologies, and I love sharing knowledge 
-        through tutorials and projects.
-      </p>
-    </div>
-  </div>
-</section> 
 
-<!-- Carousel Section -->
-<div id="aboutCarousel" class="carousel slide carousel-fade-in container mb-5" data-bs-ride="carousel">
-  <div class="carousel-inner rounded shadow">
-    <div class="carousel-item active">
-      <img src="https://picsum.photos/1200/400?random=1" class="d-block w-100" alt="Tutorials">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Best Tutorials</h5>
-        <p><a href="tutorials.html" class="btn btn-primary">Check Tutorials</a></p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="assets/images/university-iamge.jpg" class="d-block w-100" alt="University">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>My University</h5>
-        <p><a href="https://www.frsf.utn.edu.ar" target="_blank" class="btn btn-success">Visit Website</a></p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="assets/images/curriculum-vitae-cartoon-icon-illustration-people-business-icon-concept-isolated-premium-flat-cartoon-style-vector.jpg" class="d-block w-100" alt="CV">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>My Resume</h5>
-        <p><a href="cv.pdf" download class="btn btn-warning">Download CV</a></p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#aboutCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div> 
-
-<!-- Cards Section -->
-<div class="album py-5 bg-light">
-  <div class="container">
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-
-      <!-- Academic Background Card -->
-      <div class="col">
-        <div class="card shadow-sm card-hover">
-          <img src="assets/images/table.webp" class="card-img-top" alt="Academic Background">
-          <div class="card-body">
-            <h5 class="card-title">🎓 Academic Background</h5>
-            <p class="card-text">Bachelor's in IT Engineering. Expected graduation: [Year]. University: [University Name].</p>
-            <a href="academic.html" target="_blank" class="btn btn-outline-primary " >Read More</a>
-            <!-- <a href="https://www.youruniversity.edu" target="_blank" class="btn btn-outline-primary">Visit University</a> -->
-          </div>
-        </div>
-      </div>
-
-      <!-- Tutorials & Self-Learning Card -->
-      <div class="col">
-        <div class="card shadow-sm card-hover">
-          <img src="https://picsum.photos/500/300?random=5" class="card-img-top" alt="Tutorials">
-          <div class="card-body">
-            <h5 class="card-title">🧑‍💻 Tutorials & Self-Learning</h5>
-            <p class="card-text">Followed tutorials from FreeCodeCamp, The Net Ninja, Traversy Media to master web development.</p>
-            <a href="tutorials.html" class="btn btn-outline-success">See Tutorials</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div> 
-
-<!-- CV Download Button -->
-<section class="text-center py-5">
-  <a href="cv.pdf" download class="cv-btn">📄 Download My CV</a>
-</section>
-
-  <!-- Footer -->
-  <!-- <footer class="bg-gray-800 text-white text-center p-6 mt-10">
-    &copy; 2025 Julián Cabrera. All rights reserved.
-  </footer> -->
   <footer class="site-footer" id="footer-container"></footer>
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

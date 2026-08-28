@@ -1,0 +1,105 @@
+<!-- <!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tech Radar – Portfolio – Julián Cabrera</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/tech-radar.css">
+  <script src="js/script.js" defer></script>
+</head> -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <script src="js/head-loader.js"></script>
+  <link rel="stylesheet" href="css/tech-radar.css" />
+</head>
+<body class="bg-gray-100 text-gray-900 font-sans">
+
+  <header>
+    <nav id="navbar-container"></nav>
+  </header>
+
+  <main class="container mx-auto max-w-7xl px-4 py-12 md:py-16">
+    
+    <header class="text-center mb-10 border-b border-gray-200 pb-8">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-950 tracking-tight mb-4" data-i18n="radar_title">
+        Tech Radar
+      </h1>
+      <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed mb-6" data-i18n="radar_subtitle">
+        Curated industry news and insights. I follow these trusted sources to stay 
+        at the forefront of modern web development and software engineering.
+      </p>
+
+      <div class="flex flex-wrap justify-center items-center gap-3 pt-2">
+        <span class="text-sm font-medium text-gray-500 mr-1" data-i18n="radar_quick_jump">Quick Jump:</span>
+        <a href="#section-devto" class="px-4 py-1.5 bg-white border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:border-blue-600 hover:text-blue-600 transition shadow-sm">
+          👩‍💻 Dev.to
+        </a>
+        <a href="#section-smashing" class="px-4 py-1.5 bg-white border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:border-red-600 hover:text-red-600 transition shadow-sm">
+          🎨 Smashing Magazine
+        </a>
+        <a href="#section-hackernews" class="px-4 py-1.5 bg-white border border-gray-300 rounded-full text-sm font-medium text-gray-700 hover:border-orange-600 hover:text-orange-600 transition shadow-sm">
+          💡 Hacker News
+        </a>
+      </div>
+    </header>
+
+    <section class="space-y-10">
+      
+      <details id="section-devto" open class="group bg-white rounded-2xl border border-gray-200 shadow-sm p-6 scroll-mt-24 transition-all">
+        <summary class="flex items-center justify-between cursor-pointer list-none select-none border-b-2 border-blue-600 pb-3">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">👩‍💻</span>
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-950 tracking-tight" data-i18n="radar_devto_title">
+              Dev.to - Community Insights
+            </h2>
+          </div>
+          <span class="transform group-open:rotate-180 transition-transform text-xl font-bold text-gray-400 group-hover:text-gray-700">
+            ▼
+          </span>
+        </summary>
+        <div id="devto" class="feed-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
+      </details>
+
+      <details id="section-smashing" open class="group bg-white rounded-2xl border border-gray-200 shadow-sm p-6 scroll-mt-24 transition-all">
+        <summary class="flex items-center justify-between cursor-pointer list-none select-none border-b-2 border-red-600 pb-3">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">🎨</span>
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-950 tracking-tight" data-i18n="radar_smashing_title">
+              Smashing Magazine - Design & Front-End
+            </h2>
+          </div>
+          <span class="transform group-open:rotate-180 transition-transform text-xl font-bold text-gray-400 group-hover:text-gray-700">
+            ▼
+          </span>
+        </summary>
+        <div id="smashing" class="feed-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
+      </details>
+
+      <details id="section-hackernews" open class="group bg-white rounded-2xl border border-gray-200 shadow-sm p-6 scroll-mt-24 transition-all">
+        <summary class="flex items-center justify-between cursor-pointer list-none select-none border-b-2 border-orange-600 pb-3">
+          <div class="flex items-center gap-3">
+            <span class="text-2xl">💡</span>
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-950 tracking-tight" data-i18n="radar_hn_title">
+              Hacker News - Tech Trends
+            </h2>
+          </div>
+          <span class="transform group-open:rotate-180 transition-transform text-xl font-bold text-gray-400 group-hover:text-gray-700">
+            ▼
+          </span>
+        </summary>
+        <div id="hackernews" class="feed-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6"></div>
+      </details>
+
+    </section>
+
+  </main>
+
+  <footer class="site-footer" id="footer-container"></footer>
+  <script src="/js/tech-radar.js"></script>
+</body>
+</html>

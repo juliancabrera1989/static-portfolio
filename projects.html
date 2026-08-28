@@ -1,83 +1,58 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Projects – Portfolio</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="/css/styles.css" />
   <link rel="stylesheet" href="/css/navbar.css" />
   <script src="js/script.js" defer></script>
+</head> -->
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <script src="js/head-loader.js"></script>
 </head>
 <body class="bg-gray-100 text-gray-900 font-sans">
 
-
   <header>
-<!--    <!~~ Navbar ~~>
-    <nav>
-      <a href="index.html" class="brand" aria-label="Home">
-        <!~~ light logo for transparent nav (white text) ~~>
-        <img src="assets/images/LOGO-HORIZONTAL.png" class="logo logo--dark" alt="Julián Cabrera logo" loading="eager">
-      
-      </a>
-      <ul>
-  
-        <li><a href="index.html">Home</a></li>
-        <li><a href="technologies.html">Technologies</a></li>
-        <li><a href="about.html">About me</a></li>
-        <li><a href="projects.html">Projects</a></li> 
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="stack-comparison.html">Stack Comparison</a></li>
-        <li><a href="contact.html">Contact</a></li>
-  
-      </ul>
-  
-        <!~~ Language Toggle ~~>
-        <div class="language-toggle">
-          <button id="lang-en"><img src="assets/images/languages/english.png" alt="English" /></button>
-          <button id="lang-es"><img src="assets/images/languages/spanish.png" alt="Español" /></button>
-        </div>
-      
-    </nav>-->
-      <nav id="navbar-container">
-
-  </nav>
+    <nav id="navbar-container"></nav>
   </header>
 
-<!-- Projects Section -->
-<section id="projects" class="py-24 px-6 lg:px-20 bg-white text-gray-900">
-  <div class="max-w-6xl mx-auto">
+  <section id="projects" class="py-24 px-6 lg:px-20 bg-white text-gray-900">
+    <div class="max-w-6xl mx-auto">
 
-    <!-- Title -->
-    <div class="text-center mb-20">
-      <h2 class="text-4xl md:text-5xl font-semibold tracking-tight">
-        Selected Work
-      </h2>
-      <p class="text-gray-500 mt-4">
-        A selection of projects focused on performance, design, and scalability.
-      </p>
+      <div class="text-center mb-20">
+        <h2 class="text-4xl md:text-5xl font-semibold tracking-tight" data-i18n="projects_page_title">
+          Selected Work
+        </h2>
+        <p class="text-gray-500 mt-4" data-i18n="projects_page_subtitle">
+          A selection of projects focused on performance, design, and scalability.
+        </p>
+      </div>
+
+      <div class="mb-24">
+        <div id="featured-projects" class="flex flex-col gap-20"></div>
+      </div>
+
+      <div>
+        <h3 class="text-2xl font-medium mb-10" data-i18n="projects_other_title">Other Projects</h3>
+        <div id="other-projects" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+      </div>
+
     </div>
+  </section>
 
-    <!-- Featured Projects -->
-    <div class="mb-24">
-      <div id="featured-projects" class="flex flex-col gap-20"></div>
+  <div id="image-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 md:p-8">
+    <div class="relative max-w-[1435px] w-full max-h-[90vh] flex items-center justify-center">
+      <button id="modal-close" class="absolute -top-10 right-2 text-white text-4xl font-bold hover:text-gray-300 transition cursor-pointer z-10">&times;</button>
+      <img id="modal-img" src="" alt="Project Preview" class="w-full h-auto max-h-[85vh] rounded-xl shadow-2xl object-cover border border-gray-700">
     </div>
-
-    <!-- Other Projects -->
-    <div>
-      <h3 class="text-2xl font-medium mb-10">Other Projects</h3>
-      <div id="other-projects" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-    </div>
-
   </div>
-</section>
 
-  <!-- Footer -->
-  <!-- <footer class="bg-gray-800 text-white text-center p-6 mt-10">
-    &copy; 2025 Julián Cabrera. All rights reserved.
-  </footer> -->
-<footer class="site-footer" id="footer-container"></footer>
-
+  <footer class="site-footer" id="footer-container"></footer>
 
   <script src="/js/projects.js"></script>
 </body>

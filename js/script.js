@@ -238,100 +238,414 @@
 
 
 
-// ==========================================================================
-// 1. CONTROL DEL PRELOADER EN TIEMPO REAL (Solo corre si existe el elemento)
-// ==========================================================================
-(function initPreloader() {
-  const preloader = document.getElementById("preloader");
-  if (!preloader) return; // Si la página no tiene preloader, frena acá y no hace nada más
+// // ==========================================================================
+// // 1. CONTROL DEL PRELOADER EN TIEMPO REAL (Solo corre si existe el elemento)
+// // ==========================================================================
+// (function initPreloader() {
+//   const preloader = document.getElementById("preloader");
+//   if (!preloader) return; // Si la página no tiene preloader, frena acá y no hace nada más
 
-  if (sessionStorage.getItem("preloaderShown")) {
-    document.documentElement.classList.add("preloader-passed"); 
-    preloader.style.display = "none";
-    document.body.classList.remove("preload-hidden");
-    return;
-  }
+//   if (sessionStorage.getItem("preloaderShown")) {
+//     document.documentElement.classList.add("preloader-passed"); 
+//     preloader.style.display = "none";
+//     document.body.classList.remove("preload-hidden");
+//     return;
+//   }
 
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      preloader.style.opacity = "0";
-      preloader.style.transition = "opacity 0.4s ease";
-      setTimeout(() => {
-        preloader.style.display = "none";
-        document.body.classList.remove("preload-hidden");
-      }, 400);
-      sessionStorage.setItem("preloaderShown", "true");
-    }, 500); // Margen para apreciar la entrada del video/GIF
-  });
-})();
+//   window.addEventListener("load", () => {
+//     setTimeout(() => {
+//       preloader.style.opacity = "0";
+//       preloader.style.transition = "opacity 0.4s ease";
+//       setTimeout(() => {
+//         preloader.style.display = "none";
+//         document.body.classList.remove("preload-hidden");
+//       }, 400);
+//       sessionStorage.setItem("preloaderShown", "true");
+//     }, 500); // Margen para apreciar la entrada del video/GIF
+//   });
+// })();
 
-// ==========================================================================
-// 2. INYECTOR MODULAR DE COMPONENTES (Sirve para TODAS las páginas)
-// ==========================================================================
-async function cargarComponentesModulares() {
-  const navbarContainer = document.getElementById("navbar-container");
-  const footerContainer = document.getElementById("footer-container");
+// // ==========================================================================
+// // 2. INYECTOR MODULAR DE COMPONENTES (Sirve para TODAS las páginas)
+// // ==========================================================================
+// async function cargarComponentesModulares() {
+//   const navbarContainer = document.getElementById("navbar-container");
+//   const footerContainer = document.getElementById("footer-container");
 
-  if (navbarContainer) {
-    try {
-      const response = await fetch("components/navbar.html");
-      navbarContainer.innerHTML = await response.text();
+//   if (navbarContainer) {
+//     try {
+//       const response = await fetch("components/navbar.html");
+//       navbarContainer.innerHTML = await response.text();
       
-      // ==========================================================================
-      // EL TRUCO ESTILO PHP: Cambiar comportamiento según la página actual
-      // ==========================================================================
-      const esIndex = window.location.pathname === "/" || 
-                      window.location.pathname.endsWith("index.html") || 
-                      window.location.pathname === "";
+//       // ==========================================================================
+//       // EL TRUCO ESTILO PHP: Cambiar comportamiento según la página actual
+//       // ==========================================================================
+//       const esIndex = window.location.pathname === "/" || 
+//                       window.location.pathname.endsWith("index.html") || 
+//                       window.location.pathname === "";
 
-      if (esIndex) {
-        // Si es el Home, buscamos los links específicos y los transformamos en anclas de scroll (#)
-        const links = navbarContainer.querySelectorAll("ul li a");
-        links.forEach(link => {
-          const href = link.getAttribute("href");
-          if (href === "technologies.html") link.setAttribute("href", "#technologies-preview");
-          if (href === "about.html") link.setAttribute("href", "#about-preview");
-          if (href === "projects.html") link.setAttribute("href", "#projects-preview");
-        });
-      }
+//       if (esIndex) {
+//         // Si es el Home, buscamos los links específicos y los transformamos en anclas de scroll (#)
+//         const links = navbarContainer.querySelectorAll("ul li a");
+//         links.forEach(link => {
+//           const href = link.getAttribute("href");
+//           if (href === "technologies.html") link.setAttribute("href", "#technologies-preview");
+//           if (href === "about.html") link.setAttribute("href", "#about-preview");
+//           if (href === "projects.html") link.setAttribute("href", "#projects-preview");
+//         });
+//       }
 
-      // Activamos la lógica de scroll y celular una vez procesados los links
-      activarLogicaNavbar();
-    } catch (error) {
-      console.error("Error cargando la Navbar modular:", error);
+//       // Activamos la lógica de scroll y celular una vez procesados los links
+//       activarLogicaNavbar();
+//     } catch (error) {
+//       console.error("Error cargando la Navbar modular:", error);
+//     }
+//   }
+
+//   if (footerContainer) {
+//     try {
+//       const response = await fetch("components/footer.html");
+//       footerContainer.innerHTML = await response.text();
+//     } catch (error) {
+//       console.error("Error al cargar el Footer modular:", error);
+//     }
+//   }
+// }
+
+// // ==========================================================================
+// // 3. LÓGICA INTERNA DE LA NAVBAR (Scroll + Menú Hamburguesa)
+// // ==========================================================================
+// function activarLogicaNavbar() {
+//   const navbarColl = document.getElementsByTagName('nav');
+//   const navbar = navbarColl[0];
+  
+//   if (navbar) {
+//     window.addEventListener('scroll', function () {
+//       if (window.scrollY > 80) {
+//         navbar.classList.add('scrolled');
+//       } else {
+//         navbar.classList.remove('scrolled');
+//       }
+//     });
+//   }
+
+//   const menuToggle = document.getElementById('menu-toggle');
+//   const navLinks = document.getElementById('nav-links');
+
+//   if (menuToggle && navLinks) {
+//     menuToggle.addEventListener('click', () => {
+//       navLinks.classList.toggle('active');
+//     });
+//   }
+// }
+
+// // ==========================================================================
+// // 4. ANIMACIONES DE REVELADO (Solo corre si hay tarjetas en la página)
+// // ==========================================================================
+// function activarAnimacionesPreview() {
+//   const cards = document.querySelectorAll('.preview-card');
+//   if (cards.length === 0) return; // Si no hay tarjetas (ej: en el blog), frena acá
+
+//   const observerOptions = { threshold: 0.1 };
+//   const revealCallback = (entries, observer) => {
+//     entries.forEach(entry => {
+//       if (entry.isIntersecting) {
+//         entry.target.classList.add('reveal-visible');
+//         observer.unobserve(entry.target);
+//       }
+//     });
+//   };
+
+//   const observer = new IntersectionObserver(revealCallback, observerOptions);
+//   cards.forEach(card => {
+//     card.classList.add('reveal');
+//     observer.observe(card);
+//   });
+// }
+
+// // ==========================================================================
+// // DISPARADOR GLOBAL: Controla la ejecución ordenada al cargar el DOM
+// // ==========================================================================
+// document.addEventListener('DOMContentLoaded', () => {
+//   cargarComponentesModulares();
+//   activarAnimacionesPreview();
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // ==========================================================================
+// // 1. INYECTOR MODULAR DE COMPONENTES (Sirve para TODAS las páginas)
+// // ==========================================================================
+// async function cargarComponentesModulares() {
+//   const navbarContainer = document.getElementById("navbar-container");
+//   const footerContainer = document.getElementById("footer-container");
+
+//   if (navbarContainer) {
+//     try {
+//       const response = await fetch("components/navbar.html");
+//       navbarContainer.innerHTML = await response.text();
+      
+//       // Filtro para transformar links en anclas de scroll si estamos en el Home
+//       const esIndex = window.location.pathname === "/" || 
+//                       window.location.pathname.endsWith("index.html") || 
+//                       window.location.pathname === "";
+
+//       if (esIndex) {
+//         const links = navbarContainer.querySelectorAll("ul li a");
+//         links.forEach(link => {
+//           const href = link.getAttribute("href");
+//           if (href === "technologies.html") link.setAttribute("href", "#technologies-preview");
+//           if (href === "about.html") link.setAttribute("href", "#about-preview");
+//           if (href === "projects.html") link.setAttribute("href", "#projects-preview");
+//         });
+//       }
+
+//       // Se activa la lógica de scroll una vez inyectada la navbar
+//       activarLogicaNavbar();
+//     } catch (error) {
+//       console.error("Error cargando la Navbar modular:", error);
+//     }
+//   }
+
+//   if (footerContainer) {
+//     try {
+//       const response = await fetch("components/footer.html");
+//       footerContainer.innerHTML = await response.text();
+//     } catch (error) {
+//       console.error("Error al cargar el Footer modular:", error);
+//     }
+//   }
+// }
+
+// // ==========================================================================
+// // 2. LÓGICA INTERNA DE LA NAVBAR (Tu código original de scroll)
+// // ==========================================================================
+// function activarLogicaNavbar() {
+//   const navbarColl = document.getElementsByTagName('nav');
+//   const navbar = navbarColl[0];
+  
+//   if (navbar) {
+//     window.addEventListener('scroll', function () {
+//       if (window.scrollY > 80) {
+//         navbar.classList.add('scrolled');
+//       } else {
+//         navbar.classList.remove('scrolled');
+//       }
+//     });
+//   }
+
+//   // Soporte para menú hamburguesa
+//   const menuToggle = document.getElementById('menu-toggle');
+//   const navLinks = document.getElementById('nav-links');
+//   if (menuToggle && navLinks) {
+//     menuToggle.addEventListener('click', () => {
+//       navLinks.classList.toggle('active');
+//     });
+//   }
+// }
+
+// // ==========================================================================
+// // 3. ANIMACIONES DE REVELADO (Tu Intersection Observer original)
+// // ==========================================================================
+// function activarAnimacionesPreview() {
+//   const cards = document.querySelectorAll('.preview-card');
+//   if (cards.length === 0) return;
+
+//   const observerOptions = { threshold: 0.1 };
+//   const revealCallback = (entries, observer) => {
+//     entries.forEach(entry => {
+//       if (entry.isIntersecting) {
+//         entry.target.classList.add('reveal-visible');
+//         observer.unobserve(entry.target);
+//       }
+//     });
+//   };
+
+//   const observer = new IntersectionObserver(revealCallback, observerOptions);
+//   cards.forEach(card => {
+//     card.classList.add('reveal');
+//     observer.observe(card);
+//   });
+// }
+
+// // ==========================================================================
+// // DISPARADOR GLOBAL: Controla la ejecución ordenada al cargar el DOM
+// // ==========================================================================
+// document.addEventListener('DOMContentLoaded', () => {
+//   cargarComponentesModulares();
+//   activarAnimacionesPreview();
+// });
+
+
+
+// ==========================================================================
+// 1. INYECTOR MODULAR ASÍNCRONO
+// ==========================================================================
+function cargarComponentesModulares() {
+  return new Promise((resolve) => {
+    const navbarContainer = document.getElementById("navbar-container");
+    const footerContainer = document.getElementById("footer-container");
+    const promesas = [];
+
+    if (navbarContainer) {
+      const pNavbar = fetch("components/navbar.html")
+        .then(res => res.text())
+        .then(html => {
+          navbarContainer.innerHTML = html;
+          
+          const esIndex = window.location.pathname === "/" || 
+                          window.location.pathname.endsWith("index.html") || 
+                          window.location.pathname === "";
+
+          if (esIndex) {
+            const links = navbarContainer.querySelectorAll("ul li a");
+            links.forEach(link => {
+              const href = link.getAttribute("href");
+              if (href === "technologies.html") link.setAttribute("href", "#technologies-preview");
+              if (href === "about.html") link.setAttribute("href", "#about-preview");
+              if (href === "projects.html") link.setAttribute("href", "#projects-preview");
+            });
+          }
+          // Activamos la lógica de la navbar e interfaz responsive INMEDIATAMENTE tras inyectar el HTML
+          activarLogicaNavbar(); 
+        })
+        .catch(err => console.error("Error en Navbar:", err));
+      promesas.push(pNavbar);
     }
-  }
 
-  if (footerContainer) {
-    try {
-      const response = await fetch("components/footer.html");
-      footerContainer.innerHTML = await response.text();
-    } catch (error) {
-      console.error("Error al cargar el Footer modular:", error);
+    if (footerContainer) {
+      const pFooter = fetch("components/footer.html")
+        .then(res => res.text())
+        .then(html => {
+          footerContainer.innerHTML = html;
+        })
+        .catch(err => console.error("Error en Footer:", err));
+      promesas.push(pFooter);
     }
-  }
+
+    Promise.all(promesas).then(() => resolve());
+  });
 }
 
 // ==========================================================================
-// 3. LÓGICA INTERNA DE LA NAVBAR (Scroll + Menú Hamburguesa)
+// 2. ORQUESTADOR GLOBAL (Maneja el tiempo real del Home y la inyección pasiva)
+// ==========================================================================
+(async function orquestadorGlobal() {
+  const preloader = document.getElementById("preloader");
+
+  // CASO A: Páginas secundarias (No tienen preloader en su HTML) ó F5/Navegación interna en Home
+  if (!preloader || sessionStorage.getItem("preloaderShown")) {
+    // Liberamos el body de inmediato por si acaso
+    document.body.classList.remove("preload-hidden");
+    // Inyectamos Navbar y Footer de forma pasiva en segundo plano
+    cargarComponentesModulares();
+    return;
+  }
+
+  // CASO B: Primera carga real en el Home (Existe preloader y no se ha mostrado en la sesión)
+  // 1. Esperamos obligatoriamente a que termine de inyectarse la Navbar y el Footer
+  await cargarComponentesModulares();
+
+  // 2. Función limpia para apagar el preloader con su animación CSS
+  const apagarPreloader = () => {
+    setTimeout(() => {
+      preloader.classList.add("loaded"); // Transición CSS de opacidad
+      setTimeout(() => {
+        preloader.style.display = "none";
+        document.body.classList.remove("preload-hidden"); // Habilita scrollbar
+        sessionStorage.setItem("preloaderShown", "true");
+      }, 500); // Espera que termine de desvanecerse el CSS
+    }, 600); // Tiempo de cortesía para ver tu video/GIF estructurado
+  };
+
+  // 3. Esperamos el recurso pesado nativo (video/imágenes) cuidando conexiones ultra rápidas
+  if (document.readyState === "complete") {
+    apagarPreloader();
+  } else {
+    window.addEventListener("load", apagarPreloader);
+  }
+})();
+
+// ==========================================================================
+// 3. LOGICA NAVBAR DIFERENCIADA (Versión Calibrada para Sticky)
 // ==========================================================================
 function activarLogicaNavbar() {
   const navbarColl = document.getElementsByTagName('nav');
   const navbar = navbarColl[0];
-  
-  if (navbar) {
-    window.addEventListener('scroll', function () {
-      if (window.scrollY > 80) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
+  if (!navbar) return;
+
+  const esIndex = window.location.pathname === "/" || 
+                  window.location.pathname.endsWith("index.html") || 
+                  window.location.pathname === "";
+
+  let ultimoScroll = 0;
+  const tolerancia = 5; // Píxeles mínimos de movimiento para evitar falsos positivos
+
+  window.addEventListener('scroll', function () {
+    const scrollActual = window.scrollY;
+
+    // A. CONTROL ESTÉTICO: Fondo y blur pasados los 80px (Igual que antes)
+    if (scrollActual > 80) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+
+    // B. CONTROL DE MOVIMIENTO
+    if (esIndex) {
+      // En el Home se queda fija siempre
+      navbar.classList.remove('scroll-down');
+      navbar.classList.remove('scroll-up');
+    } else {
+      // PÁGINAS INTERNAS (Solución al bucle de clases)
+      
+      // Si estamos arriba de todo, limpiamos los estados de movimiento
+      if (scrollActual <= 80) {
+        navbar.classList.remove('scroll-down');
+        navbar.classList.remove('scroll-up');
+        return;
       }
-    });
-  }
 
-  const menuToggle = document.getElementById('menu-toggle');
+      // Calculamos la diferencia de scroll con la vuelta anterior
+      const diferencia = Math.abs(scrollActual - ultimoScroll);
+
+      // Solo evaluamos la dirección si el movimiento superó la tolerancia
+      if (diferencia > tolerancia) {
+        if (scrollActual > ultimoScroll && !navbar.classList.contains('scroll-down')) {
+          // El usuario BAJA con claridad -> Ocultamos la navbar
+          navbar.classList.remove('scroll-up');
+          navbar.classList.add('scroll-down');
+        } else if (scrollActual < ultimoScroll && navbar.classList.contains('scroll-down')) {
+          // El usuario SUBA con claridad -> Mostramos de rescate
+          navbar.classList.remove('scroll-down');
+          navbar.classList.add('scroll-up');
+        }
+      }
+    }
+
+    // Actualizamos el marcador para la siguiente evaluación
+    ultimoScroll = scrollActual;
+  });
+
+  // Lógica del botón hamburguesa responsive
+  const menuToggle = document.getElementById('menu-toggle') || document.querySelector('.menu-toggle');
   const navLinks = document.getElementById('nav-links');
-
+  
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
@@ -339,34 +653,33 @@ function activarLogicaNavbar() {
   }
 }
 
+
 // ==========================================================================
-// 4. ANIMACIONES DE REVELADO (Solo corre si hay tarjetas en la página)
+// 4. ANIMACIONES DE TARJETAS (Intersection Observer)
 // ==========================================================================
 function activarAnimacionesPreview() {
   const cards = document.querySelectorAll('.preview-card');
-  if (cards.length === 0) return; // Si no hay tarjetas (ej: en el blog), frena acá
+  if (cards.length === 0) return;
 
   const observerOptions = { threshold: 0.1 };
-  const revealCallback = (entries, observer) => {
+  const observer = new IntersectionObserver((entries, obs) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('reveal-visible');
-        observer.unobserve(entry.target);
+        obs.unobserve(entry.target);
       }
     });
-  };
-
-  const observer = new IntersectionObserver(revealCallback, observerOptions);
+  }, observerOptions);
+  
   cards.forEach(card => {
     card.classList.add('reveal');
     observer.observe(card);
   });
 }
 
-// ==========================================================================
-// DISPARADOR GLOBAL: Controla la ejecución ordenada al cargar el DOM
-// ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
-  cargarComponentesModulares();
   activarAnimacionesPreview();
 });
+
+
+
