@@ -398,7 +398,7 @@ nav.scrolled a img {
    ========================================================================== */
 .site-footer {
   position: relative;
-  background: url('assets/images/hero-bg.gif') center/cover no-repeat;
+  background: url('../assets/images/hero-bg.gif') center/cover no-repeat;
   color: #fff;
   padding: 2.5rem 1rem;
   overflow: hidden;
