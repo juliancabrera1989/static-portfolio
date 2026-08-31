@@ -502,44 +502,41 @@ function cargarComponentesModulares() {
     const footerContainer = document.getElementById("footer-container");
     const promesas = [];
 
-    // Detectamos automáticamente la ruta base (funciona tanto en local como en GitHub Pages con subcarpeta)
-const basePath = window.location.pathname.includes('/static-portfolio/') ? '/static-portfolio/' : '/';
+    if (navbarContainer) {
+      const pNavbar = fetch("components/navbar.html")
+        .then(res => res.text())
+        .then(html => {
+          navbarContainer.innerHTML = html;
+          
+          const esIndex = window.location.pathname === "/" || 
+                          window.location.pathname.endsWith("index.html") || 
+                          window.location.pathname === "";
 
-if (navbarContainer) {
-  const pNavbar = fetch(`${basePath}components/navbar.html`)
-    .then(res => res.text())
-    .then(html => {
-      navbarContainer.innerHTML = html;
-      
-const esIndex = window.location.pathname.endsWith("index.html") || 
-                window.location.pathname.endsWith("/static-portfolio/") || 
-                window.location.pathname === "/" || 
-                window.location.pathname === "";
+          if (esIndex) {
+            const links = navbarContainer.querySelectorAll("ul li a");
+            links.forEach(link => {
+              const href = link.getAttribute("href");
+              if (href === "technologies.html") link.setAttribute("href", "#technologies-preview");
+              if (href === "about.html") link.setAttribute("href", "#about-preview");
+              if (href === "projects.html") link.setAttribute("href", "#projects-preview");
+            });
+          }
+          // Activamos la lógica de la navbar e interfaz responsive INMEDIATAMENTE tras inyectar el HTML
+          activarLogicaNavbar(); 
+        })
+        .catch(err => console.error("Error en Navbar:", err));
+      promesas.push(pNavbar);
+    }
 
-      if (esIndex) {
-        const links = navbarContainer.querySelectorAll("ul li a");
-        links.forEach(link => {
-          const href = link.getAttribute("href");
-          if (href === "technologies.html") link.setAttribute("href", "#technologies-preview");
-          if (href === "about.html") link.setAttribute("href", "#about-preview");
-          if (href === "projects.html") link.setAttribute("href", "#projects-preview");
-        });
-      }
-      activarLogicaNavbar(); 
-    })
-    .catch(err => console.error("Error en Navbar:", err));
-  promesas.push(pNavbar);
-}
-
-if (footerContainer) {
-  const pFooter = fetch(`${basePath}components/footer.html`)
-    .then(res => res.text())
-    .then(html => {
-      footerContainer.innerHTML = html;
-    })
-    .catch(err => console.error("Error en Footer:", err));
-  promesas.push(pFooter);
-}
+    if (footerContainer) {
+      const pFooter = fetch("components/footer.html")
+        .then(res => res.text())
+        .then(html => {
+          footerContainer.innerHTML = html;
+        })
+        .catch(err => console.error("Error en Footer:", err));
+      promesas.push(pFooter);
+    }
 
     Promise.all(promesas).then(() => resolve());
   });
@@ -592,10 +589,9 @@ function activarLogicaNavbar() {
   const navbar = navbarColl[0];
   if (!navbar) return;
 
-const esIndex = window.location.pathname.endsWith("index.html") || 
-                window.location.pathname.endsWith("/static-portfolio/") || 
-                window.location.pathname === "/" || 
-                window.location.pathname === "";
+  const esIndex = window.location.pathname === "/" || 
+                  window.location.pathname.endsWith("index.html") || 
+                  window.location.pathname === "";
 
   let ultimoScroll = 0;
   const tolerancia = 5; // Píxeles mínimos de movimiento para evitar falsos positivos
