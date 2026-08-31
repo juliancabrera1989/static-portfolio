@@ -135,31 +135,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Título Dinámico -->
     <title data-i18n="${currentTitle.key}">${currentTitle.default}</title>
 
-    <!-- Favicon y Web App Manifest -->
-    <link rel="icon" href="/assets/icons/favicon.ico" sizes="any">
-    <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
-    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
-    <link rel="manifest" href="/assets/site.webmanifest">
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
     <meta name="theme-color" content="#ffffff">
 
-    <!-- Google Fonts (Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
     
-    <!-- Estilos y CDNs Globales -->
     <script src="https://cdn.tailwindcss.com"><\/script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    <link rel="stylesheet" href="/css/styles.css" />
-    <!-- Navbar CSS condicional (no se carga en index.html) -->
-    ${navbarCSS}
+    <link rel="stylesheet" href="css/styles.css" />
+    ${navbarCSS ? `<link rel="stylesheet" href="css/navbar.css" />` : ""}
 
-    <!-- Scripts Globales -->
-    <script src="/js/script.js" defer><\/script>
-    <script src="/js/i18n.js" defer><\/script>
+    <script src="js/script.js" defer><\/script>
+    <script src="js/i18n.js" defer><\/script>
   `;
 
   // Inyección SÍNCRONA bloqueante para evitar parpadeos y fallos de CSS
