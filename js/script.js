@@ -511,10 +511,10 @@ if (navbarContainer) {
     .then(html => {
       navbarContainer.innerHTML = html;
       
-      const esIndex = window.location.pathname === "/" || 
-                      window.location.pathname.endsWith("index.html") || 
-                      window.location.pathname === "" ||
-                      window.location.pathname.endsWith("/static-portfolio/");
+const esIndex = window.location.pathname.endsWith("index.html") || 
+                window.location.pathname.endsWith("/static-portfolio/") || 
+                window.location.pathname === "/" || 
+                window.location.pathname === "";
 
       if (esIndex) {
         const links = navbarContainer.querySelectorAll("ul li a");
@@ -592,9 +592,10 @@ function activarLogicaNavbar() {
   const navbar = navbarColl[0];
   if (!navbar) return;
 
-  const esIndex = window.location.pathname === "/" || 
-                  window.location.pathname.endsWith("index.html") || 
-                  window.location.pathname === "";
+const esIndex = window.location.pathname.endsWith("index.html") || 
+                window.location.pathname.endsWith("/static-portfolio/") || 
+                window.location.pathname === "/" || 
+                window.location.pathname === "";
 
   let ultimoScroll = 0;
   const tolerancia = 5; // Píxeles mínimos de movimiento para evitar falsos positivos

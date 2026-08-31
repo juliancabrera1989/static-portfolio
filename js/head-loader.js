@@ -116,9 +116,8 @@
     "tech-radar.html": { key: "page_title_radar", default: "Tech Radar – Portfolio – Julián Cabrera" },
     "contact.html": { key: "page_title_contact", default: "Contact – Portfolio – Julián Cabrera" }
   };
-
-  let path = window.location.pathname.split("/").pop();
-  if (!path || path === "") path = "index.html";
+let path = window.location.pathname.split("/").pop();
+  if (!path || path === "" || window.location.pathname.endsWith("/static-portfolio/")) path = "index.html";
 
   const currentTitle = pageTitles[path] || { key: "page_title_home", default: "Portfolio – Julián Cabrera" };
 
