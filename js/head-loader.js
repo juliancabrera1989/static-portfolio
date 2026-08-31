@@ -179,14 +179,14 @@
     "contact.html": { key: "page_title_contact", default: "Contact – Portfolio – Julián Cabrera" }
   };
 
-  let path = window.location.pathname.split("/").pop();
-  if (!path || path === "") path = "index.html";
+// Obtener la ruta completa y limpiar posibles barras finales
+  let path = window.location.pathname.toLowerCase();
+  
+  // Si estamos en la raíz o en index.html, detectamos que es el Home
+  let esIndex = path.endsWith("/") || path.endsWith("index.html") || path === "" || path.endsWith("static-portfolio/");
 
-  const currentTitle = pageTitles[path] || { key: "page_title_home", default: "Portfolio – Julián Cabrera" };
-
-  // Navbar CSS condicional (cargado de forma local y directa)
   let navbarCSS = "";
-  if (path !== "index.html") {
+  if (!esIndex) {
     navbarCSS = `<link rel="stylesheet" href="css/navbar.css" />`;
   }
 
