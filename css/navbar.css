@@ -6,7 +6,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
-  background: url('assets/images/hero-bg.gif') no-repeat center center/cover;
+  background: url('/assets/images/hero-bg.gif') no-repeat center center/cover;
   position: fixed; 
   top: 0;
   left: 0;
