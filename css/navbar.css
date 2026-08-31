@@ -6,7 +6,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   padding: 0 30px;
-  background: url('/assets/images/hero-bg.gif') no-repeat center center/cover;
+  background: url('assets/images/hero-bg.gif') no-repeat center center/cover;
   position: fixed; 
   top: 0;
   left: 0;
@@ -72,7 +72,7 @@ nav ul li a:hover {
    ESTADO SCROLLED (Manteniendo contraste oscuro)
    ========================================================================== */
 nav.scrolled {
-  background: url('/assets/images/hero-bg.gif') no-repeat center center/cover;
+  background: url('assets/images/hero-bg.gif') no-repeat center center/cover;
   backdrop-filter: blur(5px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   padding: 0 30px;
