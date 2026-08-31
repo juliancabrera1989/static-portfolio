@@ -503,9 +503,7 @@ function cargarComponentesModulares() {
     const promesas = [];
 
     if (navbarContainer) {
-      const baseUrl = window.location.hostname.includes("github.io") ? "/static-portfolio" : "";
-      
-      const pNavbar = fetch(`${baseUrl}/components/navbar.html`)
+      const pNavbar = fetch("./components/navbar.html")
         .then(res => res.text())
         .then(html => {
           navbarContainer.innerHTML = html;
@@ -531,9 +529,7 @@ function cargarComponentesModulares() {
     }
 
     if (footerContainer) {
-      const baseUrl = window.location.hostname.includes("github.io") ? "/static-portfolio" : "";
-      
-      const pFooter = fetch(`${baseUrl}/components/footer.html`)
+      const pFooter = fetch("./components/footer.html")
         .then(res => res.text())
         .then(html => {
           footerContainer.innerHTML = html;
