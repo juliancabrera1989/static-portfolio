@@ -116,76 +116,37 @@
     "tech-radar.html": { key: "page_title_radar", default: "Tech Radar – Portfolio – Julián Cabrera" },
     "contact.html": { key: "page_title_contact", default: "Contact – Portfolio – Julián Cabrera" }
   };
-let path = window.location.pathname.split("/").pop();
-  if (!path || path === "" || window.location.pathname.endsWith("/static-portfolio/")) path = "index.html";
+
+  let path = window.location.pathname.split("/").pop();
+  if (!path || path === "") path = "index.html";
 
   const currentTitle = pageTitles[path] || { key: "page_title_home", default: "Portfolio – Julián Cabrera" };
 
-  // 1. Metadatos básicos y Título
-  document.charset = "UTF-8";
-  
-  const metaViewport = document.createElement("meta");
-  metaViewport.name = "viewport";
-  metaViewport.content = "width=device-width, initial-scale=1.0";
-  document.head.appendChild(metaViewport);
+  // Inyectamos siempre el navbar.css para evitar que las páginas secundarias se rompan
+  const headHTML = `
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="${currentTitle.key}">${currentTitle.default}</title>
 
-  const titleTag = document.createElement("title");
-  titleTag.setAttribute("data-i18n", currentTitle.key);
-  titleTag.textContent = currentTitle.default;
-  document.head.appendChild(titleTag);
+    <link rel="icon" href="assets/icons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <meta name="theme-color" content="#ffffff">
 
-  // 2. Favicons y Manifest
-  const icons = [
-    { rel: "icon", href: "assets/icons/favicon.ico", sizes: "any" },
-    { rel: "icon", type: "image/svg+xml", href: "assets/icons/favicon.svg" },
-    { rel: "apple-touch-icon", href: "assets/icons/apple-touch-icon.png" },
-    { rel: "manifest", href: "assets/site.webmanifest" }
-  ];
-  icons.forEach(ico => {
-    const link = document.createElement("link");
-    Object.keys(ico).forEach(attr => link.setAttribute(attr, ico[attr]));
-    document.head.appendChild(link);
-  });
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/navbar.css" />
 
-  const themeMeta = document.createElement("meta");
-  themeMeta.name = "theme-color";
-  themeMeta.content = "#ffffff";
-  document.head.appendChild(themeMeta);
+    <script src="js/script.js" defer></script>
+    <script src="js/i18n.js" defer></script>
+  `;
 
-  // 3. Fuentes y Estilos (Tailwind, FontAwesome, CSS propios)
-  const styles = [
-    "https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap",
-    "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
-    "css/styles.css",
-    "css/navbar.css"
-  ];
-  
-  // Preconnects para fuentes
-  ["https://fonts.googleapis.com", "https://fonts.gstatic.com"].forEach(url => {
-    const link = document.createElement("link");
-    link.rel = "preconnect";
-    link.href = url;
-    if (url.includes("gstatic")) link.crossOrigin = "anonymous";
-    document.head.appendChild(link);
-  });
-
-  styles.forEach(href => {
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = href;
-    document.head.appendChild(link);
-  });
-
-  const tailwindScript = document.createElement("script");
-  tailwindScript.src = "https://cdn.tailwindcss.com";
-  document.head.appendChild(tailwindScript);
-
-  // 4. Scripts Globales con defer para asegurar ejecución correcta
-  const scripts = ["js/script.js", "js/i18n.js"];
-  scripts.forEach(src => {
-    const script = document.createElement("script");
-    script.src = src;
-    script.defer = true;
-    document.head.appendChild(script);
-  });
+  // Usamos insertAdjacentHTML en lugar de document.write para evitar bloqueos y avisos de deprecated
+  document.head.insertAdjacentHTML('beforeend', headHTML);
 })();
