@@ -503,7 +503,7 @@ function cargarComponentesModulares() {
     const promesas = [];
 
     if (navbarContainer) {
-      const pNavbar = fetch("./components/navbar.html")
+      const pNavbar = fetch("components/navbar.html")
         .then(res => res.text())
         .then(html => {
           navbarContainer.innerHTML = html;
@@ -529,7 +529,7 @@ function cargarComponentesModulares() {
     }
 
     if (footerContainer) {
-      const pFooter = fetch("./components/footer.html")
+      const pFooter = fetch("components/footer.html")
         .then(res => res.text())
         .then(html => {
           footerContainer.innerHTML = html;
