@@ -2,12 +2,12 @@ import express from "express";
 import cors from "cors";
 import fetch from "node-fetch";
 import * as cheerio from "cheerio";
-import puppeteer from "puppeteer";
+import chromium from "@sparticuz/chromium";
+import puppeteer from "puppeteer-core";
 
 const app = express();
 app.use(cors());
 
-// Cache screenshots in memory (optional, avoids repeated screenshots)
 const screenshotCache = {};
 
 app.get("/preview", async (req, res) => {
@@ -15,7 +15,6 @@ app.get("/preview", async (req, res) => {
   if (!url) return res.status(400).json({ error: "URL required" });
 
   try {
-    // 1️⃣ Try to fetch og:image or twitter:image first
     const response = await fetch(url, { timeout: 15000 });
     const html = await response.text();
     const $ = cheerio.load(html);
@@ -26,21 +25,25 @@ app.get("/preview", async (req, res) => {
       $('link[rel="image_src"]').attr("href") ||
       "";
 
-    // 2️⃣ If no image, take a screenshot using Puppeteer
     if (!image) {
       if (screenshotCache[url]) {
-        image = screenshotCache[url]; // use cached screenshot
+        image = screenshotCache[url];
       } else {
-        const browser = await puppeteer.launch({ headless: "new" });
+        const browser = await puppeteer.launch({
+          args: chromium.args,
+          defaultViewport: chromium.defaultViewport,
+          executablePath: await chromium.executablePath(),
+          headless: chromium.headless,
+        });
+        
         const page = await browser.newPage();
         await page.setViewport({ width: 1200, height: 800 });
         await page.goto(url, { waitUntil: "networkidle2", timeout: 20000 });
         const screenshotBuffer = await page.screenshot({ fullPage: false });
         await browser.close();
 
-        // Convert screenshot to base64 data URI
         image = `data:image/png;base64,${screenshotBuffer.toString("base64")}`;
-        screenshotCache[url] = image; // cache it
+        screenshotCache[url] = image;
       }
     }
 
