@@ -773,7 +773,9 @@ function cargarComponentesModulares() {
   const preloader = document.getElementById("preloader");
 
   if (!preloader || sessionStorage.getItem("preloaderShown")) {
-    document.body.classList.remove("preload-hidden");
+    if (document.body) {
+      document.body.classList.remove("preload-hidden");
+    }
     cargarComponentesModulares();
     return;
   }
@@ -785,7 +787,9 @@ function cargarComponentesModulares() {
       preloader.classList.add("loaded");
       setTimeout(() => {
         preloader.style.display = "none";
-        document.body.classList.remove("preload-hidden");
+        if (document.body) {
+          document.body.classList.remove("preload-hidden");
+        }
         sessionStorage.setItem("preloaderShown", "true");
       }, 500);
     }, 600);
