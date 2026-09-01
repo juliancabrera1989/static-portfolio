@@ -503,48 +503,58 @@ function cargarComponentesModulares() {
     const promesas = [];
 
     // Detectamos automáticamente la ruta base (funciona tanto en local como en GitHub Pages con subcarpeta)
-const basePath = window.location.pathname.includes('/static-portfolio/') ? '/static-portfolio/' : '/';
+    const basePath = window.location.pathname.includes('/static-portfolio/') ? '/static-portfolio/' : '/';
 
-if (navbarContainer) {
-  const pNavbar = fetch(`${basePath}components/navbar.html`)
-    .then(res => res.text())
-    .then(html => {
-      navbarContainer.innerHTML = html;
-      
-const esIndex = window.location.pathname.endsWith("index.html") || 
-                window.location.pathname.endsWith("/static-portfolio/") || 
-                window.location.pathname === "/" || 
-                window.location.pathname === "";
+    if (navbarContainer) {
+      const pNavbar = fetch(`${basePath}components/navbar.html`)
+        .then(res => res.text())
+        .then(html => {
+          navbarContainer.innerHTML = html;
+          
+          const esIndex = window.location.pathname.endsWith("index.html") || 
+                          window.location.pathname.endsWith("/static-portfolio/") || 
+                          window.location.pathname === "/" || 
+                          window.location.pathname === "";
 
-      if (esIndex) {
-        const links = navbarContainer.querySelectorAll("ul li a");
-        links.forEach(link => {
-          const href = link.getAttribute("href");
-          if (href === "technologies.html") link.setAttribute("href", "#technologies-preview");
-          if (href === "about.html") link.setAttribute("href", "#about-preview");
-          if (href === "projects.html") link.setAttribute("href", "#projects-preview");
-        });
-      }
-      activarLogicaNavbar(); 
-    })
-    .catch(err => console.error("Error en Navbar:", err));
-  promesas.push(pNavbar);
-}
+          if (esIndex) {
+            const links = navbarContainer.querySelectorAll("ul li a");
+            links.forEach(link => {
+              const href = link.getAttribute("href");
+              if (href === "technologies.html") link.setAttribute("href", "#technologies-preview");
+              if (href === "about.html") link.setAttribute("href", "#about-preview");
+              if (href === "projects.html") link.setAttribute("href", "#projects-preview");
+            });
+          }
 
-if (footerContainer) {
-  const pFooter = fetch(`${basePath}components/footer.html`)
-    .then(res => res.text())
-    .then(html => {
-      footerContainer.innerHTML = html;
-    })
-    .catch(err => console.error("Error en Footer:", err));
-  promesas.push(pFooter);
-}
+          // ---> INTEGRACIÓN DEL RESETEO DE SEGURIDAD <---
+          // Evita que las páginas secundarias oculten el navbar al entrar con scroll previo
+          const navElement = navbarContainer.querySelector("nav");
+          if (navElement) {
+            navElement.classList.remove("scroll-down");
+            if (window.scrollY <= 80) {
+              navElement.classList.remove("scrolled");
+            }
+          }
+
+          activarLogicaNavbar(); 
+        })
+        .catch(err => console.error("Error en Navbar:", err));
+      promesas.push(pNavbar);
+    }
+
+    if (footerContainer) {
+      const pFooter = fetch(`${basePath}components/footer.html`)
+        .then(res => res.text())
+        .then(html => {
+          footerContainer.innerHTML = html;
+        })
+        .catch(err => console.error("Error en Footer:", err));
+      promesas.push(pFooter);
+    }
 
     Promise.all(promesas).then(() => resolve());
   });
 }
-
 // ==========================================================================
 // 2. ORQUESTADOR GLOBAL (Maneja el tiempo real del Home y la inyección pasiva)
 // ==========================================================================
