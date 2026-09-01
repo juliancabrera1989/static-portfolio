@@ -716,11 +716,17 @@ function cargarComponentesModulares() {
 
     const basePath = window.location.pathname.includes('/static-portfolio/') ? '/static-portfolio/' : '/';
 
-    if (navbarContainer) {
+   if (navbarContainer) {
       const pNavbar = fetch(`${basePath}components/navbar.html`)
         .then(res => res.text())
         .then(html => {
           navbarContainer.innerHTML = html;
+          
+          // ---> LLAMADA DIRECTA: En cuanto se inyecta, traducimos y marcamos la bandera <---
+          const langActual = localStorage.getItem("portfolio_lang") || "en";
+          if (typeof setLanguage === "function") {
+            setLanguage(langActual);
+          }
           
           const esIndex = window.location.pathname.endsWith("index.html") || 
                           window.location.pathname.endsWith("/static-portfolio/") || 
