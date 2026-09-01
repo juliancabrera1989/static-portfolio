@@ -135,11 +135,14 @@ let path = window.location.pathname.split("/").pop();
   document.head.appendChild(titleTag);
 
   // 2. Favicons y Manifest
+ // 2. Favicons y Manifest
+  const basePath = window.location.pathname.includes('/static-portfolio/') ? '/static-portfolio/' : '';
+  
   const icons = [
-    { rel: "icon", href: "assets/icons/favicon.ico", sizes: "any" },
-    { rel: "icon", type: "image/svg+xml", href: "assets/icons/favicon.svg" },
-    { rel: "apple-touch-icon", href: "assets/icons/apple-touch-icon.png" },
-    { rel: "manifest", href: "assets/site.webmanifest" }
+    { rel: "icon", href: `${basePath}assets/icons/favicon.ico`, sizes: "any" },
+    { rel: "icon", type: "image/svg+xml", href: `${basePath}assets/icons/favicon.svg` },
+    { rel: "apple-touch-icon", href: `${basePath}assets/icons/apple-touch-icon.png` },
+    { rel: "manifest", href: `${basePath}site.webmanifest` } // <--- Verificá si está en la raíz o en assets/
   ];
   icons.forEach(ico => {
     const link = document.createElement("link");
