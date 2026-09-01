@@ -185,8 +185,8 @@ let path = window.location.pathname.split("/").pop();
   tailwindScript.src = "https://cdn.tailwindcss.com";
   document.head.appendChild(tailwindScript);
 
-  // 4. Scripts Globales con defer para asegurar ejecución correcta
-  const scripts = ["js/script.js", "js/i18n.js"];
+// 4. Scripts Globales con defer para asegurar ejecución correcta
+  const scripts = ["js/script.js", "js/i18n.js?v=2"];
   scripts.forEach(src => {
     const script = document.createElement("script");
     script.src = src;
@@ -194,3 +194,5 @@ let path = window.location.pathname.split("/").pop();
     document.head.appendChild(script);
   });
 })();
+
+
