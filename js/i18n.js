@@ -300,15 +300,25 @@ function setLanguage(lang) {
 document.addEventListener("DOMContentLoaded", () => {
   const currentLang = localStorage.getItem("portfolio_lang") || "en";
   
-  // Pequeño retardo para asegurar que Navbar/Footer modular estén inyectados
-  setTimeout(() => {
-    setLanguage(currentLang);
-  }, 100);
+  // Función para reintentar hasta que la navbar y los botones existan realmente
+  const inicializarIdiomaConReintento = (intentos = 0) => {
+    const btnEn = document.getElementById("lang-en") || document.querySelector('[data-lang="en"]');
+    const btnEs = document.getElementById("lang-es") || document.querySelector('[data-lang="es"]');
+
+    if ((btnEn && btnEs) || intentos > 15) {
+      setLanguage(currentLang);
+    } else {
+      // Si todavía no se inyectó el componente, reintentamos en 50ms (máx ~750ms)
+      setTimeout(() => inicializarIdiomaConReintento(intentos + 1), 50);
+    }
+  };
+
+  inicializarIdiomaConReintento();
 
   // Escuchador global de eventos clic en las banderas
   document.addEventListener("click", (e) => {
-    const btnEn = e.target.closest("#lang-en");
-    const btnEs = e.target.closest("#lang-es");
+    const btnEn = e.target.closest("#lang-en") || e.target.closest('[data-lang="en"]');
+    const btnEs = e.target.closest("#lang-es") || e.target.closest('[data-lang="es"]');
 
     if (btnEn) setLanguage("en");
     if (btnEs) setLanguage("es");
