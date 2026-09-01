@@ -19,7 +19,7 @@ function isValidImage(url) {
 
 async function getPreviewImage(url) {
   try {
-    const res = await fetch(`http://localhost:3000/preview?url=${encodeURIComponent(url)}`);
+    const res = await fetch(`https://static-portfolio-api.onrender.com/preview?url=${encodeURIComponent(url)}`);
     const data = await res.json();
     return data.image || "https://via.placeholder.com/600x400?text=No+Preview";
   } catch (err) {
