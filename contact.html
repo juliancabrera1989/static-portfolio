@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <!-- Módulo único de HEAD (Inyecta Tailwind, Font Awesome 6.5.1, CSS y Títulos) -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Me | Portfolio</title>
+  
+  <!-- Módulo único de HEAD (si lo necesitás) -->
   <script src="js/head-loader.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- Librerías externas de forma síncrona/segura -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="css/contact.css" />
 </head>
 <body>
   <header>
-
-  <nav id="navbar-container">
-
-  </nav>
+    <nav id="navbar-container"></nav>
   </header>
- 
 
   <!-- Contact Section -->
-<section class="contact-section container" data-aos="fade-up">
+  <section class="contact-section container" data-aos="fade-up">
     <h1 data-i18n="contact_title">Contact Me</h1>
     <p data-i18n="contact_subtitle">Feel free to reach out for job offers, collaborations, or tech-related questions.</p>
 
@@ -35,12 +36,14 @@
     </form>
   </section>
 
-
   <footer class="site-footer" id="footer-container"></footer>
 
-  <!-- Scripts -->
+  <!-- Scripts al final del body para garantizar que los contenedores ya existen -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
   </script>
+  <!-- Aseguramos la llamada explícita al script principal del sitio -->
+  <script src="js/script.js"></script>
 </body>
 </html>
