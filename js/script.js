@@ -493,6 +493,218 @@
 
 
 
+
+
+
+
+
+
+
+
+// // ==========================================================================
+// // 1. INYECTOR MODULAR ASÍNCRONO
+// // ==========================================================================
+// function cargarComponentesModulares() {
+//   return new Promise((resolve) => {
+//     const navbarContainer = document.getElementById("navbar-container");
+//     const footerContainer = document.getElementById("footer-container");
+//     const promesas = [];
+
+//     // Detectamos automáticamente la ruta base (funciona tanto en local como en GitHub Pages con subcarpeta)
+//     const basePath = window.location.pathname.includes('/static-portfolio/') ? '/static-portfolio/' : '/';
+
+//     if (navbarContainer) {
+//       const pNavbar = fetch(`${basePath}components/navbar.html`)
+//         .then(res => res.text())
+//         .then(html => {
+//           navbarContainer.innerHTML = html;
+          
+//           const esIndex = window.location.pathname.endsWith("index.html") || 
+//                           window.location.pathname.endsWith("/static-portfolio/") || 
+//                           window.location.pathname === "/" || 
+//                           window.location.pathname === "";
+
+//           if (esIndex) {
+//             const links = navbarContainer.querySelectorAll("ul li a");
+//             links.forEach(link => {
+//               const href = link.getAttribute("href");
+//               if (href === "technologies.html") link.setAttribute("href", "#technologies-preview");
+//               if (href === "about.html") link.setAttribute("href", "#about-preview");
+//               if (href === "projects.html") link.setAttribute("href", "#projects-preview");
+//             });
+//           }
+
+//           // ---> INTEGRACIÓN DEL RESETEO DE SEGURIDAD <---
+//           // Evita que las páginas secundarias oculten el navbar al entrar con scroll previo
+//           const navElement = navbarContainer.querySelector("nav");
+//           if (navElement) {
+//             navElement.classList.remove("scroll-down");
+//             if (window.scrollY <= 80) {
+//               navElement.classList.remove("scrolled");
+//             }
+//           }
+
+//           activarLogicaNavbar(); 
+//         })
+//         .catch(err => console.error("Error en Navbar:", err));
+//       promesas.push(pNavbar);
+//     }
+
+//     if (footerContainer) {
+//       const pFooter = fetch(`${basePath}components/footer.html`)
+//         .then(res => res.text())
+//         .then(html => {
+//           footerContainer.innerHTML = html;
+//         })
+//         .catch(err => console.error("Error en Footer:", err));
+//       promesas.push(pFooter);
+//     }
+
+//     Promise.all(promesas).then(() => resolve());
+//   });
+// }
+// // ==========================================================================
+// // 2. ORQUESTADOR GLOBAL (Maneja el tiempo real del Home y la inyección pasiva)
+// // ==========================================================================
+// (async function orquestadorGlobal() {
+//   const preloader = document.getElementById("preloader");
+
+//   // CASO A: Páginas secundarias (No tienen preloader en su HTML) ó F5/Navegación interna en Home
+//   if (!preloader || sessionStorage.getItem("preloaderShown")) {
+//     // Liberamos el body de inmediato por si acaso
+//     document.body.classList.remove("preload-hidden");
+//     // Inyectamos Navbar y Footer de forma pasiva en segundo plano
+//     cargarComponentesModulares();
+//     return;
+//   }
+
+//   // CASO B: Primera carga real en el Home (Existe preloader y no se ha mostrado en la sesión)
+//   // 1. Esperamos obligatoriamente a que termine de inyectarse la Navbar y el Footer
+//   await cargarComponentesModulares();
+
+//   // 2. Función limpia para apagar el preloader con su animación CSS
+//   const apagarPreloader = () => {
+//     setTimeout(() => {
+//       preloader.classList.add("loaded"); // Transición CSS de opacidad
+//       setTimeout(() => {
+//         preloader.style.display = "none";
+//         document.body.classList.remove("preload-hidden"); // Habilita scrollbar
+//         sessionStorage.setItem("preloaderShown", "true");
+//       }, 500); // Espera que termine de desvanecerse el CSS
+//     }, 600); // Tiempo de cortesía para ver tu video/GIF estructurado
+//   };
+
+//   // 3. Esperamos el recurso pesado nativo (video/imágenes) cuidando conexiones ultra rápidas
+//   if (document.readyState === "complete") {
+//     apagarPreloader();
+//   } else {
+//     window.addEventListener("load", apagarPreloader);
+//   }
+// })();
+
+// // ==========================================================================
+// // 3. LOGICA NAVBAR DIFERENCIADA (Versión Calibrada para Sticky)
+// // ==========================================================================
+// function activarLogicaNavbar() {
+//   const navbarColl = document.getElementsByTagName('nav');
+//   const navbar = navbarColl[0];
+//   if (!navbar) return;
+
+// const esIndex = window.location.pathname.endsWith("index.html") || 
+//                 window.location.pathname.endsWith("/static-portfolio/") || 
+//                 window.location.pathname === "/" || 
+//                 window.location.pathname === "";
+
+//   let ultimoScroll = 0;
+//   const tolerancia = 5; // Píxeles mínimos de movimiento para evitar falsos positivos
+
+//   window.addEventListener('scroll', function () {
+//     const scrollActual = window.scrollY;
+
+//     // A. CONTROL ESTÉTICO: Fondo y blur pasados los 80px (Igual que antes)
+//     if (scrollActual > 80) {
+//       navbar.classList.add('scrolled');
+//     } else {
+//       navbar.classList.remove('scrolled');
+//     }
+
+//     // B. CONTROL DE MOVIMIENTO
+//     if (esIndex) {
+//       // En el Home se queda fija siempre
+//       navbar.classList.remove('scroll-down');
+//       navbar.classList.remove('scroll-up');
+//     } else {
+//       // PÁGINAS INTERNAS (Solución al bucle de clases)
+      
+//       // Si estamos arriba de todo, limpiamos los estados de movimiento
+//       if (scrollActual <= 80) {
+//         navbar.classList.remove('scroll-down');
+//         navbar.classList.remove('scroll-up');
+//         return;
+//       }
+
+//       // Calculamos la diferencia de scroll con la vuelta anterior
+//       const diferencia = Math.abs(scrollActual - ultimoScroll);
+
+//       // Solo evaluamos la dirección si el movimiento superó la tolerancia
+//       if (diferencia > tolerancia) {
+//         if (scrollActual > ultimoScroll && !navbar.classList.contains('scroll-down')) {
+//           // El usuario BAJA con claridad -> Ocultamos la navbar
+//           navbar.classList.remove('scroll-up');
+//           navbar.classList.add('scroll-down');
+//         } else if (scrollActual < ultimoScroll && navbar.classList.contains('scroll-down')) {
+//           // El usuario SUBA con claridad -> Mostramos de rescate
+//           navbar.classList.remove('scroll-down');
+//           navbar.classList.add('scroll-up');
+//         }
+//       }
+//     }
+
+//     // Actualizamos el marcador para la siguiente evaluación
+//     ultimoScroll = scrollActual;
+//   });
+
+//   // Lógica del botón hamburguesa responsive
+//   const menuToggle = document.getElementById('menu-toggle') || document.querySelector('.menu-toggle');
+//   const navLinks = document.getElementById('nav-links');
+  
+//   if (menuToggle && navLinks) {
+//     menuToggle.addEventListener('click', () => {
+//       navLinks.classList.toggle('active');
+//     });
+//   }
+// }
+
+
+// // ==========================================================================
+// // 4. ANIMACIONES DE TARJETAS (Intersection Observer)
+// // ==========================================================================
+// function activarAnimacionesPreview() {
+//   const cards = document.querySelectorAll('.preview-card');
+//   if (cards.length === 0) return;
+
+//   const observerOptions = { threshold: 0.1 };
+//   const observer = new IntersectionObserver((entries, obs) => {
+//     entries.forEach(entry => {
+//       if (entry.isIntersecting) {
+//         entry.target.classList.add('reveal-visible');
+//         obs.unobserve(entry.target);
+//       }
+//     });
+//   }, observerOptions);
+  
+//   cards.forEach(card => {
+//     card.classList.add('reveal');
+//     observer.observe(card);
+//   });
+// }
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   activarAnimacionesPreview();
+// });
+
+
+
 // ==========================================================================
 // 1. INYECTOR MODULAR ASÍNCRONO
 // ==========================================================================
@@ -502,7 +714,6 @@ function cargarComponentesModulares() {
     const footerContainer = document.getElementById("footer-container");
     const promesas = [];
 
-    // Detectamos automáticamente la ruta base (funciona tanto en local como en GitHub Pages con subcarpeta)
     const basePath = window.location.pathname.includes('/static-portfolio/') ? '/static-portfolio/' : '/';
 
     if (navbarContainer) {
@@ -526,9 +737,8 @@ function cargarComponentesModulares() {
             });
           }
 
-          // ---> INTEGRACIÓN DEL RESETEO DE SEGURIDAD <---
-          // Evita que las páginas secundarias oculten el navbar al entrar con scroll previo
-          const navElement = navbarContainer.querySelector("nav");
+          // Reseteo de seguridad seguro
+          const navElement = navbarContainer.querySelector("nav") || document.querySelector("nav");
           if (navElement) {
             navElement.classList.remove("scroll-down");
             if (window.scrollY <= 80) {
@@ -555,38 +765,32 @@ function cargarComponentesModulares() {
     Promise.all(promesas).then(() => resolve());
   });
 }
+
 // ==========================================================================
-// 2. ORQUESTADOR GLOBAL (Maneja el tiempo real del Home y la inyección pasiva)
+// 2. ORQUESTADOR GLOBAL
 // ==========================================================================
 (async function orquestadorGlobal() {
   const preloader = document.getElementById("preloader");
 
-  // CASO A: Páginas secundarias (No tienen preloader en su HTML) ó F5/Navegación interna en Home
   if (!preloader || sessionStorage.getItem("preloaderShown")) {
-    // Liberamos el body de inmediato por si acaso
     document.body.classList.remove("preload-hidden");
-    // Inyectamos Navbar y Footer de forma pasiva en segundo plano
     cargarComponentesModulares();
     return;
   }
 
-  // CASO B: Primera carga real en el Home (Existe preloader y no se ha mostrado en la sesión)
-  // 1. Esperamos obligatoriamente a que termine de inyectarse la Navbar y el Footer
   await cargarComponentesModulares();
 
-  // 2. Función limpia para apagar el preloader con su animación CSS
   const apagarPreloader = () => {
     setTimeout(() => {
-      preloader.classList.add("loaded"); // Transición CSS de opacidad
+      preloader.classList.add("loaded");
       setTimeout(() => {
         preloader.style.display = "none";
-        document.body.classList.remove("preload-hidden"); // Habilita scrollbar
+        document.body.classList.remove("preload-hidden");
         sessionStorage.setItem("preloaderShown", "true");
-      }, 500); // Espera que termine de desvanecerse el CSS
-    }, 600); // Tiempo de cortesía para ver tu video/GIF estructurado
+      }, 500);
+    }, 600);
   };
 
-  // 3. Esperamos el recurso pesado nativo (video/imágenes) cuidando conexiones ultra rápidas
   if (document.readyState === "complete") {
     apagarPreloader();
   } else {
@@ -595,68 +799,56 @@ function cargarComponentesModulares() {
 })();
 
 // ==========================================================================
-// 3. LOGICA NAVBAR DIFERENCIADA (Versión Calibrada para Sticky)
+// 3. LOGICA NAVBAR DIFERENCIADA
 // ==========================================================================
 function activarLogicaNavbar() {
-  const navbarColl = document.getElementsByTagName('nav');
-  const navbar = navbarColl[0];
+  const navbar = document.querySelector('nav') || document.getElementById('navbar-container');
   if (!navbar) return;
 
-const esIndex = window.location.pathname.endsWith("index.html") || 
-                window.location.pathname.endsWith("/static-portfolio/") || 
-                window.location.pathname === "/" || 
-                window.location.pathname === "";
+  const esIndex = window.location.pathname.endsWith("index.html") || 
+                  window.location.pathname.endsWith("/static-portfolio/") || 
+                  window.location.pathname === "/" || 
+                  window.location.pathname === "";
 
-  let ultimoScroll = 0;
-  const tolerancia = 5; // Píxeles mínimos de movimiento para evitar falsos positivos
+  let ultimoScroll = window.scrollY;
+  const tolerancia = 5;
 
   window.addEventListener('scroll', function () {
     const scrollActual = window.scrollY;
 
-    // A. CONTROL ESTÉTICO: Fondo y blur pasados los 80px (Igual que antes)
     if (scrollActual > 80) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
 
-    // B. CONTROL DE MOVIMIENTO
     if (esIndex) {
-      // En el Home se queda fija siempre
       navbar.classList.remove('scroll-down');
       navbar.classList.remove('scroll-up');
     } else {
-      // PÁGINAS INTERNAS (Solución al bucle de clases)
-      
-      // Si estamos arriba de todo, limpiamos los estados de movimiento
       if (scrollActual <= 80) {
         navbar.classList.remove('scroll-down');
         navbar.classList.remove('scroll-up');
+        ultimoScroll = scrollActual;
         return;
       }
 
-      // Calculamos la diferencia de scroll con la vuelta anterior
       const diferencia = Math.abs(scrollActual - ultimoScroll);
 
-      // Solo evaluamos la dirección si el movimiento superó la tolerancia
       if (diferencia > tolerancia) {
         if (scrollActual > ultimoScroll && !navbar.classList.contains('scroll-down')) {
-          // El usuario BAJA con claridad -> Ocultamos la navbar
           navbar.classList.remove('scroll-up');
           navbar.classList.add('scroll-down');
         } else if (scrollActual < ultimoScroll && navbar.classList.contains('scroll-down')) {
-          // El usuario SUBA con claridad -> Mostramos de rescate
           navbar.classList.remove('scroll-down');
           navbar.classList.add('scroll-up');
         }
       }
     }
 
-    // Actualizamos el marcador para la siguiente evaluación
     ultimoScroll = scrollActual;
   });
 
-  // Lógica del botón hamburguesa responsive
   const menuToggle = document.getElementById('menu-toggle') || document.querySelector('.menu-toggle');
   const navLinks = document.getElementById('nav-links');
   
@@ -667,9 +859,8 @@ const esIndex = window.location.pathname.endsWith("index.html") ||
   }
 }
 
-
 // ==========================================================================
-// 4. ANIMACIONES DE TARJETAS (Intersection Observer)
+// 4. ANIMACIONES DE TARJETAS
 // ==========================================================================
 function activarAnimacionesPreview() {
   const cards = document.querySelectorAll('.preview-card');
@@ -694,6 +885,3 @@ function activarAnimacionesPreview() {
 document.addEventListener('DOMContentLoaded', () => {
   activarAnimacionesPreview();
 });
-
-
-

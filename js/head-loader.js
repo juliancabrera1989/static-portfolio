@@ -153,12 +153,17 @@ let path = window.location.pathname.split("/").pop();
   document.head.appendChild(themeMeta);
 
   // 3. Fuentes y Estilos (Tailwind, FontAwesome, CSS propios)
+// 3. Fuentes y Estilos (Tailwind, FontAwesome, CSS propios)
   const styles = [
     "https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap",
     "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
-    "css/styles.css",
-    "css/navbar.css"
+    "css/styles.css"
   ];
+  
+  // Cargamos navbar.css SOLO si NO es el index.html
+  if (path !== "index.html") {
+    styles.push("css/navbar.css");
+  }
   
   // Preconnects para fuentes
   ["https://fonts.googleapis.com", "https://fonts.gstatic.com"].forEach(url => {
