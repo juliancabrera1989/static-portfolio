@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Structure Visualizer - Technical Case Study</title>
+  <link rel="stylesheet" href="css/project-docs.css">
+</head>
+<body>
+
+<div class="doc-container">
+  
+  <h1 class="header-title">Interactive Data Structure Visualizer</h1>
+  
+  <table class="meta-table">
+    <tr>
+      <td><strong>Developed by:</strong> Cabrera, Julián Ernesto</td>
+      <td><strong>Stack:</strong> React, TypeScript, Node.js, Express, MongoDB</td>
+    </tr>
+    <tr>
+      <td><strong>Live Demo:</strong> <a href="https://structures-frontend.onrender.com" target="_blank" rel="noopener">structures-frontend.onrender.com</a></td>
+      <td><strong>Repository:</strong> <a href="https://github.com/juliancabrera1989/structures-frontend" target="_blank" rel="noopener">github.com/juliancabrera1989</a></td>
+    </tr>
+  </table>
+
+  <!-- SECCIÓN 1 -->
+  <div class="section">
+    <div class="section-title">1. Technical Architecture & Memory Simulation</div>
+    <div class="text-body">
+      The application decouples UI rendering from underlying algorithmic logic through custom React hooks and strictly typed TypeScript models. Node pointers and dynamic memory mutations are calculated on raw DOM coordinate grids. User progress, dynamic configurations, and custom layout states persist globally via a Node.js/Express REST API connected to MongoDB Atlas.
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2 -->
+  <div class="section">
+    <div class="section-title">2. Main Dashboard & Structure Selection</div>
+    
+    <div class="test-box">
+      <p><strong>Objective:</strong> Verify seamless structure switching, cloud state loading, and dynamic UI canvas setup.</p>
+      <p><strong>Result:</strong> State resets and re-initializes memory pointer maps instantly without triggering unnecessary full-page re-renders.</p>
+    </div>
+
+    <div style="margin-bottom: 10px;" class="figure-item">
+      <p style="margin: 4px 0;"><strong>User Dashboard & Cloud Storage</strong></p>
+      <p class="text-muted">Profile overview listing active cloud-saved structures with quick-load and deletion management.</p>
+      <a href="assets/images/documents/structures/dashboard.png" data-lightbox="img-dash" class="img-wrapper">
+        <img src="assets/images/documents/structures/dashboard.png" alt="Main Dashboard" onerror="this.src='https://via.placeholder.com/800x260?text=Dashboard+Overview'">
+      </a>
+      <div class="caption">Figure 2.1: User Dashboard & Saved Structures List</div>
+    </div>
+
+    <div style="margin-top: 8px;" class="figure-item">
+      <p style="margin: 4px 0;"><strong>Initialization & Node Allocation Sequence</strong></p>
+      <p class="text-muted">Step-by-step initialization sequence showing empty canvas selection, pointer setup, and initial node linking.</p>
+      
+      <table class="grid-3-table">
+        <tr>
+          <td>
+            <a href="assets/images/documents/structures/lienzo-vacio.png" data-lightbox="img-lienzo-1" class="img-wrapper">
+              <img src="assets/images/documents/structures/lienzo-vacio.png" alt="Empty Canvas Selector" onerror="this.src='https://via.placeholder.com/300x180?text=Selector'">
+            </a>
+            <div class="caption">Figure 2.2a: Type Selection</div>
+          </td>
+          <td>
+            <a href="assets/images/documents/structures/estructura_inicializada.png" data-lightbox="img-lienzo-2" class="img-wrapper">
+              <img src="assets/images/documents/structures/estructura_inicializada.png" alt="Initialized Pointer" onerror="this.src='https://via.placeholder.com/300x180?text=Null+Pointer'">
+            </a>
+            <div class="caption">Figure 2.2b: StrPtr → NULL</div>
+          </td>
+          <td>
+            <a href="assets/images/documents/structures/estructura_un_nodo.png" data-lightbox="img-lienzo-3" class="img-wrapper">
+              <img src="assets/images/documents/structures/estructura_un_nodo.png" alt="Single Node" onerror="this.src='https://via.placeholder.com/300x180?text=Node+A'">
+            </a>
+            <div class="caption">Figure 2.2c: Node 'A' Allocation</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 3 -->
+  <div class="section">
+    <div class="section-title">3. Linear Structures Simulation (Stack & Queue)</div>
+    
+    <div class="test-box">
+      <p><strong>Objective:</strong> Validate real-time LIFO (Push/Pop) and FIFO (Enqueue/Dequeue) dynamic operations with CSS keyframe animation tracking.</p>
+      <p><strong>Result:</strong> Although both structures present a similar node-chain UI layout, runtime testing verifies distinct behavioral logic: Stacks restrict access strictly to the `TOP` pointer, whereas Queues manage boundary tracking via `HEAD` and `TAIL` pointers.</p>
+    </div>
+
+    <table class="grid-table">
+      <tr>
+        <td class="figure-item">
+          <a href="assets/images/documents/structures/stack.png" data-lightbox="img-stack" class="img-wrapper">
+            <img src="assets/images/documents/structures/stack.png" alt="Stack Memory Representation" onerror="this.src='https://via.placeholder.com/400x200?text=Stack+Structure'">
+          </a>
+          <div class="caption">Figure 3.1: Stack LIFO via `TOP` Pointer</div>
+        </td>
+        <td class="figure-item">
+          <a href="assets/images/documents/structures/queue.png" data-lightbox="img-queue" class="img-wrapper">
+            <img src="assets/images/documents/structures/queue.png" alt="Queue Memory Representation" onerror="this.src='https://via.placeholder.com/400x200?text=Queue+Structure'">
+          </a>
+          <div class="caption">Figure 3.2: Queue FIFO via `HEAD` & `TAIL`</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SECCIÓN 4 -->
+  <div class="section">
+    <div class="section-title">4. Singly Linked List Pointer Reassignments</div>
+    
+    <div class="test-box">
+      <p><strong>Objective:</strong> Test dynamic node insertion (start, mid-list index, end) and seamless multi-row canvas flow upon sequence extension.</p>
+      <p><strong>Result:</strong> `next` reference pointers dynamically break and reconnect without node loss. Dynamic canvas wrapping ensures complex multi-row chains maintain pointer integrity toward `NULL`.</p>
+    </div>
+
+    <div style="margin-bottom: 10px;" class="figure-item">
+      <p style="margin: 4px 0;"><strong>Intermediate Node Insertion Flow</strong></p>
+      <p class="text-muted">Demonstrates pointer rearrangement when inserting node 'D' at index 2 between existing nodes.</p>
+      <table class="grid-table">
+        <tr>
+          <td>
+            <a href="assets/images/documents/structures/antes_insercion_intermedia.png" data-lightbox="img-sll-before" class="img-wrapper">
+              <img src="assets/images/documents/structures/antes_insercion_intermedia.png" alt="Before Insertion" onerror="this.src='https://via.placeholder.com/400x200?text=Before+Insertion'">
+            </a>
+            <div class="caption">Figure 4.1a: Initial List [A → B → C]</div>
+          </td>
+          <td>
+            <a href="assets/images/documents/structures/pos_insercion_intermedia.png" data-lightbox="img-sll-after" class="img-wrapper">
+              <img src="assets/images/documents/structures/pos_insercion_intermedia.png" alt="After Insertion" onerror="this.src='https://via.placeholder.com/400x200?text=After+Insertion'">
+            </a>
+            <div class="caption">Figure 4.1b: Inserted [D] at Pos 2</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="figure-item">
+      <p style="margin: 4px 0;"><strong>Multi-row Dynamic Canvas Wrapping</strong></p>
+      <p class="text-muted">Evaluates visual pointer bending and layout adjustments when node sequences exceed container width.</p>
+      <table class="grid-table">
+        <tr>
+          <td>
+            <a href="assets/images/documents/structures/con_numeros1.png" data-lightbox="img-sll-multi1" class="img-wrapper">
+              <img src="assets/images/documents/structures/con_numeros1.png" alt="Multi-row State 1" onerror="this.src='https://via.placeholder.com/400x200?text=Multi-row+1'">
+            </a>
+            <div class="caption">Figure 4.2a: Initial Row Break Routing</div>
+          </td>
+          <td>
+            <a href="assets/images/documents/structures/con_numeros2.png" data-lightbox="img-sll-multi2" class="img-wrapper">
+              <img src="assets/images/documents/structures/con_numeros2.png" alt="Multi-row State 2" onerror="this.src='https://via.placeholder.com/400x200?text=Multi-row+2'">
+            </a>
+            <div class="caption">Figure 4.2b: Extended Sequence to `NULL`</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 5 -->
+  <div class="section">
+    <div class="section-title">5. Learning Center & Community Support Modules</div>
+    
+    <div class="test-box">
+      <p><strong>Objective:</strong> Evaluate user access to theoretical documentation, video tutorials, and interactive community forum flows.</p>
+      <p><strong>Result:</strong> Educational resources render seamlessly with external links, while the community module validates full CRUD capabilities (thread creation, post details view, and discussion support).</p>
+    </div>
+
+    <div style="margin-bottom: 10px;" class="figure-item">
+      <p style="margin: 4px 0;"><strong>Resources Center Module</strong></p>
+      <p class="text-muted">Documentation guides, algorithm cheat-sheets, and integrated reference links.</p>
+      <table class="grid-table">
+        <tr>
+          <td>
+            <a href="assets/images/documents/structures/resources_center-1.png" data-lightbox="img-res-1" class="img-wrapper">
+              <img src="assets/images/documents/structures/resources_center-1.png" alt="Resources Main" onerror="this.src='https://via.placeholder.com/400x200?text=Resources+View'">
+            </a>
+            <div class="caption">Figure 5.1a: Theory Guides Overview</div>
+          </td>
+          <td>
+            <a href="assets/images/documents/structures/resources_center-2.png" data-lightbox="img-res-2" class="img-wrapper">
+              <img src="assets/images/documents/structures/resources_center-2.png" alt="External References" onerror="this.src='https://via.placeholder.com/400x200?text=External+Links'">
+            </a>
+            <div class="caption">Figure 5.1b: External Documentation Index</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div style="margin-bottom: 10px;" class="figure-item">
+      <p style="margin: 4px 0;"><strong>Community Board & Post Creation</strong></p>
+      <p class="text-muted">Interactive forum interface for troubleshooting structures and sharing code solutions.</p>
+      <table class="grid-table">
+        <tr>
+          <td>
+            <a href="assets/images/documents/structures/community.png" data-lightbox="img-comm-1" class="img-wrapper">
+              <img src="assets/images/documents/structures/community.png" alt="Community Feed" onerror="this.src='https://via.placeholder.com/400x200?text=Community+Feed'">
+            </a>
+            <div class="caption">Figure 5.2a: Community Discussions Feed</div>
+          </td>
+          <td>
+            <a href="assets/images/documents/structures/community_empty_post.png" data-lightbox="img-comm-2" class="img-wrapper">
+              <img src="assets/images/documents/structures/community_empty_post.png" alt="Create Post Modal" onerror="this.src='https://via.placeholder.com/400x200?text=Create+Post'">
+            </a>
+            <div class="caption">Figure 5.2b: New Post Creation Modal</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="single-image-container figure-item">
+      <p style="margin: 4px 0;"><strong>Detailed Thread View</strong></p>
+      <p class="text-muted">Individual post view featuring rich text code snippets and embedded visualizer graph artifacts.</p>
+      <a href="assets/images/documents/structures/community_post.png" data-lightbox="img-comm-post" class="img-wrapper cropped-post">
+        <img src="assets/images/documents/structures/community_post.png" alt="Detailed Post View" onerror="this.src='https://via.placeholder.com/800x200?text=Thread+Detail'">
+      </a>
+      <div class="caption">Figure 5.3: Thread Detail View with Code & Visual Artifacts</div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 6 -->
+  <div class="section">
+    <div class="section-title">6. Backend Integration & Technical Summary</div>
+    <div class="text-body">
+      The Node.js/Express backend delivers strict payload validation using Mongoose schemas. API requests for saving and retrieving custom structure configurations execute in under 35ms. By isolating DOM mutation algorithms from React's state tree, the UI maintains a constant 60 FPS performance benchmark during animations.
+    </div>
+  </div>
+
+</div>
+
+<!-- LIGHTBOX TARGETS -->
+<div id="img-dash" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/dashboard.png"></div>
+<div id="img-lienzo-1" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/lienzo-vacio.png"></div>
+<div id="img-lienzo-2" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/estructura_inicializada.png"></div>
+<div id="img-lienzo-3" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/estructura_un_nodo.png"></div>
+<div id="img-stack" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/stack.png"></div>
+<div id="img-queue" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/queue.png"></div>
+<div id="img-sll-before" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/antes_insercion_intermedia.png"></div>
+<div id="img-sll-after" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/pos_insercion_intermedia.png"></div>
+<div id="img-sll-multi1" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/con_numeros1.png"></div>
+<div id="img-sll-multi2" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/con_numeros2.png"></div>
+<div id="img-res-1" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/resources_center-1.png"></div>
+<div id="img-res-2" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/resources_center-2.png"></div>
+<div id="img-comm-1" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/community.png"></div>
+<div id="img-comm-2" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/community_empty_post.png"></div>
+<div id="img-comm-post" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/structures/community_post.png"></div>
+
+</body>
+</html>

@@ -5,9 +5,10 @@ const projects = [
     descKey: "proj_sv_desc",
     defaultTitle: "Dynamic Data Structure Visualizer",
     defaultDesc: "Interactive platform to build and visualize dynamic data structures with persistent storage and authentication.",
-    tech: ["React", "Node.js", "MongoDB", "JWT"],
-    live: "#",
-    code: "#",
+    tech: ["React", "Node.js", "MongoDB", "JWT","Express","TypeScript"],
+    live: "https://structures-frontend.onrender.com/",
+    code: "https://github.com/juliancabrera1989/structures_frontend",
+    docPath: "assets/documents/project-structures.html", // 🎯 Documento HTML asociado
     image: "assets/images/projects-images/SV.gif",
     featured: true
   },
@@ -17,9 +18,10 @@ const projects = [
     descKey: "proj_fm_desc",
     defaultTitle: "Flight Management System",
     defaultDesc: "Full-stack application for managing flights, bookings, and user roles with a responsive dashboard and relational database integration.",
-    tech: ["Laravel", "PHP", "MySQL", "Tailwind"],
-    live: "#",
-    code: "#",
+    tech: ["Laravel", "PHP", "MySQL", "React","Blade","Bootstrap","postgreSQL"],
+    live: "https://flightmanagement-e4u9.onrender.com/",
+    code: "https://github.com/juliancabrera1989/FlightManagement",
+    docPath: "assets/documents/project-flights.html", // 🎯 Documento HTML asociado
     image: "assets/images/projects-images/FM.gif",
     featured: true
   },
@@ -29,9 +31,8 @@ const projects = [
     descKey: "proj_portfolio_desc",
     defaultTitle: "Static Portfolio Website",
     defaultDesc: "Minimal, responsive portfolio focused on performance, SEO, and clean UI.",
-    tech: ["HTML5", "CSS3", "JavaScript"],
-    live: "#",
-    code: "#",
+    tech: ["HTML5", "CSS3", "JavaScript","TailWind"],
+    code: "https://juliancabrera1989.github.io/static-portfolio/",
     image: "assets/images/projects/portfolio-preview.png",
     featured: false
   }
@@ -41,6 +42,11 @@ const featuredContainer = document.getElementById("featured-projects");
 const otherContainer = document.getElementById("other-projects");
 
 function createFeatured(project) {
+  // Solo se renderiza el botón si el proyecto tiene la propiedad docPath
+  const pdfBtnHtml = project.docPath 
+    ? `<a href="#" onclick="openDocModal('${project.docPath}'); return false;" class="text-gray-600 hover:text-gray-900 transition flex items-center gap-1 cursor-pointer" data-i18n="proj_btn_pdf">📄 PDF Overview</a>` 
+    : '';
+
   return `
     <div class="project-card grid md:grid-cols-2 gap-10 items-center">
 
@@ -67,10 +73,10 @@ function createFeatured(project) {
           `).join("")}
         </div>
 
-        <div class="flex gap-6 font-medium">
+        <div class="flex flex-wrap gap-6 font-medium items-center">
           <a href="${project.live}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 transition" data-i18n="proj_btn_demo">Live Demo →</a>
           <a href="${project.code}" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-900 transition" data-i18n="proj_btn_code">GitHub Code</a>
-          <a href="assets/pdf/flight-system-docs.pdf" target="_blank" class="text-gray-600" data-i18n="proj_btn_pdf">📄 PDF Overview</a>
+          ${pdfBtnHtml}
         </div>
       </div>
 
@@ -97,7 +103,6 @@ function createSmall(project) {
       </div>
 
       <div class="flex gap-4 text-sm font-medium">
-        <a href="${project.live}" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800" data-i18n="proj_btn_live">Live</a>
         <a href="${project.code}" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-gray-900" data-i18n="proj_btn_code_short">Code</a>
       </div>
 
@@ -115,7 +120,7 @@ if (featuredContainer && otherContainer) {
   });
 }
 
-/* Modal Logic */
+/* --- Image Modal Logic --- */
 const modal = document.getElementById("image-modal");
 const modalImg = document.getElementById("modal-img");
 const modalClose = document.getElementById("modal-close");
@@ -142,13 +147,124 @@ if (modal) {
   });
 }
 
+/* --- Document Modal Logic (Fetch project-flights.html) --- */
+const docModal = document.getElementById("doc-modal");
+const docModalBody = document.getElementById("doc-modal-body");
+const docModalClose = document.getElementById("doc-modal-close");
+
+async function openDocModal(docPath) {
+  if (!docModal || !docModalBody) return;
+
+  // Detecta si es flights o structures para asignarle el nombre al archivo
+  window.currentDocType = docPath.includes("flights") ? "flights" : "structures";
+
+  try {
+    const response = await fetch(docPath);
+    if (!response.ok) throw new Error("Could not fetch document");
+    
+    const htmlContent = await response.text();
+    docModalBody.innerHTML = htmlContent;
+
+    docModal.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+
+    bindDocLightboxes();
+
+  } catch (error) {
+    console.error("Error loading document:", error);
+  }
+}
+
+function bindDocLightboxes() {
+  const docLinks = docModalBody.querySelectorAll('a.img-wrapper');
+  
+  docLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault(); // Evita abrir la imagen en una pestaña nueva en la web
+
+      // 1. Prioriza el ID del atributo data-lightbox
+      // 2. Si no existe, prueba extraer el ID del hash (#img-...)
+      const targetId = link.getAttribute("data-lightbox") || link.getAttribute("href")?.replace("#", "");
+      
+      if (targetId) {
+        const targetLightbox = docModalBody.querySelector(`#${targetId}`);
+        if (targetLightbox) {
+          targetLightbox.style.display = "flex";
+        }
+      }
+    });
+  });
+
+  // Lógica de cierre de los Lightboxes
+  const docLightboxes = docModalBody.querySelectorAll(".lightbox");
+  docLightboxes.forEach(lb => {
+    const closeBtn = lb.querySelector(".lightbox-close");
+    const img = lb.querySelector("img");
+
+    const hideLightbox = (e) => {
+      if (e) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+      lb.style.display = "none";
+    };
+
+    if (closeBtn) closeBtn.addEventListener("click", hideLightbox);
+
+    lb.addEventListener("click", (e) => {
+      if (e.target === lb) hideLightbox(e);
+    });
+
+    if (img) img.addEventListener("click", (e) => e.stopPropagation());
+  });
+}
+
+function closeDocModal() {
+  if (!docModal || !docModalBody) return;
+  docModal.classList.add("hidden");
+  docModalBody.innerHTML = "";
+  document.body.style.overflow = "auto";
+}
+
+if (docModalClose) docModalClose.addEventListener("click", closeDocModal);
+
+if (docModal) {
+  docModal.addEventListener("click", (e) => {
+    if (e.target === docModal) closeDocModal();
+  });
+}
+
+/* --- Global Keyboard Controls (Cierre Estricto por Capas) --- */
 document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape" && modal && !modal.classList.contains("hidden")) {
-    closeModal();
+  if (e.key === "Escape") {
+    // CAPA 1: ¿Hay alguna imagen de 'project-flights.html' abierta?
+    if (docModalBody) {
+      const openInnerLightbox = Array.from(docModalBody.querySelectorAll(".lightbox")).find(
+        lb => window.getComputedStyle(lb).display !== "none"
+      );
+
+      if (openInnerLightbox) {
+        openInnerLightbox.style.display = "none";
+        e.preventDefault();
+        e.stopPropagation();
+        return; // ✋ Detiene la ejecución aquí para mantener el documento visible
+      }
+    }
+
+    // CAPA 2: ¿Está abierto el modal de la imagen principal del proyecto?
+    if (modal && !modal.classList.contains("hidden")) {
+      closeModal();
+      return;
+    }
+
+    // CAPA 3: ¿Está abierto el modal del documento?
+    if (docModal && !docModal.classList.contains("hidden")) {
+      closeDocModal();
+    }
   }
 });
 
-/* Intersection Observer */
+/* --- Intersection Observer --- */
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {

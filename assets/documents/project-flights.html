@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Flight Management System - Case Study</title>
+<link rel="stylesheet" href="css/project-docs.css">
+</head>
+<body>
+
+<div class="doc-container">
+  
+  <!-- HEADER & META -->
+  <h1 class="header-title">Flight Management System</h1>
+  
+  <table class="meta-table">
+    <tr>
+      <td><strong>Developed by:</strong> Cabrera, Julián Ernesto</td>
+      <td><strong>Stack:</strong> Laravel, React, MySQL, Tailwind</td>
+    </tr>
+    <tr>
+      <td><strong>Live Demo:</strong> <a href="https://flightmanagement-e4u9.onrender.com/" target="_blank" rel="noopener">flightmanagement-e4u9.onrender.com</a></td>
+      <td><strong>Repository:</strong> <a href="https://github.com/juliancabrera1989/FlightManagement" target="_blank" rel="noopener">github.com/juliancabrera1989</a></td>
+    </tr>
+  </table>
+
+  <!-- SECCIÓN 1 -->
+  <div class="section">
+    <div class="section-title">1. Architecture & Landing Page Overview</div>
+    
+    <div class="test-box">
+      <p>
+        The application is architected around Laravel's MVC pattern, employing Eloquent ORM with eager loading optimization to prevent N+1 queries across complex relations (flights, airports, airlines, and gates). The front-end leverages React components for real-time board rendering and map canvas visualizations.
+      </p>
+    </div>
+
+    <div style="margin-top: 8px;">
+      <p style="margin: 4px 0;"><strong>Landing Page Interface & Navigation</strong></p>
+      <p class="text-muted">Main entry point featuring the hero introduction section and the interactive global airport hub explorer.</p>
+      
+      <table class="grid-table">
+        <tr>
+          <td>
+            <a href="assets/images/documents/flights/home-1.png" data-lightbox="img-home-1" class="img-wrapper">
+              <img src="assets/images/documents/flights/home-1.png" alt="Home Hero Banner" onerror="this.src='https://via.placeholder.com/400x220?text=Home+Hero+Banner'">
+            </a>
+            <div class="caption">Figure 1.1a: Landing Page Hero Section & Navigation Bar</div>
+          </td>
+          <td>
+            <a href="assets/images/documents/flights/home-2.png" data-lightbox="img-home-2" class="img-wrapper">
+              <img src="assets/images/documents/flights/home-2.png" alt="Explore Global Airport Hubs" onerror="this.src='https://via.placeholder.com/400x220?text=Airport+Hubs+Carousel'">
+            </a>
+            <div class="caption">Figure 1.1b: Interactive Global Airport Hubs Carousel</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 2 -->
+  <div class="section">
+    <div class="section-title">2. Role-Based Access Control (RBAC)</div>
+    
+    <div class="test-box">
+      <p><strong>Objective:</strong> Validate operational scoping and resource access isolation across user roles (Airline Staff, Airport Staff, and Passenger).</p>
+      <p><strong>Result:</strong> Enforces strict domain integrity by restricting edit/delete permissions dynamically based on the authenticated context.</p>
+    </div>
+
+    <!-- Contexto 1 -->
+    <div style="margin-top: 8px;">
+      <p style="margin: 4px 0;"><strong>Role Context 1: Airline Staff Scope (British Airways)</strong></p>
+      <p class="text-muted">Operations are locked strictly to the assigned carrier. Field-level restrictions disable editing the airline domain.</p>
+      
+      <table class="grid-table">
+        <tr>
+          <td>
+            <a href="assets/images/documents/flights/rbac_airlineEmp.png" data-lightbox="img-rbac-airline-emp" class="img-wrapper">
+              <img src="assets/images/documents/flights/rbac_airlineEmp.png" alt="Airline Employee Dashboard" onerror="this.src='https://via.placeholder.com/400x220?text=Airline+Staff+Dashboard'">
+            </a>
+            <div class="caption">Figure 2.1a: Airline Staff Operational View</div>
+          </td>
+          <td>
+            <a href="assets/images/documents/flights/rbac_airlineEmp_editFlight.png" data-lightbox="img-rbac-airline-edit" class="img-wrapper">
+              <img src="assets/images/documents/flights/rbac_airlineEmp_editFlight.png" alt="Edit Flight - Airline Scoped" onerror="this.src='https://via.placeholder.com/400x220?text=Airline+Edit+Form'">
+            </a>
+            <div class="caption">Figure 2.1b: Flight Edit Form (Disabled Airline Field)</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Contexto 2 -->
+    <div>
+      <p style="margin: 4px 0;"><strong>Role Context 2: Airport Base Staff Scope (GRU Base)</strong></p>
+      <p class="text-muted">Operations are locked to the base origin hub. Field-level restrictions disable modifying the origin airport.</p>
+      
+      <table class="grid-table">
+        <tr>
+          <td>
+            <a href="assets/images/documents/flights/rbac_airportEmp.png" data-lightbox="img-rbac-airport-emp" class="img-wrapper">
+              <img src="assets/images/documents/flights/rbac_airportEmp.png" alt="Airport Employee Dashboard" onerror="this.src='https://via.placeholder.com/400x220?text=Airport+Staff+Dashboard'">
+            </a>
+            <div class="caption">Figure 2.2a: Airport Base Operational View</div>
+          </td>
+          <td>
+            <a href="assets/images/documents/flights/rbac_airportEmp_EditFlight.png" data-lightbox="img-rbac-airport-edit" class="img-wrapper">
+              <img src="assets/images/documents/flights/rbac_airportEmp_EditFlight.png" alt="Edit Flight - Airport Scoped" onerror="this.src='https://via.placeholder.com/400x220?text=Airport+Edit+Form'">
+            </a>
+            <div class="caption">Figure 2.2b: Flight Edit Form (Disabled Origin Field)</div>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <hr class="divider">
+
+    <!-- Contexto 3 -->
+    <div style="page-break-inside: avoid;">
+      <p style="margin: 4px 0;"><strong>Role Context 3: Passenger / Guest View (Read-Only)</strong></p>
+      <p class="text-muted">Public interface designed exclusively for search and booking. All management capabilities are stripped from the layer.</p>
+      
+      <a href="assets/images/documents/flights/rbac_passenger.png" data-lightbox="img-rbac-passenger" class="img-wrapper">
+        <img src="assets/images/documents/flights/rbac_passenger.png" alt="Passenger Flights Finder" onerror="this.src='https://via.placeholder.com/800x280?text=Passenger+View'">
+      </a>
+      <div class="caption">Figure 2.3: Read-only Passenger Interface</div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN 3 -->
+  <div class="section">
+    <div class="section-title">3. Real-Time Flight Boards Module</div>
+    
+    <div class="test-box">
+      <p><strong>Objective:</strong> Test dynamic, real-time board simulations with zero-page-reload status updates.</p>
+      <p><strong>Result:</strong> Seamless status synchronization (Scheduled, Boarding, In-Air, Landed, Delayed) rendered across multiple visual board themes.</p>
+    </div>
+
+    <div class="single-image-container">
+      <a href="assets/images/documents/flights/boards-1.png" data-lightbox="img-board-1" class="img-wrapper">
+        <img src="assets/images/documents/flights/boards-1.png" alt="Modern LCD Board" onerror="this.src='https://via.placeholder.com/800x280?text=Modern+LCD+Display'">
+      </a>
+      <div class="caption">Figure 3.1: Modern LCD Display Interface</div>
+    </div>
+
+    <table class="grid-table">
+      <tr>
+        <td>
+          <a href="assets/images/documents/flights/boards-2.png" data-lightbox="img-board-2" class="img-wrapper">
+            <img src="assets/images/documents/flights/boards-2.png" alt="Dot Matrix Board" onerror="this.src='https://via.placeholder.com/400x220?text=Dot+Matrix+Board'">
+          </a>
+          <div class="caption">Figure 3.2a: Dot-Matrix Retro Display</div>
+        </td>
+        <td>
+          <a href="assets/images/documents/flights/boards-3.png" data-lightbox="img-board-3" class="img-wrapper">
+            <img src="assets/images/documents/flights/boards-3.png" alt="Solari Board" onerror="this.src='https://via.placeholder.com/400x220?text=Solari+Board'">
+          </a>
+          <div class="caption">Figure 3.2b: Mechanical Solari Split-Flap</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SECCIÓN 4 -->
+  <div class="section">
+    <div class="section-title">4. Graph Optimization Algorithm (Dijkstra)</div>
+    
+    <div class="test-box">
+      <p><strong>Objective:</strong> Compare shortest-path calculation between the same origin/destination under broad vs. constrained time windows.</p>
+      <p><strong>Result:</strong> Demonstrates how temporal restrictions invalidate the mathematically shortest geographic path, forcing the algorithm to recalculate a valid connection.</p>
+    </div>
+
+    <table class="grid-table">
+      <tr>
+        <td>
+          <a href="assets/images/documents/flights/paths_filters-1.png" data-lightbox="img-dijkstra-form-1" class="img-wrapper">
+            <img src="assets/images/documents/flights/paths_filters-1.png" alt="Filter Form - Full Range" onerror="this.src='https://via.placeholder.com/400x220?text=Form+1:+Full+Criteria'">
+          </a>
+          <div class="caption">Test 1: Search Form (Unrestricted / All Criteria)</div>
+        </td>
+        <td>
+          <a href="assets/images/documents/flights/paths_filters-2.png" data-lightbox="img-dijkstra-form-2" class="img-wrapper">
+            <img src="assets/images/documents/flights/paths_filters-2.png" alt="Filter Form - Bounded Time" onerror="this.src='https://via.placeholder.com/400x220?text=Form+2:+Bounded+Time'">
+          </a>
+          <div class="caption">Test 2: Search Form (Narrow Time Window)</div>
+        </td>
+      </tr>
+    </table>
+
+    <table class="grid-table">
+      <tr>
+        <td>
+          <a href="assets/images/documents/flights/paths_sim-1.png" data-lightbox="img-dijkstra-res-1" class="img-wrapper">
+            <img src="assets/images/documents/flights/paths_sim-1.png" alt="Simulation Result - Full Range" onerror="this.src='https://via.placeholder.com/400x220?text=Result+1:+Optimal+Path'">
+          </a>
+          <div class="caption">Result 1: Graph Route (Optimal Overall Path)</div>
+        </td>
+        <td>
+          <a href="assets/images/documents/flights/paths_sim-2.png" data-lightbox="img-dijkstra-res-2" class="img-wrapper">
+            <img src="assets/images/documents/flights/paths_sim-2.png" alt="Simulation Result - Bounded Time" onerror="this.src='https://via.placeholder.com/400x220?text=Result+2:+Recalculated+Path'">
+          </a>
+          <div class="caption">Result 2: Graph Route (Recalculated Time-Constrained Path)</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SECCIÓN 5 -->
+  <div class="section">
+    <div class="section-title">5. Alternative Routes Enumeration (DFS)</div>
+    
+    <div class="test-box">
+      <p><strong>Objective:</strong> Enumerate alternative itinerary paths between Origin and Destination using Depth-First Search (DFS) with backtracking.</p>
+      <p><strong>Result:</strong> Restricting visited nodes enforces strict topological uniqueness (preventing redundant airport sequences), while allowing node repeats exposes schedule variations.</p>
+    </div>
+
+    <table class="grid-table">
+      <tr>
+        <td>
+          <a href="assets/images/documents/flights/DFS_filters-1.png" data-lightbox="img-dfs-filters-1" class="img-wrapper">
+            <img src="assets/images/documents/flights/DFS_filters-1.png" alt="DFS Search Form - Unique Nodes" onerror="this.src='https://via.placeholder.com/400x220?text=DFS+Form+1'">
+          </a>
+          <div class="caption">Test 1: Search Form (Allow Repeat Nodes: OFF)</div>
+        </td>
+        <td>
+          <a href="assets/images/documents/flights/DFS_filters-2.png" data-lightbox="img-dfs-filters-2" class="img-wrapper">
+            <img src="assets/images/documents/flights/DFS_filters-2.png" alt="DFS Search Form - Repeat Nodes ON" onerror="this.src='https://via.placeholder.com/400x220?text=DFS+Form+2'">
+          </a>
+          <div class="caption">Test 2: Search Form (Allow Repeat Nodes: ON)</div>
+        </td>
+      </tr>
+    </table>
+
+    <table class="grid-table">
+      <tr>
+        <td>
+          <a href="assets/images/documents/flights/DFS_sim-1.png" data-lightbox="img-dfs-sim-1" class="img-wrapper">
+            <img src="assets/images/documents/flights/DFS_sim-1.png" alt="DFS Map Result - Unique Nodes" onerror="this.src='https://via.placeholder.com/400x220?text=DFS+Result+1'">
+          </a>
+          <div class="caption">Result 1: Unique Topologies (Pruned Intermediate Nodes)</div>
+        </td>
+        <td>
+          <a href="assets/images/documents/flights/DFS_sim-2.png" data-lightbox="img-dfs-sim-2" class="img-wrapper">
+            <img src="assets/images/documents/flights/DFS_sim-2.png" alt="DFS Map Result - Repeat Nodes ON" onerror="this.src='https://via.placeholder.com/400x220?text=DFS+Result+2'">
+          </a>
+          <div class="caption">Result 2: Discovered Combinations (Schedule Variations Allowed)</div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- SECCIÓN 6 -->
+  <div class="section">
+    <div class="section-title">6. Backend Performance & Conclusion</div>
+    <div class="text-body">
+      By utilizing database indexing on foreign keys (<code>departure_airport_id</code>, <code>departure_time</code>) and database procedures for batch generation, queries for complex graphs execute in under 40ms. The application achieves clean separation of concerns, resilience under heavy data load (+15,000 records), and flexible real-time monitoring capabilities.
+    </div>
+  </div>
+
+</div>
+
+<!-- LIGHTBOX TARGETS (Pantalla Completa) -->
+<div id="img-home-1" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/home-1.png"></div>
+<div id="img-home-2" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/home-2.png"></div>
+<div id="img-rbac-airline-emp" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/rbac_airlineEmp.png"></div>
+<div id="img-rbac-airline-edit" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/rbac_airlineEmp_editFlight.png"></div>
+<div id="img-rbac-airport-emp" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/rbac_airportEmp.png"></div>
+<div id="img-rbac-airport-edit" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/rbac_airportEmp_EditFlight.png"></div>
+<div id="img-rbac-passenger" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/rbac_passenger.png"></div>
+<div id="img-board-1" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/boards-1.png"></div>
+<div id="img-board-2" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/boards-2.png"></div>
+<div id="img-board-3" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/boards-3.png"></div>
+<div id="img-dijkstra-form-1" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/paths_filters-1.png"></div>
+<div id="img-dijkstra-form-2" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/paths_filters-2.png"></div>
+<div id="img-dijkstra-res-1" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/paths_sim-1.png"></div>
+<div id="img-dijkstra-res-2" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/paths_sim-2.png"></div>
+<div id="img-dfs-filters-1" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/DFS_filters-1.png"></div>
+<div id="img-dfs-filters-2" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/DFS_filters-2.png"></div>
+<div id="img-dfs-sim-1" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/DFS_sim-1.png"></div>
+<div id="img-dfs-sim-2" class="lightbox"><a href="#" class="lightbox-close">&times;</a><img src="assets/images/documents/flights/DFS_sim-2.png"></div>
+
+</body>
+</html>

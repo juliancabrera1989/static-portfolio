@@ -2,10 +2,12 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <script src="js/head-loader.js"></script>
+  <!-- Librería para generación y descarga directa de PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body class="bg-gray-100 text-gray-900 font-sans">
 
-  <header>
+  <header class="relative z-10">
     <nav id="navbar-container"></nav>
   </header>
 
@@ -33,14 +35,87 @@
     </div>
   </section>
 
-  <div id="image-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 md:p-8">
+  <!-- MODAL 1: Para Previsualización de Imágenes -->
+  <div id="image-modal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 md:p-8">
     <div class="relative max-w-[1435px] w-full max-h-[90vh] flex items-center justify-center">
       <button id="modal-close" class="absolute -top-10 right-2 text-white text-4xl font-bold hover:text-gray-300 transition cursor-pointer z-10">&times;</button>
       <img id="modal-img" src="" alt="Project Preview" class="w-full h-auto max-h-[85vh] rounded-xl shadow-2xl object-cover border border-gray-700">
     </div>
   </div>
 
+  <!-- MODAL 2: Para Documentos HTML / PDF Overview -->
+  <div id="doc-modal" class="fixed inset-0 z-[9999] hidden flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 md:p-8">
+    <div class="relative max-w-4xl w-full bg-white text-gray-900 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      
+      <!-- Cabecera del Modal con Botón de Descarga -->
+      <div class="flex items-center justify-between px-6 py-4 border-b border-gray-200 bg-gray-50">
+        <h3 class="text-lg font-semibold text-gray-800">Project Document Overview</h3>
+        
+        <div class="flex items-center gap-4">
+          <button type="button" onclick="downloadModalPDF()" class="px-4 py-2 bg-sky-600 hover:bg-sky-700 text-white font-medium text-sm rounded-lg shadow transition flex items-center gap-2 cursor-pointer">
+            <span>📥</span> Download PDF
+          </button>
+          <button id="doc-modal-close" class="text-gray-500 hover:text-gray-900 text-3xl font-bold transition cursor-pointer leading-none">&times;</button>
+        </div>
+      </div>
+
+      <!-- Cuerpo Scrolleable donde se inyecta el HTML -->
+      <div id="doc-modal-body" class="p-6 md:p-8 overflow-y-auto flex-1">
+        <!-- El contenido HTML se carga aquí vía JS -->
+      </div>
+
+    </div>
+  </div>
+
   <footer class="site-footer" id="footer-container"></footer>
+
+  <!-- Script para la descarga directa a PDF -->
+ <script>
+async function downloadModalPDF() {
+  const element = document.getElementById('doc-modal-body');
+  if (!element) return;
+
+  // Asignación dinámica del nombre de archivo usando la variable global
+  const filename = window.currentDocType === 'flights' 
+    ? 'Flight_Management_Overview.pdf' 
+    : 'Data_Structures_Overview.pdf';
+
+  // 1. Guardar estado original
+  const savedMaxHeight = element.style.maxHeight;
+  const savedOverflow = element.style.overflow;
+  const savedScrollTop = element.scrollTop;
+
+  // 2. "Desplegar" el contenedor al 100% para que html2pdf vea todas las páginas
+  element.style.maxHeight = 'none';
+  element.style.overflow = 'visible';
+
+  const opt = {
+    margin:       [10, 10, 10, 10],
+    filename:     filename,
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { 
+      scale: 2, 
+      useCORS: true,
+      scrollY: 0
+    },
+    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    // Usamos avoid-all junto a css para evitar divisiones agresivas en tablas
+    pagebreak:    { mode: ['css', 'legacy'], avoid: ['.grid-table', '.grid-3-table', '.figure-item', '.section'] }
+  };
+
+  try {
+    // Generar el PDF tomando el alto real completo
+    await html2pdf().set(opt).from(element).save();
+  } catch (error) {
+    console.error("Error al generar PDF:", error);
+  } finally {
+    // 3. Restaurar tu CSS de pantalla intacto al finalizar
+    element.style.maxHeight = savedMaxHeight;
+    element.style.overflow = savedOverflow;
+    element.scrollTop = savedScrollTop;
+  }
+}
+</script>
 
   <script src="js/projects.js"></script>
 </body>
