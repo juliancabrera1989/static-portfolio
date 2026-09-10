@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>CV - Julián Ernesto Cabrera</title>
+    <style>
+        @page { size: A4; margin: 15mm; }
+        body { font-family: Helvetica, Arial, sans-serif; color: #111; line-height: 1.3; margin: 0; padding: 0; font-size: 11px; background: #fff; }
+        h1 { font-size: 19px; margin: 0 0 3px 0; text-transform: uppercase; letter-spacing: 0.5px; color: #111; }
+        .subtitle { font-size: 11.5px; font-weight: bold; color: #0066cc; margin-bottom: 5px; }
+        .contact { font-size: 10.5px; color: #333; margin-bottom: 10px; border-bottom: 2px solid #0066cc; padding-bottom: 6px; }
+        .contact a { color: #0066cc; text-decoration: none; }
+        h2 { font-size: 11.5px; text-transform: uppercase; border-bottom: 1px solid #ccc; padding-bottom: 2px; margin: 10px 0 4px 0; color: #111; letter-spacing: 0.5px; }
+        p { margin: 0 0 4px 0; text-align: justify; }
+        ul { margin: 0 0 6px 0; padding-left: 14px; }
+        li { margin-bottom: 2px; }
+        .project-title { font-weight: bold; font-size: 11px; margin-top: 6px; display: flex; justify-content: space-between; }
+        .project-sub { font-size: 10.5px; color: #555; margin-bottom: 3px; }
+        .project-sub a { color: #0066cc; text-decoration: none; }
+        .right { float: right; font-weight: normal; color: #0066cc; }
+    </style>
+</head>
+<body>
+
+    <h1>JULIÁN ERNESTO CABRERA</h1>
+    <div class="subtitle">Desarrollador Full Stack | Estudiante Avanzado de Ingeniería en Sistemas</div>
+    <div class="contact">
+        Santa Fe, Argentina &nbsp;|&nbsp; 
+        <a href="mailto:juliancabrersf@gmail.com">juliancabrersf@gmail.com</a> &nbsp;|&nbsp; 
+        <a href="https://linkedin.com/in/julian-cabrera-dev" target="_blank">LinkedIn</a> &nbsp;|&nbsp; 
+        <a href="https://juliancabrera1989.github.io/static-portfolio/" target="_blank">Portfolio</a> &nbsp;|&nbsp; 
+        <a href="https://github.com/juliancabrera1989" target="_blank">GitHub</a>
+    </div>
+
+    <h2>PERFIL PROFESIONAL</h2>
+    <p>Estudiante avanzado de Ingeniería en Sistemas de Información y Desarrollador Full Stack orientado a la construcción de aplicaciones web escalables y arquitecturas backend de alto rendimiento. Sólida base académica en diseño de software, modelado de bases de datos relacionales y no relacionales, y resolución de problemas lógicos complejos. Apasionado por escribir código limpio, mantenible y enfocado en la experiencia de usuario.</p>
+    
+    <h2>HABILIDADES TÉCNICAS</h2>
+    <ul>
+        <li><strong>Backend:</strong> PHP (Laravel, Eloquent ORM), Node.js, Express, Java (Hibernate, Arquitectura de 3 Capas), APIs RESTful.</li>
+        <li><strong>Frontend:</strong> React, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Blade, Bootstrap.</li>
+        <li><strong>Bases de Datos, Datos & BI:</strong> PostgreSQL (PL/pgSQL, Procedimientos Almacenados, Triggers), MySQL, MongoDB, Data Warehouses, Data Marts, Pentaho (ETL / OLAP), Optimización de Consultas, Indexación.</li>
+        <li><strong>Ingeniería de Software & Arquitectura:</strong> Ciclo de Vida del Software (SDLC), Modelado UML, Paradigmas Lógico, Funcional y de Objetos Puros (Prolog, Racket, SmallTalk/Pharo), Conceptos Ágiles, Teoría de Grafos, Estructuras de Datos, Arquitectura RBAC, POO, MVC.</li>
+        <li><strong>Lenguajes & Sistemas:</strong> C, C++ (ZinjaI), Git, GitHub, Render, Autenticación JWT, Docker (Básico).</li>
+    </ul>
+
+    <h2>PROYECTOS DESTACADOS</h2>
+
+    <div class="project-title">
+        <span>Sistema de Gestión de Vuelos (Flight Management System)</span>
+        <span class="right">Desarrollador Full Stack</span>
+    </div>
+    <div class="project-sub">
+        Demo en Vivo: <a href="https://flightmanagement-e4u9.onrender.com/" target="_blank">flightmanagement-e4u9.onrender.com</a> &nbsp;|&nbsp; 
+        Código: <a href="https://github.com/juliancabrera1989/FlightManagement" target="_blank">github.com/juliancabrera1989/FlightManagement</a>
+    </div>
+    <ul>
+        <li>Diseñé y desarrollé una plataforma de operaciones utilizando Laravel y React con carga ansiosa (eager loading) para optimizar el rendimiento de las consultas SQL.</li>
+        <li>Implementé motores de optimización de rutas utilizando el algoritmo de Dijkstra (camino más corto con restricciones de tiempo) y DFS para la exploración de rutas alternativas.</li>
+        <li>Creé procedimientos almacenados en PL/pgSQL (PostgreSQL) para generar en lote y simular más de 15.000 registros de vuelos en tiempo real con coherencia temporal.</li>
+        <li>Implementé control de acceso basado en roles (RBAC) para segmentar permisos entre Personal de Aerolínea, Base de Aeropuerto y Pasajeros.</li>
+    </ul>
+
+    <div class="project-title">
+        <span>Visualizador Dinámico de Estructuras de Datos</span>
+        <span class="right">Desarrollador Full Stack</span>
+    </div>
+    <div class="project-sub">
+        Demo en vivo: <a href="https://structures-frontend.onrender.com/" target="_blank">structures-frontend.onrender.com</a> &nbsp;|&nbsp; 
+        Codigo (FE): <a href="https://github.com/juliancabrera1989/structures_frontend" target="_blank">GitHub (Frontend)</a> &nbsp;|&nbsp; 
+        Codigo (BE): <a href="https://github.com/juliancabrera1989/structures_backend" target="_blank">GitHub (Backend)</a>
+    </div>
+    <ul>
+        <li>Desarrollé un visualizador interactivo en canvas para estructuras de memoria dinámica (Listas Enlazadas, Árboles, Pilas, Colas) utilizando React y TypeScript.</li>
+        <li>Construí una API REST en Node.js / Express conectada a MongoDB para la persistencia de estados, lienzos guardados y configuraciones de usuario.</li>
+        <li>Implementé autenticación segura de usuarios mediante JWT (JSON Web Tokens) y encriptación de contraseñas con bcrypt.</li>
+    </ul>
+
+    <div class="project-title">
+        <span>Sitio Web Portfolio Estático</span>
+        <span class="right">Desarrollador Frontend</span>
+    </div>
+    <div class="project-sub">
+        Demo en Vivo: <a href="https://juliancabrera1989.github.io/static-portfolio/" target="_blank">juliancabrera1989.github.io/static-portfolio/</a>
+    </div>
+    <ul>
+        <li>Diseñé y construí un sitio web personal responsivo orientado a rendimiento y accesibilidad utilizando HTML5, CSS3, JavaScript y Tailwind CSS.</li>
+    </ul>
+
+    <h2>EDUCACIÓN E IDIOMAS</h2>
+    <ul>
+        <li><strong>Ingeniería en Sistemas de Información:</strong> Universidad Tecnológica Nacional - Facultad Regional Santa Fe (UTN FRSF) — Estudiante Avanzado (39/42 Materias Aprobadas). Graduación Estimada: Mediados de 2027.</li>
+        <li><strong>Inglés:</strong> Nivel Avanzado / C1 (Fluidez en comunicación técnica y lectura/escritura de documentación).</li>
+        <li><strong>Japonés:</strong> Nivel Básico (Examen Oficial JLPT N4 Aprobado).</li>
+    </ul>
+
+</body>
+</html>
