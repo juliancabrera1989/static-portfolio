@@ -70,53 +70,54 @@
   <footer class="site-footer" id="footer-container"></footer>
 
   <!-- Script para la descarga directa a PDF -->
- <script>
-async function downloadModalPDF() {
-  const element = document.getElementById('doc-modal-body');
-  if (!element) return;
+  <script>
+    async function downloadModalPDF() {
+      const element = document.getElementById('doc-modal-body');
+      if (!element) return;
 
-  // Asignación dinámica del nombre de archivo usando la variable global
-  const filename = window.currentDocType === 'flights' 
-    ? 'Flight_Management_Overview.pdf' 
-    : 'Data_Structures_Overview.pdf';
+      // Asignación dinámica del nombre de archivo usando la variable global
+      const filename = window.currentDocType === 'flights' 
+        ? 'Flight_Management_Overview.pdf' 
+        : 'Data_Structures_Overview.pdf';
 
-  // 1. Guardar estado original
-  const savedMaxHeight = element.style.maxHeight;
-  const savedOverflow = element.style.overflow;
-  const savedScrollTop = element.scrollTop;
+      // 1. Guardar estado original
+      const savedMaxHeight = element.style.maxHeight;
+      const savedOverflow = element.style.overflow;
+      const savedScrollTop = element.scrollTop;
 
-  // 2. "Desplegar" el contenedor al 100% para que html2pdf vea todas las páginas
-  element.style.maxHeight = 'none';
-  element.style.overflow = 'visible';
+      // 2. Desplegar el contenedor al 100%
+      element.style.maxHeight = 'none';
+      element.style.overflow = 'visible';
 
-  const opt = {
-    margin:       [10, 10, 10, 10],
-    filename:     filename,
-    image:        { type: 'jpeg', quality: 0.98 },
-    html2canvas:  { 
-      scale: 2, 
-      useCORS: true,
-      scrollY: 0
-    },
-    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    // Usamos avoid-all junto a css para evitar divisiones agresivas en tablas
-    pagebreak:    { mode: ['css', 'legacy'], avoid: ['.grid-table', '.grid-3-table', '.figure-item', '.section'] }
-  };
+      const opt = {
+        margin:       [10, 10, 10, 10],
+        filename:     filename,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { 
+          scale: 2, 
+          useCORS: true,
+          scrollY: 0
+        },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' },
+        pagebreak:    { mode: ['css', 'legacy'], avoid: ['.grid-table', '.grid-3-table', '.figure-item', '.section'] }
+      };
 
-  try {
-    // Generar el PDF tomando el alto real completo
-    await html2pdf().set(opt).from(element).save();
-  } catch (error) {
-    console.error("Error al generar PDF:", error);
-  } finally {
-    // 3. Restaurar tu CSS de pantalla intacto al finalizar
-    element.style.maxHeight = savedMaxHeight;
-    element.style.overflow = savedOverflow;
-    element.scrollTop = savedScrollTop;
-  }
-}
-</script>
+      try {
+        await html2pdf().set(opt).from(element).save();
+      } catch (error) {
+        console.error("Error al generar PDF:", error);
+      } finally {
+        // 3. Restaurar CSS original
+        element.style.maxHeight = savedMaxHeight;
+        element.style.overflow = savedOverflow;
+        element.scrollTop = savedScrollTop;
+      }
+    }
+  </script>
 
+  <!-- Carga secuencial de scripts para evitar carreras de ejecución en producción -->
+  <script src="js/i18n.js"></script>
+  <script src="js/script.js"></script>
   <script src="js/projects.js"></script>
 </body>
 </html>

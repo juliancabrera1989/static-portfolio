@@ -90,7 +90,7 @@
 //     <link rel="preconnect" href="https://fonts.googleapis.com">
 //     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 //     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
-
+    
 //     <!-- Estilos y CDNs Globales -->
 //     <script src="https://cdn.tailwindcss.com"><\/script>
 //     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
@@ -123,7 +123,7 @@ let path = window.location.pathname.split("/").pop();
 
   // 1. Metadatos básicos y Título
   document.characterSet = "UTF-8";
-
+  
   const metaViewport = document.createElement("meta");
   metaViewport.name = "viewport";
   metaViewport.content = "width=device-width, initial-scale=1.0";
@@ -137,7 +137,7 @@ let path = window.location.pathname.split("/").pop();
   // 2. Favicons y Manifest
  // 2. Favicons y Manifest
   const basePath = window.location.pathname.includes('/static-portfolio/') ? '/static-portfolio/' : '';
-
+  
   const icons = [
     { rel: "icon", href: `${basePath}assets/icons/favicon.ico`, sizes: "any" },
     { rel: "icon", type: "image/svg+xml", href: `${basePath}assets/icons/favicon.svg` },
@@ -162,12 +162,12 @@ let path = window.location.pathname.split("/").pop();
     "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css",
     "css/styles.css"
   ];
-
+  
   // Cargamos navbar.css SOLO si NO es el index.html
   if (path !== "index.html") {
     styles.push("css/navbar.css");
   }
-
+  
   // Preconnects para fuentes
   ["https://fonts.googleapis.com", "https://fonts.gstatic.com"].forEach(url => {
     const link = document.createElement("link");
@@ -188,20 +188,12 @@ let path = window.location.pathname.split("/").pop();
   tailwindScript.src = "https://cdn.tailwindcss.com";
   document.head.appendChild(tailwindScript);
 
-// // 4. Scripts Globales con defer para asegurar ejecución correcta
-//   const scripts = ["js/script.js", "js/i18n.js?v=2"];
-//   scripts.forEach(src => {
-//     const script = document.createElement("script");
-//     script.src = src;
-//     script.defer = true;
-//     document.head.appendChild(script);
-//   });
-// 4. Scripts Globales
+// 4. Scripts Globales con defer para asegurar ejecución correcta
   const scripts = ["js/script.js", "js/i18n.js?v=2"];
   scripts.forEach(src => {
     const script = document.createElement("script");
     script.src = src;
-    script.async = false; // Preserva el orden secuencial de ejecución
+    script.defer = true;
     document.head.appendChild(script);
   });
 })();
