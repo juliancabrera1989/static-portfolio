@@ -31,8 +31,8 @@ const projects = [
     descKey: "proj_portfolio_desc",
     defaultTitle: "Static Portfolio Website",
     defaultDesc: "Minimal, responsive portfolio focused on performance, SEO, and clean UI.",
-    tech: ["HTML5", "CSS3", "JavaScript","TailWind"],
-    code: "https://juliancabrera1989.github.io/static-portfolio/",
+    tech: ["HTML5", "CSS3", "JavaScript","TailWind","Figma"],
+    code: "https://github.com/juliancabrera1989/static-portfolio",
     image: "assets/images/projects/portfolio-preview.png",
     featured: false
   }
