@@ -180,7 +180,7 @@ const translations = {
   }
 };
 
-// FUNCIÓN PARA RESALTAR LA BANDERA ACTIVA
+// Función para actualizar visualmente la bandera activa
 function updateActiveFlag(lang) {
   const btnEn = document.getElementById("lang-en");
   const btnEs = document.getElementById("lang-es");
@@ -196,11 +196,12 @@ function updateActiveFlag(lang) {
   }
 }
 
-// FUNCIÓN PRINCIPAL DE TRADUCCIÓN
+// Función principal para cambiar el idioma
 function setLanguage(lang) {
   localStorage.setItem("portfolio_lang", lang);
   localStorage.setItem("selectedLang", lang);
 
+  // Traducir elementos con data-i18n
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.getAttribute("data-i18n");
     if (translations[lang] && translations[lang][key]) {
@@ -208,6 +209,7 @@ function setLanguage(lang) {
     }
   });
 
+  // Traducir placeholders
   document.querySelectorAll("[data-i18n-placeholder]").forEach((el) => {
     const key = el.getAttribute("data-i18n-placeholder");
     if (translations[lang] && translations[lang][key]) {
@@ -215,44 +217,35 @@ function setLanguage(lang) {
     }
   });
 
+  // Actualizar banderas
   updateActiveFlag(lang);
-  window.dispatchEvent(new Event("languageChanged"));
 }
 
-// INICIALIZACIÓN AUTOMATIZADA POR OBSERVADOR DE DOM (Detecta la inyección asíncrona al instante)
+// Obtener idioma guardado o por defecto (en)
+function getCurrentLanguage() {
+  return localStorage.getItem("portfolio_lang") || localStorage.getItem("selectedLang") || "en";
+}
+
+// Inicialización cuando carga el DOM
 document.addEventListener("DOMContentLoaded", () => {
-  const currentLang = localStorage.getItem("portfolio_lang") || "en";
-
-  // Intentar aplicar de inmediato por si el DOM ya está listo
+  const currentLang = getCurrentLanguage();
   setLanguage(currentLang);
-
-  // Observar si el contenedor de la navbar se llena dinámicamente mediante fetch
-  const observer = new MutationObserver(() => {
-    const btnEn = document.getElementById("lang-en");
-    const btnEs = document.getElementById("lang-es");
-    if (btnEn && btnEs) {
-      setLanguage(currentLang);
-      observer.disconnect(); // Una vez encontrados y aplicados, detenemos el observador
-    }
-  });
-
-  const navbarContainer = document.getElementById("navbar-container");
-  if (navbarContainer) {
-    observer.observe(navbarContainer, { childList: true, subtree: true });
-  }
-
-  // Delegación de eventos segura para clics tanto en el botón como en su imagen interior
-  document.addEventListener("click", (e) => {
-    const btnEn = e.target.closest("#lang-en");
-    const btnEs = e.target.closest("#lang-es");
-
-    if (btnEn) {
-      e.preventDefault();
-      setLanguage("en");
-    }
-    if (btnEs) {
-      e.preventDefault();
-      setLanguage("es");
-    }
-  });
 });
+
+// Escuchador global para clics en banderas (Funciona en 1 solo clic incluso con Navbar dinámica)
+document.addEventListener("click", (e) => {
+  const langBtn = e.target.closest("#lang-en, #lang-es");
+  
+  if (langBtn) {
+    e.preventDefault();
+    e.stopPropagation();
+    const selectedLang = langBtn.id === "lang-en" ? "en" : "es";
+    setLanguage(selectedLang);
+  }
+});
+
+// Exportar/Sincronizar para cuando el Navbar se cargue por Fetch dinámico
+window.syncI18nState = function() {
+  const currentLang = getCurrentLanguage();
+  setLanguage(currentLang);
+};

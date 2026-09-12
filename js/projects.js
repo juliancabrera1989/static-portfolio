@@ -118,6 +118,18 @@ if (featuredContainer && otherContainer) {
       otherContainer.innerHTML += createSmall(p);
     }
   });
+
+  // Re-aplicar traducciones a los elementos inyectados dinámicamente
+  if (typeof syncI18nState === "function") {
+    syncI18nState();
+  }
+
+  // Forzar asentamiento del layout cuando el DOM de proyectos termina de inyectarse
+  requestAnimationFrame(() => {
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 100);
+  });
 }
 
 /* --- Image Modal Logic --- */

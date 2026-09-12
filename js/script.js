@@ -69,7 +69,13 @@ function cargarComponentesModulares() {
     if (promesas.length === 0) {
       resolve();
     } else {
-      Promise.all(promesas).then(() => resolve());
+          Promise.all(promesas).then(() => {
+        // Fuerza al navegador a asentar el renderizado inicial en producción
+        requestAnimationFrame(() => {
+          window.dispatchEvent(new Event('resize'));
+        });
+        resolve();
+      });
     }
   });
 }

@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Me | Portfolio</title>
   
-  <!-- Módulo único de HEAD (si lo necesitás) -->
+  <!-- Módulo único de HEAD -->
   <script src="js/head-loader.js"></script>
   
-  <!-- Librerías externas de forma síncrona/segura -->
+  <!-- Librerías externas -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="css/contact.css" />
 </head>
@@ -17,28 +17,30 @@
     <nav id="navbar-container"></nav>
   </header>
 
-  <!-- Contact Section -->
-  <section class="contact-section container" data-aos="fade-up">
-    <h1 data-i18n="contact_title">Contact Me</h1>
-    <p data-i18n="contact_subtitle">Feel free to reach out for job offers, collaborations, or tech-related questions.</p>
+  <!-- Contenedor para acotar el ancho y evitar el diseño apaisado sin alterar tu CSS -->
+  <main class="max-w-2xl mx-auto px-4 my-8">
+    <section class="contact-section container" data-aos="fade-up">
+      <h1 data-i18n="contact_title">Contact Me</h1>
+      <p data-i18n="contact_subtitle">Feel free to reach out for job offers, collaborations, or tech-related questions.</p>
 
-    <form class="contact-form">
-      <label for="name" data-i18n="contact_label_name">Name</label>
-      <input type="text" id="name" name="name" required placeholder="Your full name" data-i18n-placeholder="contact_ph_name">
+      <form class="contact-form">
+        <label for="name" data-i18n="contact_label_name">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your full name" data-i18n-placeholder="contact_ph_name">
 
-      <label for="email" data-i18n="contact_label_email">Email</label>
-      <input type="email" id="email" name="email" required placeholder="Your email address" data-i18n-placeholder="contact_ph_email">
+        <label for="email" data-i18n="contact_label_email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="Your email address" data-i18n-placeholder="contact_ph_email">
 
-      <label for="message" data-i18n="contact_label_message">Message</label>
-      <textarea id="message" name="message" required placeholder="Type your message here..." data-i18n-placeholder="contact_ph_message"></textarea>
+        <label for="message" data-i18n="contact_label_message">Message</label>
+        <textarea id="message" name="message" required placeholder="Type your message here..." data-i18n-placeholder="contact_ph_message"></textarea>
 
-      <button type="submit" class="btn" data-i18n="contact_btn_send">Send Message</button>
-    </form>
-  </section>
+        <button type="submit" class="btn" data-i18n="contact_btn_send">Send Message</button>
+      </form>
+    </section>
+  </main>
 
   <footer class="site-footer" id="footer-container"></footer>
 
-  <!-- Scripts al final del body para garantizar que los contenedores ya existen -->
+  <!-- Scripts -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
     AOS.init();
