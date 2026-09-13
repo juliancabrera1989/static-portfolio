@@ -69,13 +69,19 @@ function cargarComponentesModulares() {
     if (promesas.length === 0) {
       resolve();
     } else {
-          Promise.all(promesas).then(() => {
-        // Fuerza al navegador a asentar el renderizado inicial en producción
-        requestAnimationFrame(() => {
-          window.dispatchEvent(new Event('resize'));
+        Promise.all(promesas).then(() => {
+          requestAnimationFrame(() => {
+            window.dispatchEvent(new Event('resize'));
+            
+            // Muestra la página solo cuando la Navbar, Footer y layout asentaron
+            document.body.classList.add('loaded');
+          });
+          resolve();
+        }).catch((err) => {
+          console.error("Error cargando componentes:", err);
+          // Si falla algo, mostramos el body igual para no congelar la pantalla
+          document.body.classList.add('loaded');
         });
-        resolve();
-      });
     }
   });
 }

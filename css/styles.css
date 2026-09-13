@@ -579,3 +579,16 @@ nav.scrolled a img {
   transform: scale(1.18) !important;
   filter: drop-shadow(0 0 6px rgba(59, 130, 246, 0.8)) !important; /* Brillo azul destacado */
 }
+
+
+
+/* Oculta la página momentáneamente para evitar mostrarla desarmada */
+body {
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+
+/* Muestra la página cuando todo el CSS y JS asentaron el layout */
+body.loaded {
+  opacity: 1;
+}
